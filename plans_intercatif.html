@@ -1,0 +1,1355 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Les plans historiques dans le Grand Paris de 1728 à nos jours | Apur datavisualisation</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Voyager à travers le temps sur le territoire parisien en quelques clics et de façon ludique, voilà ce que propose ce nouvel outil interactif qui propose une chronologie des plans anciens de Paris et de ses environs du 18e à nos jours.">
+
+	<!-- Facebook -->
+	<meta property="og:title" content="Les plans historiques dans le Grand Paris de 1728 à nos jours | Apur datavisualisation" />
+	<meta property="og:site_name" content="Apur"/>
+	<meta property="og:url" content="https://www.apur.org/dataviz/cassini-grand-paris/" />
+	<meta property="og:description" content="Voyager à travers le temps sur le territoire parisien en quelques clics et de façon ludique, voilà ce que propose ce nouvel outil interactif qui propose une chronologie des plans anciens de Paris et de ses environs du 18e à nos jours." />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https://www.apur.org/sites/default/files/images/geo-apps/image-a-la-une/dataviz_cartes_historiques_935_550_cache.jpg" />
+
+	<!-- Twitter Card data -->
+	<meta name="twitter:card" content="Les plans historiques dans le Grand Paris de 1728 à nos jours | Apur datavisualisation">
+	<meta name="twitter:site" content="https://www.apur.org/dataviz/cassini-grand-paris/">
+	<meta name="twitter:title" content="Les plans historiques dans le Grand Paris de 1728 à nos jours | Apur datavisualisation">
+	<meta name="twitter:description" content="Voyager à travers le temps sur le territoire parisien en quelques clics et de façon ludique, voilà ce que propose ce nouvel outil interactif qui propose une chronologie des plans anciens de Paris et de ses environs du 18e à nos jours.">
+	<meta name="twitter:creator" content="@Apur_75">
+	<meta name="twitter:image" content="https://www.apur.org/sites/default/files/images/geo-apps/image-a-la-une/dataviz_cartes_historiques_935_550_cache.jpg">
+
+	<!-- Schema.org markup for Google+ -->
+	<meta itemprop="name" content="Les plans historiques dans le Grand Paris de 1728 à nos jours | Apur datavisualisation">
+	<meta itemprop="description" content="Voyager à travers le temps sur le territoire parisien en quelques clics et de façon ludique, voilà ce que propose ce nouvel outil interactif qui propose une chronologie des plans anciens de Paris et de ses environs du 18e à nos jours.">
+	<meta itemprop="image" content="https://www.apur.org/sites/default/files/images/geo-apps/image-a-la-une/dataviz_cartes_historiques_935_550_cache.jpg">
+
+	<link rel="icon" type="image/ico" href="favicon.ico" />
+
+	<link rel="stylesheet" href="lib/pace-master/themes/silver/pace-theme-minimal.css" /> <!-- page load progress bar style sheet -->
+
+	<link rel="stylesheet" href="https://js.arcgis.com/4.13/esri/themes/light/main.css"> <!-- main style sheet of the ArcGIS API for JavaScript 4.11 -->
+
+	<link rel="stylesheet" href="lib/D3ITL-master/assets/timeline.css"> <!-- style sheet of the interactive horizontal timeline -->
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> <!-- included for the jquery-ui sliders (transparency and width sliders) -->
+	<link rel="stylesheet" href="lib/jQuery-ui-Slider-Pips-master/dist/jquery-ui-slider-pips.min.css" /> <!-- styling the sliders -->
+
+	<link rel="stylesheet" href="lib/pickr/pickr-nano-min.css"/> <!-- 'nano' theme for pickr (the color pickers)-->
+
+	<link rel="stylesheet" href="lib/intro/introjs.css"> <!-- style sheet of the introjs library (page tour guide) -->
+
+	<link href="style/fonts/fontawesome-free-5.14.0-web/css/fontawesome.css" rel="stylesheet">
+	<link href="style/fonts/fontawesome-free-5.14.0-web/css/solid.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="style/css/style.css" /> <!-- main CSS -->
+	 <!-- Matomo -->
+	 <script type="text/javascript">
+		var _paq = window._paq = window._paq || [];
+		/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+		_paq.push(['trackPageView']);
+		_paq.push(['enableLinkTracking']);
+		(function() {
+		  var u="//matomo.apur.org/";
+		  _paq.push(['setTrackerUrl', u+'matomo.php']);
+		  _paq.push(['setSiteId', '1']);
+		  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		  g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+		})();
+	  </script>
+	  <!-- End Matomo Code -->
+</head>
+
+<body>
+
+	<header class="css-visible">
+    <a title="Apur" href="https://www.apur.org/fr/geo-data/cassini-grand-paris-plans-historiques-1728-nos-jours" target="_blank"><img id="logo" src="logo_apur.png"/></a>
+    <h1>Cassini | Grand Paris : <span class="reactive-title css-visible">Carte des environs de Paris de l’abbé Delagrive,  1731-1741</span><span class="compare-reactive-title">comparer</span><button title="Guide d'utilisation de l'application" id="help-btn" class="css-visible"><i class="fas fa-question-circle"></i></button></h1>
+  </header>
+
+	<main>
+		<div id="sm-fallback-container">
+			<div>
+				<h1>Bonjour,</h1>
+		    <p>Nous vous recommandons la version optimisée pour les mobiles et tablettes de l'application "Cassini | Grand Paris". Pour y accéder, cliquez sur le bouton ci-dessous :</p>
+		    <button type="button">
+		      <a title="Accès à la version mobile" href="mobile.html" target="_blank">Site pour mobiles</a>
+		    </button>
+			</div>
+		</div>
+
+		<div id="ie-fallback-container">
+			<div>
+				<h1>Bonjour,</h1>
+		    <p>Il semble que vous utilisiez une ancienne version du navigateur Internet Explorer, avec laquelle l'application "Cassini | Grand Paris" n'est pas compatible. Nous vous recommandons d'ouvrir l'application avec un autre navigateur web.</p>
+			</div>
+		</div>
+
+		<div id="vertical-nav">
+			<ul>
+				<li id="menu-mapView" class="choose-view selected fill" title="Vue principale">
+					<?xml version="1.0" encoding="utf-8"?>
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+						<style type="text/css">
+							.st4{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+						</style>
+						<g id="Calque_2">
+							<rect x="3.5" y="5.5" class="st4" width="23" height="19"/>
+						</g>
+						</svg>
+				</li>
+				<li id="menu-compareView" class="choose-view" title="Comparer deux plans entre eux">
+					<?xml version="1.0" encoding="utf-8"?>
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							 viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+							<style type="text/css">
+								.st0{fill:#FFFFFF;}
+								.st1{display:none;}
+								.st2{display:inline;fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+							</style>
+							<g id="Calque_1">
+								<g>
+									<path class="st0" d="M12,6v18H4V6H12 M13,5H3v20h10V5L13,5z"/>
+								</g>
+								<g>
+									<path class="st0" d="M26,6v18h-8V6H26 M27,5H17v20h10V5L27,5z"/>
+								</g>
+							</g>
+						</svg>
+				</li>
+			</ul>
+		</div>
+
+		<div class="mapCmd-btn-container" id="mapCmd-btn-container-on-map"> <!-- map commands when the map is in full screen -->
+			<button title="Carte précédente" class="mapCmd-btn goBackwardMap-btn"><i class="fas fa-angle-left"></i></button>
+			<button title="Carte suivante" class="mapCmd-btn goForwardMap-btn"><i class="fas fa-angle-right"></i></button>
+			<button title="Carte actuelle" class="mapCmd-btn goLastMap-btn"><i class="fas fa-angle-double-right"></i></button>
+		</div>
+
+		<div id="brackets" class="open">
+			<button class="close-btn open" id="side-panel-close-btn"><i class="fas fa-chevron-right visible"></i><i class="fas fa-chevron-left"></i></button>
+		</div>
+
+		<div class="side-panel right-side-panel open" id="main-panel"> <!-- contains all the map informations -->
+			<div class="side-container">
+
+				<div class="mapCmd-btn-container" id="mapCmd-btn-container"> <!-- map commands next the timeline -->
+					<button title="Carte précédente" class="mapCmd-btn goBackwardMap-btn"><i class="fas fa-angle-left"></i></button>
+					<button title="Carte suivante" class="mapCmd-btn goForwardMap-btn"><i class="fas fa-angle-right"></i></button>
+					<button title="Carte actuelle" class="mapCmd-btn goLastMap-btn"><i class="fas fa-angle-double-right"></i></button>
+				</div>
+
+				<div id='timeline'> <!-- will contain #Chart, the timeline container -->
+					<div id='timelineChart'>
+					</div>
+				</div>
+
+				<div id="nav">
+					<div class="nav selected" id="description-nav" title="Description du plan">
+						<p>Description</p>
+					</div>
+					<div class="nav" id="couchesSupplementaires-nav" title="Ajouter des données">
+						<p>Couches supplémentaires</p>
+					</div>
+					<div class="nav" id="compare-nav" title="Basculer sur la vue comparative">
+						<p>Comparer<span><img src="assets/compareMapView.svg" /></span></p>
+					</div>
+				</div>
+
+				<div class="reactive-main-container displayed" id="description-main-container">
+					<h2 class="reactive-title">Carte des environs de Paris de l’abbé Delagrive,  1731-1741</h2>
+
+					<i id="warning-missingMap">Certaines des planches centrales n'existent pas dans le plan d'origine (planches en blanc ci-contre).</i>
+
+					<p class="reactive-subtitle">Emprise du plan :</p>
+
+					<div class="reactive-subtitle" id="overviewMap"></div>
+					<div id="overviewMask"></div>
+
+					<p class="reactive-subtitle">Échelle de relevé : <span class="reactive-scale">1/17280</span>
+
+					<p class="reactive-subtitle">Auteur : <span class="reactive-author">Abbé J. Delagrive</span></p>
+
+					<p class="reactive-subtitle">Source : <span class="reactive-source">Réunion des musées nationaux - Grand Palais</span></p>
+
+					<article class="txt-box css-visible" id="txt-box-1731"> <!-- Carte des environs de Paris de l’abbé Delagrive -->
+						<p>Légende : Dans les parties agglomérées, toutes les rues apparaissent clairement, ainsi que les places, les quais ou les ouvrages tels que les ponts. En zone rurale les routes et les chemins sont indiqués. Toutes les plantations d’alignement apparaissent nettement, en zone urbaine comme en zone rurale le long des routes. Enfin les édifices remarquables sont indiqués par le procédé consistant à détourer leur bâti : il en est ainsi des principales abbayes, couvents, collèges, hôtels particuliers, hôpitaux, châteaux et forteresses. Les églises et chapelles sont également mentionnées. Enfin un certain nombre « d’objets » sont mentionnés assez systématiquement : égouts à ciel ouvert, puits d’accès aux carrières souterraines et entrées à flanc de coteaux, moulins, dépôts de voirie (d’ordures), croix (aux carrefours souvent). Il faut ajouter quelques mentions toponymiques (256) places, rues et voies principales, villages, hameaux, lieux-dits, édifices remarquables.</p>
+						<p class="txt-source css-blue">Source : Apur</p>
+
+						<h3 class="important-dates">Repères chronologiques :</h3>
+						<ul>
+							<li><time datetime="1623">1623</time> : Début de la construction du château de Versailles (78)</li>
+							<li><time datetime="1670">1670</time> : Aménagement des Champs-Elysées (8e) et de la place de l'Etoile (8e, 16e et 17e)</li>
+							<li><time datetime="1674">1674-1705</time> : Aménagement des Grands Boulevards, à l'emplacement des anciennes fortifications de Charles V et Louis XIII</li>
+							<li><time datetime="1686">1686</time> : Aménagement de la place Vendôme (1er)</li>
+							<li class="popDate-li"><time datetime="1700">1700</time> : Paris compte 530&nbsp;000 habitants</li>
+							<li><time datetime="1700">1700-1725</time> : Construction de nombreux hôtels faubourg Saint-Germain, de l'abbaye Saint-Germain (6e) à l'École Militaire (7e)</li>
+							<li><time datetime="1718">1718</time> : Construction d'hôtels faubourg Saint-Honoré (8e)</li>
+							<li><time datetime="1718">1718/1722</time> : Construction du palais de l'Élysée (hôtel d'Évreux) (8e)</li>
+							<li><time datetime="1722">1722-1728</time> : Construction du palais Bourbon (Assemblée nationale) (7e)</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Après le succès de son plan de 1728, l’abbé Delagrive travaille pendant trente ans, sur différents plans de Paris à plus ou moins grande échelle. Le Bureau de la Ville l’engage en 1731, pour dresser « une carte détaillée du cours de la rivière Seine depuis sa source”. A la même époque Delagrive entreprend la carte des environs de Paris sur un périmètre de “ 6 à 7 lieues autour de la capitale” [...]. La précision de détail est comparable. Pour la première fois dans un rayon de trente kilomètres, autour de Paris, sont représentés avec exactitude, les villages, abbayes, châteaux, fermes, routes et chemins. Les centres des villes et villages sont traités en blocs, séparés par les rues principales. Les moindres sentiers et divisions parcellaires des terres sont figurés. Il n’y a en revanche pas d’indication de relief. La publication s’échelonne entre 1731 et 1741. Pour faire taire les critiques sur la qualité de ses gravures, Delagrive choisit de graver lui-même son plan, regrettant que « certains ne se donnent pas toujours la peine d’exécuter avec précision et netteté les dessins qu’on leur donne”.</p>
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<p> L’ensemble de la carte s’étend sur 1300 km2. Elle est découpée en 9 planches de dimensions différentes. Cette carte a été établie au 1/17280. Le champ couvert par cette carte est d'environ 30 km autour de Paris.</p>
+
+						<p class="txt-source css-blue">Source : Apur</p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Au XVIIIème siècle, Paris s'étend jusqu'aux anciennes enceintes de Charles V et Louis XIII, démolies à la fin du XVIIe siècle. Elle est une ville dense qui compte 500 000 habitants, soit 45 000 hab. /km².
+						<p><b>La nature couvre environ 213 ha</b>, soit 19% du territoire urbanisé de Paris. Les limites d’interdiction de bâtir instaurées par Louis XV (1 146 ha) s’étendent des actuels Grands Boulevards au nord, au Port-Royal au sud, et de la place de la Bastille à l’est à la place XV (actuelle Place de la Concorde) à l’ouest.<br />
+						Ces 213 ha de nature sont constitués à <b>50% de parcs et jardins publics et privés</b> (110 ha) et <b>30% de maraîchage</b> (60 ha). Les 20% restant sont des terrains en friche et des zones inondables (24 ha), de  grandes cultures (15 ha) et très localement de parcelles d’arboriculture (4 ha).<br />
+						Bien que le début du siècle soit marqué par la construction de nombreux hôtels particuliers et de bâtiments prestigieux, Paris reste une ville très dense, sale, bruyante et encombrée, faite de rues étroites et d’immeubles mitoyens hauts.<br />
+						Pour apporter air, eau et lumière au cœur de la cité, <b>les anciennes enceintes de Louis XIII laissent place aux grands boulevards plantés d’arbres, de la porte Saint-Antoine au cours de la Reine</b>. De nouvelles avenues, en dehors des limites parisiennes sont créées et plantées, telles que l’avenue des Champs-Élysées, l’avenue de Vincennes, l’avenue de Saint-Mandé et les avenues entourant les Invalides.</p>
+
+						<p>Ces avenues et boulevards prolongent le réseau des promenades initié sous Henri IV (1553-1610) avec l’installation de mails et de cours. Les mails sont de grandes allées ombragées créées pour pratiquer le jeu de mail, ancêtre du croquet. Le plus connu est le mail de l’Arsenal (1604), actuel boulevard Morland, bordé de deux rangées d’ormes et d’une troisième constituée d’ormes et de mûriers blancs. Les cours, quant à eux, sont des promenades rectilignes permettant la progression des carrosses. Le plus célèbre reste celui de Marie de Médicis (1608), actuel cours de la Reine. Il s’inspire du « corso » italien et est planté d’ormes, de mûriers blancs et de tilleuls.<br />
+						Au-delà de cette ville dense, les grandes routes structurant le territoire et rayonnant autour de la capitale sont plantées d’arbres depuis le XVIe siècle, sous l’impulsion d’Henri II puis de Sully (Maximilien de Béthune, dit Sully, ministre d’Henri IV) pour alimenter le pays en bois de chauffage, de construction et de marine, afin de compenser le grand défrichement du Moyen-Age. L’orme est alors l’arbre d’alignement par excellence.<br />
+						<b>Jusqu’au XVIIIe siècle, les jardins et les bois sont privés</b>. Ce sont des lieux de représentation ou de production, appartenant au domaine royal, à la noblesse, à la haute bourgeoisie ou au clergé. Le public n’y est admis qu’avec parcimonie à l’exception peut-être du jardin botanique (1635), entièrement dédié au savoir.<br />
+						Le jardin des Tuileries (16 ha), le couvent des Chartreux (16 ha), le jardin du Luxembourg (13 ha) et le jardin du Roi (8 ha) constituent près de 50% de l’ensemble des parcs et jardins. Le reste est composé surtout des jardins privés des hôtels particuliers et des congrégations religieuses.<br />
+						Ces jardins, clos, tenus à l’abri des regards, s’inscrivent dans une certaine continuité avec les jardins de châteaux et d’abbayes du Moyen-Age, empruntant la juxtaposition du potager, du verger et du jardin d’agrément. Ils expriment cependant un tout autre rapport à la nature. Le jardin d’agrément, dessiné « à la française » ne représente plus le paradis sur terre mais il met en valeur la raison et une forme de contrôle de l’homme sur la nature. Le potager et le verger sont dimensionnés pour subvenir aux besoins de la maison et un bois fournit une réserve de chasse et de bois de chauffe aux grandes propriétés.<br />
+						Intramuros, les jardins d’hôtels particuliers sont concentrés dans le Marais, le faubourg Saint-Germain et sur les îles de la Cité et Saint-Louis. Ils sont de petite taille, 0,1 ha tout au plus.<br />
+						Hors Paris, plusieurs jardins existent aux abords des bourgs, notamment à Passy et Auteuil, où de très nombreuses propriétés sont apparues ou modifiées telle que la résidence de la Muette, pavillon de chasse édifié sous Charles IX et transformé en vaste Château en 1717 par Philippe d’Orléans. Elles appartiennent à des congrégations religieuses ou à des membres de la cour royale, comme le château de Madame d'Orléans, de 60 ha, entre Paris et Montreuil, ou le château de la Muette, 10 ha à l’entrée du Bois de Boulogne.</p>
+
+						<p>A partir du XIIe siècle, les moines ont défriché les terres marécageuses <b>de l’ancien bras de la Seine, au nord de l'enceinte de Philippe Auguste, rendant cultivable près de 450 ha sur près de 2 km de large</b>. Ces marais donneront leur nom aux maraîchers.<br />
+						Aux alentours de Paris, les grandes propriétés structurent le paysage agricole. Sous Philippe Auguste (1180-1223), le territoire de Paris englobait des cultures céréalières, maraîchères et fruitières ainsi que des vignes en quantité suffisante pour permettre à la population de résister à un siège.<br />
+						Les cultures céréalières et maraîchères se sont développées dans les plaines et les vallées alluviales, alors que <b>les cultures fruitières et les vignes occupent les coteaux de Montreuil, Ivry ou encore Clamart</b>. Ainsi, entre les villages de Belleville, Ménilmontant et Charonne, existent de très nombreuses parcelles arboricoles allant jusqu’à Noisy-le-Sec et Montreuil. </p>
+
+						<p>Sous Henri III, le Bois de Boulogne avait été clos par un ensemble de murailles afin de chasser une population de détrousseurs et vagabonds avant d’être délaissé. C’est Louis XIV, entre 1679 et 1703, qui souhaite renouer avec la tradition de chasse et fait tracer de grandes allées rectilignes et nettoie le Bois et ses points d’eau. Le Bois de Vincennes est lui réaménagé par Louis XV selon les plans de 1703 de Robert de Cotte. Là aussi, de grandes allées rectilignes, des ronds-points ainsi qu’une totale replantation sont entrepris afin de rendre le Bois grandiose.</p>
+
+						<p>La Seine et la Marne possèdent encore leurs berges naturelles. La place de grève (actuel quai de l'Hôtel de Ville) est l’un des rares quais aménagés et un nombre important de ces berges ou autres terres inondables à proximité des cours d’eau sont utilisées pour le stockage de bois qui arrive à Paris par bateau (Bercy, Saint-Maurice, île Louviers, …).<br />
+						La Bièvre offre des terrains fertiles qui accueillent maraîchage et agriculture, mais également tannerie, teinturerie.</p>
+
+						<p class="txt-source css-blue">Source : <span id="reactive-txt-source" class="css-blue"><a title="Géoapp &quot;L'évolution de la nature de 1730 à aujourd'hui&quot; sur le site de l'Apur" href="https://www.apur.org/dataviz/evolution_nature/index.html" target="_blank">Apur, application "L'évolution de la nature de 1730 à aujourd'hui" (2018)</a></span></p>
+
+					</article> <!-- end Carte des environs de Paris de l’abbé Delagrive -->
+
+
+					<article class="txt-box css-visible" id="txt-box-1747"> <!-- Carte de Cassini -->
+						<h3 class="important-dates">Repères chronologiques :</h3>
+						<ul>
+							<li><time datetime="1623">1623</time> : Début de la construction du château de Versailles (78)</li>
+							<li><time datetime="1670">1670</time> : Aménagement des Champs-Elysées (8e) et de la place de l'Etoile (8e, 16e et 17e)</li>
+							<li><time datetime="1674">1674-1705</time> : Aménagement des Grands Boulevards, à l'emplacement des anciennes fortifications de Charles V et Louis XIII</li>
+							<li><time datetime="1686">1686</time> : Aménagement de la place Vendôme (1er)</li>
+							<li class="popDate-li"><time datetime="1700">1700</time> : Paris compte 530&nbsp;000 habitants</li>
+							<li><time datetime="1700">1700-1725</time> : Construction de nombreux hôtels faubourg Saint-Germain, de l'abbaye Saint-Germain (6e) à l'École Militaire (7e)</li>
+							<li><time datetime="1718">1718</time> : Construction d'hôtels faubourg Saint-Honoré (8e)</li>
+							<li><time datetime="1718">1718/1722</time> : Construction du palais de l'Élysée (hôtel d'Évreux) (8e)</li>
+							<li><time datetime="1722">1722-1728</time> : Construction du palais Bourbon (Assemblée nationale) (7e)</li>
+							<li><time datetime="1751">1751</time> : Construction de l'école Militaire (7e)</li>
+							<li><time datetime="1751">1751-1780</time> : Aménagement du Champ de Mars (7e)</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>La carte de Cassini est la première carte à l’échelle
+						d’un État, basée sur une triangulation géodésique. Elle
+						fonde un pan entier de la cartographie ultérieure qui trouve
+						ses prolongements dans l’aménagement du territoire et
+						l’organisation des réseaux de communication.</p>
+
+						<p>[...]</p>
+
+						<p>Louis XV peu à peu convaincu de l’intérêt d’une carte
+						géométrique détaillée comme outil de gouvernement et de
+						développement économique,confie le projet à César-
+						François Cassini. L’objectif est de déterminer le nombre de
+						villes et de villages, définir leurs distances respectives, et
+						permettre le tracé de nouvelles routes et canaux.</p>
+
+						<p>[...]</p>
+
+						<p>L’ensemble est exact mais peu détaillé. Cassini, qui
+						veut créer un outil de référence, est réticent à montrer le
+						réseau de voiries secondaires qui évolue rapidement et ses
+						informateurs locaux rechignent quant à eux, à fournir des
+						informations qui pourraient entraîner de nouveaux impôts.</p>
+
+						<p>Terminée en 1789, la carte sera confisquée en 1792,
+						par la Convention, car un plan détaillé est une arme de
+						guerre. Pour la même raison Napoléon en retardera la
+						publication jusqu’en 1815.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+					</article> <!-- end Carte de Cassini -->
+
+					<article class="txt-box" id="txt-box-1764"> <!-- Carte des Chasses du Roi -->
+						<p>Légende : La gravure à l’échelle du 1/28 800e est une œuvre d’art. Elle décrit avec minutie un paysage à l’intention de monarques qui le connaissent parfaitement. Le plan géométral est rigoureux. La richesse du détail est exceptionnelle. La subtilité de la gravure permet de lire aussi bien la grande échelle (le relief, l’eau, le manteau forestier, les grands tracés) que le détail, dessiné ou écrit. La nomenclature abondante précise l’essence des bois, la nature des cultures des garennes, ou des essarts. Le découpage parcellaire des champs n’est vraisemblablement qu’un artifice graphique, mais l’ensemble des éléments plantés, bâtis ou terrassés sont exacts. Le plan géométral des villages indique jusqu’au tracé des rues principales. Le dessin de Paris intra-muros, est basé sur le plan de Verniquet</p>
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3 class="important-dates">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1750">1750</time> : Paris compte 556&nbsp;000 habitants</li>
+							<li><time datetime="1780">1751-1780</time> : Construction de l'École Militaire et aménagement du Champ de Mars (7e)</li>
+							<li><time datetime="1790">1757-1790</time> : Construction du Panthéon (5e)</li>
+							<li><time datetime="1760">1760</time> : Aménagement de la place d'Italie (13e) et début du recouvrement du Grand Egout, ancien ruisseau de Ménilmontant</li>
+							<li><time datetime="1763">1763</time> : Aménagement de la place de la Concorde (8e) (alors place Louis XV)</li>
+							<li><time datetime="1763">1763</time> : Construction de la halle aux blés (1er), qui deviendra la Bourse de commerce en 1885</li>
+							<li><time datetime="1790">1770-1790</time> : Urbanisation de la Chaussée-d'Antin (9e)</li>
+							<li><time datetime="1780">1780</time> : Destruction des maisons sur les ponts de Paris</li>
+							<li><time datetime="1780">1780</time> : Comblement partiel du canal de l'île des Cygnes, ancienne île de Paris (7e)</li>
+							<li><time datetime="1783">1783</time> : Réglementation sur les alignements, la largeur des voies et la hauteur des bâtiments</li>
+							<li><time datetime="1790">1784-1790</time> : Construction du mur des Fermiers Généraux, pour la perception d'un impôt sur les marchandises entrant dans la ville</li>
+							<li class="popDate-li"><time datetime="1789">1789</time> : Paris compte 650&nbsp;000 habitants</li>
+							<li><time datetime="1789">1789</time> : Les biens ecclésiastiques deviennent biens nationaux</li>
+							<li><time datetime="1791">1789-1791</time> : Démolition de la Bastille</li>
+							<li><time datetime="1790">1790</time> : Les villages situés dans l'enceinte des Fermiers Généraux sont rattachés à Paris</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Le traitement des cartes, leur traitement et leur modélisation ont été réalisés par l'IGN, pour l'Apur.<br/> Chaque carte des Chasses du Roi (cartes produites entre 1774 et 1785) a été faite indépendamment de ses voisines et les raccords ne sont pas souvent assurés. Il en résulte des décalages de contenu sur les raccords.<br/> Le calage des cartes de 1750 sur des données actuelles est complexe ; seuls quelques détails subsistent aujourd'hui, comme les châteaux ou certaines allées des forêts.</p>
+						<p class="txt-source css-blue">Source : IGN</p>
+
+						<p>Entreprise pour occuper des géographes désoeuvrés et flatter la passion d’un monarque, la carte des Chasses est devenue un des meilleurs portraits de la région parisienne.</p>
+
+						<p>En 1763, le corps des ingénieurs-géographes du Roi est menacé par la fin de la guerre de Sept-Ans. Indispensable en temps de guerre, il devient coûteux et inutile en temps de paix. Pour éviter la dissolution, son responsable, Jean-Baptiste Berthier, décide de dresser une carte de la propriété du duc de Choiseul, ministre de la Guerre. Louis XV, passionné de vénerie, admire le document et commande en 1764, une première carte identique sur la région de Rambouillet-Saint-Hubert. Il l’étend trois ans plus tard aux environs de Versailles, puis la prolonge en 1769, jusqu’à Mantes, Saint-Denis et Corbeil. La levé des minutes à l’échelle du 1/7200e est achevée en 1774.</p>
+
+						<p>La gravure prendra trente ans. Les crises financières et ministérielles ralentissent les travaux. La Révolution les interrompt. De fantaisie monarchique et courtisane, l’objectif de la carte se déplace vers celui d’un pur chef d’œuvre topographique. Il faudra à Berthier dix nouvelles années de passion opiniâtre pour finalement convaincre Bonaparte, de mener le projet à son terme.</p>
+
+						<p>Commencée comme une oeuvre de circonstance, la carte des chasses est devenue un superbe témoin de l’occupation du sol de la région parisienne à la veille de la révolution industrielle. Elle montre aussi bien la densité du vignoble que le rôle des tracés des grands domaines dans la structure de la région. En 1815, il sera question de la “rééquilibrer vers l’Est”. Le projet n’a pas abouti mais la réalisation de plusieurs cartes dérivées offre de précieux outils de comparaison pour l’étude de la région parisienne.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>"La Carte des chasses du roi ou plus exactement la Carte Topographique des Environs de Versailles ou des Chasses Impériales représente une grande partie des territoires de l'Île-de-France au sud de la Seine. L'entreprise est due à Jean-Baptiste Berthier.</p>
+
+						<p>Cette carte, née de l'engouement de Louis XV pour la chasse et d'une décision royale de copier l'ancienne carte du duché de Rambouillet, a été levée durant deux périodes de 1764 à 1773 et de 1801 à 1807.</p>
+
+						<p>On dit souvent que la paix consécutive à la guerre de Sept Ans menaça de dissolution le corps des ingénieurs-géographes du Dépôt de la Guerre. Soutenu par Choiseul, Berthier trouva en la continuation de la carte une occasion d'occuper son personnel. Passées quelques années, ne s’offrit plus à lui de contexte si favorable et Berthier vit réduire le nombre de ses ingénieurs géographes des camps et armées imposant des lenteurs aux levées des territoires de la Carte des chasses du roi. En 1792, 5 feuilles sur 12 sont gravées notamment par l’emploi de Joseph Perdoux, graveur, actif entre 1788 et 1792 à l’hôtel de la Guerre au château de Versailles. Au début de la Révolution française, les crédits alloués pour la gravure lui furent supprimés par la Convention nationale en 1792.</p>
+
+						<p>Débutée par le Dépôt de la Guerre dont Berthier était aussi le directeur, avec l’emploi de huit ingénieurs géographes, sa réalisation fut mise en suspens par les constituants de la Révolution française, suivant la formule d’Alexandre de Beauharnais au nom du Comité militaire chargé de réaliser des économies dans le budget de ce ministère2. La gravure reprit en 1801 sur ordre du Premier Consul. Berthier mourut avant l’achèvement complet de l'œuvre à laquelle il avait consacré toute son énergie et que les directeurs du Dépôt de la Guerre et même Louis-Alexandre Berthier fils de l'auteur et ministre de la Guerre en 1799 considéraient tous comme une œuvre futile."</p>
+
+						<p class="txt-source css-blue">Source : <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.fr">Contenu soumis à la licence CC-BY-SA</a>. Source : Article <em><a href="http://fr.wikipedia.org/wiki/Carte_des_Chasses_du_Roi">Carte des Chasses du Roi</a></em> de <a href="http://fr.wikipedia.org/">Wikipédia en français</a> (<a href="http://fr.wikipedia.org/w/index.php?title=Carte_des_Chasses_du_Roi&action=history">auteurs</a>)</p>
+
+					</article> <!-- and Carte des Chasses du Roi -->
+
+					<article class="txt-box" id="txt-box-1775"> <!-- Plan Verniquet -->
+						<p>Légende : [...]Le dessin du Grand Plan de Paris est dépouillé. [...] L’ensemble est clair, précis, limité à la figuration exacte des rues et des édifices remarquables. On compte peu de tracés parcellaires, à l’exception des X°, XI° et XII° arrondissements ; un unique découpage foncier flotte parfois au cœur de tout un îlot. Le grisé, traité en à plat, signale les champs de l’Est parisien. Il détaille de façon plus expressive, les jardins du parc Monceau ou les bras de la Bièvre. A l’exception du relief, exprimé par un curieux entrelacs de « chenilles », la sobriété générale traduit la rigueur de la démarche. Cette recherche s’affirme dans le traitement du cartouche néo-classique qui montre les génies joufflus de la prudence, et de la géométrie, encadrant les allégories de la Ville, de la Seine et de la toute nouvelle République.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3 class="important-dates">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1750">1750</time> : Paris compte 556&nbsp;000 habitants</li>
+							<li><time datetime="1780">1751-1780</time> : Construction de l'École Militaire et aménagement du Champ de Mars (7e)</li>
+							<li><time datetime="1790">1757-1790</time> : Construction du Panthéon (5e)</li>
+							<li><time datetime="1760">1760</time> : Aménagement de la place d'Italie (13e) et début du recouvrement du Grand Egout, ancien ruisseau de Ménilmontant</li>
+							<li><time datetime="1763">1763</time> : Aménagement de la place de la Concorde (8e) (alors place Louis XV)</li>
+							<li><time datetime="1763">1763</time> : Construction de la halle aux blés (1er), qui deviendra la Bourse de commerce en 1885</li>
+							<li><time datetime="1790">1770-1790</time> : Urbanisation de la Chaussée-d'Antin (9e)</li>
+							<li><time datetime="1780">1780</time> : Destruction des maisons sur les ponts de Paris</li>
+							<li><time datetime="1780">1780</time> : Comblement partiel du canal de l'île des Cygnes, ancienne île de Paris (7e)</li>
+							<li><time datetime="1783">1783</time> : Réglementation sur les alignements, la largeur des voies et la hauteur des bâtiments</li>
+							<li><time datetime="1790">1784-1790</time> : Construction du mur des Fermiers Généraux, pour la perception d'un impôt sur les marchandises entrant dans la ville</li>
+							<li class="popDate-li"><time datetime="1789">1789</time> : Paris compte 650&nbsp;000 habitants</li>
+							<li><time datetime="1789">1789</time> : Les biens ecclésiastiques deviennent biens nationaux</li>
+							<li><time datetime="1790">1790</time> : Les villages situés dans l'enceinte des Fermiers Généraux sont rattachés à Paris</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Le « Plan de la ville de Paris avec sa nouvelle enceinte, levé géométriquement sur la méridienne de l’Observatoire par le citoyen Verniquet » a été dessiné à partir de mesures effectuées entre 1775 et 1789, par une équipe dirigée par Edme Verniquet, alors commissaire général de la voirie de Paris. Le plan a été publié en 1791.</p>
+
+						<p>Son mode de relevé en fait l’un des premiers plans de Paris dont la topographie est exacte : les géomètres arpenteurs traçaient, sur le terrain, les plans de chaque rue, avec leur largeur et longueur, et les dimensions des parcelles, ainsi que le nom de leur propriétaire.</p>
+
+						<p class="txt-source css-blue">Source : <a title="Article &quot;LES PLANS VERNIQUET : SOURCE MAJEURE DE LA CARTOGRAPHIE ET DE L’HISTOIRE DU PARIS DU 18E SIÈCLE&quot; sur le site des bibliothèques municipales spécialisées de la Ville de Paris" href="https://bibliotheques-specialisees.paris.fr/in/actualites/collections-numerisees/nouveaute/null!40c87392-eb37-4f69-a952-ede5d1a49967" target="_blank">LES PLANS VERNIQUET : SOURCE MAJEURE DE LA CARTOGRAPHIE ET DE L’HISTOIRE DU PARIS DU 18E SIÈCLE [en ligne]. Portail des bibliothèques municipales spécialisées de la Ville de Paris, 2016</a></p>
+
+						<p>Le plan de Verniquet est le premier plan exact d’une capitale et le dernier reflet du Paris de l’Ancien Régime. Il est pour Paris, l’équivalent de la carte de Cassini pour la France : un modèle de référence qui fonde tous les travaux ultérieurs.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<p>Plan topographique régulier à grande échelle (1/1728e) décomposé en 72 planches jointives, orientées au Nord et calées sur la Méridienne de Paris. Il reste le plan topographique de référence pendant plus de 60 ans.</p>
+
+						<p>Le plan a été géolocalisé sous SIG par ALPAGE, à partir de points non ambigus, avec les données des îlots et du bâti de l’Apur. Travail mené en 2012-2013 dans le cadre de la confection du plan Vasserot par ALPAGE. Plus de 70% du plan ainsi calé et redressé présentent moins de 1,50m d’erreur tant en latitude qu’en longitude.</p>
+
+						<p class="txt-source css-blue">Source : ALPAGE</p>
+
+					</article> <!-- and Plan Verniquet -->
+
+					<article class="txt-box" id="txt-box-1810"> <!-- Plan Vasserot -->
+						<p>Légende : Rehaussés de couleurs, ces plans donnent : la représentation des voies, la division de propriétés, la configuration intérieure du rez-de-chaussée des maisons, les numéros portés par chacune d’elles (numérotation impériale de 1805). La couleur n’a pas d’autre finalité que de distinguer aisément chaque unité fiscale. Mais, contrairement à la plupart des cadastres fiscaux, qui ne donnent que la délimitation externe de chaque parcelle fiscale, ces plans comportent en outre la matérialité topographique des unités parcellaires. Est ainsi représenté le bâti au niveau du rez-de-chaussée, comme un plan de coupe situé à 1 m. du sol de la chaussée. A l’intérieur de chaque parcelle, sont donc visibles la distribution interne des parcelles (pièces, espaces bâtis/non bâtis), avec les murs, les ouvertures (portes et fenêtres), les escaliers, cours, jardins, puits et fours… Tous les murs, qu’ils soient de face, mitoyens ou de distribution, sont pochés en noir. De plus, à l’intérieur d’une parcelle, les parties bâties sont peintes par un lavis plus foncé (parfois gris) que les parties non bâties.</p>
+
+						<p class="txt-source css-blue">Source : NOIZET, Hélène. Les plans d'îlots Vasserot, support d'un système de l'information géographique historique de Paris. EAV, La revue de l'école nationale supérieuse d'architecture de Versailles, 14, 2008-2009, p. 86-95</p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1801">1801</time> : Le département de la Seine compte 632&nbsp;000 habitants, dont 548&nbsp;000 à Paris</li>
+							<li><time datetime="1802">1802</time> : Décret de Napoléon Bonaparte ordonnant la création du réseau des canaux parisiens</li>
+							<li><time datetime="1825">1802-1825</time> : Construction du canal de l'Ourcq</li>
+							<li><time datetime="1804">1804</time> : Mise en service du cimetière du Père-Lachaise (20e)</li>
+							<li><time datetime="1808">1808</time> : Inauguration du bassin de la Villette (19e)</li>
+							<li><time datetime="1810">1810</time> : Fin de la démolition du Grand Châtelet (1er), entamée en 1802 et décret interdisant l'implantation d'établissements insalubres ou dangeureux en zone urbaine</li>
+							<li><time datetime="1813">1813</time> : Inauguration du pont d'Iéna (7e, 16e); le reste du canal de l'île des Cygnes (7e) est comblé, finissant de rattacher cette dernière au quartier du Gros-Caillou</li>
+							<li><time datetime="1818">1818</time> : Ouverture des cinq abattoirs de Montmartre (9e), Ménilmontant (11e), Roule (8e), Grenelle (15e) et Villejuif (13e), en remplacement des nombreuses tueries présentes dans Paris. Les abattoirs se trouvent alors à l'extérieur des limites de Paris</li>
+							<li><time datetime="1821">1821</time> : Mise en service du canal Saint-Denis (19e, 93)</li>
+							<li><time datetime="1825">1825</time> : Inauguration du canal Saint-Martin (10e, 11e, essentiellement) et du cimetière de Montmartre (18e). Remise en état des entrepôts à vin de Bercy (12e).</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Atlas de 910 planches réalisé par Philibert Vassserot, entre 1810 et 1836. L'atlas Vasserot ne forme pas un plan régulier et chaque planche est représentée selon une échelle et une orientation variables. Le travail de recollement et d’homogénérisation a été effectué par le groupe ALPAGE entre 2012 et 2013. L’assemblage et le nettoyage permettent de superposer sur les plans certains éléments permanents, comme des alignements de rues ou certains bâtiments conservés.	 Sans ce travail d’ALPAGE, le plan n’existait pas en tant que tel. Les données ALPAGE ont été calées sur le plan vectoriel des îlots actuels et le plan du bâti de Paris (donnée Apur, 2004-2007).</p>
+						<p>Le plan Verniquet avait servi de base topographique aux travaux de Vasserot à l’époque.</p>
+
+						<p class="txt-source css-blue">Source : ALPAGE</p>
+
+						<p>Le plus ancien cadastre figurant le parcellaire de Paris correspond au cadastre par îlots de P. Vasserot (1773-1840). Il s’agit d’une collection de 912 plans d’îlots indépendants, contenus dans 24 atlas reliés et conservés aux Archives nationales. Ils sont censés couvrir l’espace parisien d’avant 1860, soit les 12 anciens arrondissements délimités par la barrière des Fermiers généraux.</p>
+
+						<p>Comme le format des feuilles ne varie pas, si l’îlot est trop grand, c’est l’échelle qui est changée. L’échelle, qui n’est indiquée que pour 859 de ces plans, varie entre le 1/90e et le 1/2500e.</p>
+
+						<p>Rehaussés de couleurs, ces plans donnent : la représentation des voies, la division de propriétés, la configuration intérieure du rez-de-chaussée des maisons, les numéros portés par chacune d’elles (numérotation impériale de 1805). La couleur n’a pas d’autre finalité que de distinguer aisément chaque unité fiscale. Mais, contrairement à la plupart des cadastres fiscaux, qui ne donnent que la délimitation externe de chaque parcelle fiscale, ces plans comportent en outre la matérialité topographique des unités parcellaires. Est ainsi représenté le bâti au niveau du rez-de-chaussée, comme un plan de coupe situé à 1 m. du sol de la chaussée. A l’intérieur de chaque parcelle, sont donc visibles la distribution interne des parcelles (pièces, espaces bâtis/non bâtis), avec les murs, les ouvertures (portes et fenêtres), les escaliers, cours, jardins, puits et fours… Tous les murs, qu’ils soient de face, mitoyens ou de distribution, sont pochés en noir. De plus, à l’intérieur d’une parcelle, les parties bâties sont peintes par un lavis plus foncé (parfois gris) que les parties non bâties. </p>
+
+						<p>Certains plans indiquent des pratiques, des projets ou des démolitions déjà effectuées avant expertise, parfois simplement par une phrase, parfois par un dessin.</p>
+
+						<p class="txt-source css-blue">Source : NOIZET, Hélène. Les plans d'îlots Vasserot, support d'un système de l'information géographique historique de Paris. EAV, La revue de l'école nationale supérieuse d'architecture de Versailles, 14, 2008-2009, p. 86-95</p>
+
+					</article> <!-- end Plan Vasserot -->
+
+					<article class="txt-box" id="txt-box-1817"> <!-- Plan Picquet -->
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1801">1801</time> : Le département de la Seine compte 632&nbsp;000 habitants, dont 548&nbsp;000 à Paris</li>
+							<li><time datetime="1802">1802</time> : Décret de Napoléon Bonaparte ordonnant la création du réseau des canaux parisiens</li>
+							<li><time datetime="1825">1802-1825</time> : Construction du canal de l'Ourcq</li>
+							<li><time datetime="1804">1804</time> : Mise en service du cimetière du Père-Lachaise (20e)</li>
+							<li><time datetime="1808">1808</time> : Inauguration du bassin de la Villette (19e)</li>
+							<li><time datetime="1810">1810</time> : Fin de la démolition du Grand Châtelet (1er), entamée en 1802 et décret interdisant l'implantation d'établissements insalubres ou dangeureux en zone urbaine</li>
+							<li><time datetime="1813">1813</time> : Inauguration du pont d'Iéna (7e, 16e); le reste du canal de l'île des Cygnes (7e) est comblé, finissant de rattacher cette dernière au quartier du Gros-Caillou</li>
+							<li><time datetime="1818">1818</time> : Ouverture des cinq abattoirs de Montmartre (9e), Ménilmontant (11e), Roule (8e), Grenelle (15e) et Villejuif (13e), en remplacement des nombreuses tueries présentes dans Paris. Les abattoirs se trouvent alors à l'extérieur des limites de Paris</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>1804-1847 - Charles Picquet fit paraître chaque année un tirage nouveau, corrigé avec le plus grand soin (1804, 1808, 1809, 1812, 1814, 1822, 1824, 1826, 1830, 1836).</p>
+
+						<p>«Il est évident que la collection complète suffirait à elle seule pour l'étude de l'évolution des rues et de la zone bâtie de Paris pendant cette longue période. Ces plans comportent un figuré du relief (en hachures) et une indication très nette et précise de la zone bâtie, ainsi que le plan des bâtiments notables qui se détachent en noir. Parfois des projets de percées sont indiqués mais avec discrétion, ils ne se confondent pas avec le reste (par exemple, voir l'édition de 1826).» (B. Rouleau, le Tracé des rues de Paris, édition du CNRS, 1975.)</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+					</article> <!-- end Plan Picquet -->
+
+					<article class="txt-box" id="txt-box-1820"> <!-- Carte d'État Major -->
+						<p>Légende : . Représentation du relief par des hachures avec un éclairement zénithal. Indication des cotes de niveau.
+							. Paris : îlots en grisé; les principaux bâtiments publics sont en noir. Pas de parcellaire. Noms des communes et de certains lieux-dits. Tracé des jardins, des forêts, des chemins, indication des routes plantées.</p>
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1801">1801</time> : Le département de la Seine compte 632&nbsp;000 habitants, dont 548&nbsp;000 à Paris</li>
+							<li><time datetime="1802">1802</time> : Décret de Napoléon Bonaparte ordonnant la création du réseau des canaux parisiens</li>
+							<li><time datetime="1825">1802-1825</time> : Construction du canal de l'Ourcq</li>
+							<li><time datetime="1804">1804</time> : Mise en service du cimetière du Père-Lachaise (20e)</li>
+							<li><time datetime="1808">1808</time> : Inauguration du bassin de la Villette (19e)</li>
+							<li><time datetime="1810">1810</time> : Fin de la démolition du Grand Châtelet (1er), entamée en 1802 et décret interdisant l'implantation d'établissements insalubres ou dangeureux en zone urbaine</li>
+							<li><time datetime="1813">1813</time> : Inauguration du pont d'Iéna (7e, 16e); le reste du canal de l'île des Cygnes (7e) est comblé, finissant de rattacher cette dernière au quartier du Gros-Caillou</li>
+							<li><time datetime="1818">1818</time> : Ouverture des cinq abattoirs de Montmartre (9e), Ménilmontant (11e), Roule (8e), Grenelle (15e) et Villejuif (13e), en remplacement des nombreuses tueries présentes dans Paris. Les abattoirs se trouvent alors à l'extérieur des limites de Paris</li>
+							<li><time datetime="1821">1821</time> : Mise en service du canal Saint-Denis (19e, 93)</li>
+							<li><time datetime="1825">1825</time> : Inauguration du canal Saint-Martin (10e, 11e, essentiellement) et du cimetière de Montmartre (18e). Remise en état des entrepôts à vin de Bercy (12e).</li>
+						</ul>
+						<p>
+							Les éléments suivants ont été ajoutés sur le plan :
+						</p>
+						<ul>
+							<li><time datetime="1837">1837</time> : Ouverture de l'embarcadère Saint-Lazare (8e)</li>
+							<li><time datetime="1840">1840</time> : Ouverture des embarcadères Montparnasse (14e, 15e) et Austerlitz (13e)</li>
+							<li><time datetime="1846">1846</time> : Ouverture de l'embarcadère du Nord (10e)</li>
+							<li><time datetime="1849">1849</time> : Ouverture des embarcadères de l'Est (10e) et de Lyon (12e)</li>
+							<li class="popDate-li"><time datetime="1851">1851</time> : Le département de la Seine compte 1&nbsp;422&nbsp;000 habitants, dont 1&nbsp;053&nbsp;000 à Paris</li>
+							<li><time datetime="1869">1852-1869</time> : Travaux de la ligne ferrée de la Petite Ceinture</li>
+							<li><time datetime="1859">1859</time> : Mise en service de la gare de la Bastille (12e)</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Devant les insuffisances de la carte de Cassini, Napoléon Ier confie en 1808 la réalisation d’une nouvelle carte de France aux ingénieurs géographes de l’armée. Le colonel Bonne, chargé de l’opération, fait part de son ambition d’« une représentation fidèle de notre sol… levée dans ses moindres détails sur le terrain, comme le plan d’un jardin ». Si les guerres napoléoniennes contraignent à ajourner l’entreprise, elles vont aussi en souligner l’urgence et la nécessité.</p>
+
+						<p>En 1817, la Commission Royale, présidée par l’astronome Laplace, reprend l’initiative d’une carte de France topographique, « appropriée à tous les services publics et combinée avec les opérations du cadastre général ». Les levés débutent autour de Paris en 1818, à l’échelle du 1/10 000. Pour les accélérer, le 1/20 000 est adopté en 1821 sur les zones stratégiques du Nord et de l’Est, et le 1/40 000 est choisi en 1824 pour tout le reste de la France.</p>
+
+						<p>Les campagnes topographiques du Service de l’armée sont préparées sur la base de plans fournis par les services du cadastre et les différentes administrations. Tous les documents rassemblés sont réduits à l’échelle des levés par le Service du dessin du dépôt de la guerre, qui organise les travaux « en tenant compte des parties entièrement à lever, de celles à compléter et de celles qu’il suffit de vérifier ».</p>
+
+						<p>En 1866, au terme de cinquante années de travail, l’ensemble de la France est levé en couleurs, au 1/40 000 (les zones dressées à d’autres échelles ont fait l’objet de réductions simplifiées). L’échelle de la gravure, prévue à l’origine au 1/50 000, a été arrêtée en 1824 au 1/80 000 pour ses applications militaires prioritaires, le Dépôt de la guerre n’ayant pas tenu à assumer le coût des divers autres besoins.</p>
+
+						<p>La publication des 273 feuilles, commencée en 1832 (feuille Paris), est achevée en 1880. L’homogénéité est remarquable, grâce notamment à l’organisation de la formation des graveurs. La lenteur de la reproduction pose néanmoins le problème des mises à jour. Les préfets, chargés dès 1841 de vérifier les réseaux de communications et la toponymie, vont fournir des qualités de corrections assez inégales. Les révisions effectuées jusqu’en 1889 ne sont pas accompagnées d’un changement de date de publication (on note quelquefois l’ajout pur et simple de voies ferrées).</p>
+
+						<p>Le nom de “carte d’état-major” provient du nom du corps auquel appartenaient les officiers qui ont levé la carte, et dans lequel avaient été intégrés en 1831 les derniers ingénieurs géographes. Trop peu détaillée pour les zones urbaines, la carte d’état-major fit l’objet de publications dérivées à d’autres échelles.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3>Pour en savoir plus :</h3>
+						<p class="txt-source css-blue"><a title="Article sur la carte d'État Major sur un site extérieur" href="https://ipac.icp.fr/uPortal/page/decouvrir/expo/carte-etat-major/accueil.htm" target="_blank">CARTE TOPOGRAPHIQUE DE LA FRANCE A L'ECHELLE de 1/80 000 dite carte d'Etat-Major</a></p>
+						<p class="txt-source css-blue"><a title="Article sur la carte d'État Major sur un site extérieur" href="https://rosalielebel75.franceserv.com/carte-etat-major.html" target="_blank">LA CARTE D'ÉTAT MAJOR</a></p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>En 1831, la population est estimée à 786 000 habitants intra-muros (Pourcher, 1964 : 8), soit 28 862 hab. /km² ; en 1841, on compte 915 000 habitants (27 167 hab. /km²). La population des villages alentours augmente également avec notamment l’apparition de « maisons de campagne » à Sablonville ou à Meudon.<br />
+						En 1784, le territoire parisien couvre 3 370 ha, matérialisé par le mur des Fermiers Généraux, de la Place de la Nation à l’est, à la Place de l’Etoile à l’ouest et de la Place de la Bataille de Stalingrad au nord à l’Observatoire au sud.<br />
+						L’analyse de la donnée cartographiée fait apparaître que le territoire urbain de Paris est alors couvert à <b>36% de nature</b>. Ces <b>1 218 ha de nature</b> sont constitués à <b>44% de maraîchage</b> (539 ha) et <b>23% de parcs et jardins publics et privés</b> (279 ha). Le tiers restant est constitué de  grandes cultures (202 ha), de terrains en friche et zones inondables (146 ha) et de parcelles d’arboriculture (52 ha).<br />
+						Paris poursuit sa croissance sous l’effet combiné de la création des premières lignes de chemin de fer (Paris – Le Pecq, qui sera inaugurée en 1837) et de la révolution industrielle qui attire vers la capitale une nouvelle population rurale. Des terrains incultes et des marais, dans les faubourgs du Temple, Saint-Martin et Montmartre et dans le clos Saint-Lazare se transforment en quartiers salubres et aérés sous l’influence des théories hygiénistes. Dans le même temps, les premiers lotissements d’immeubles de rapport voient le jour dans le quartier des Batignolles (1820), le quartier François 1er (1823), la plaine de Passy (1825), le quartier de Beaugrenelle (1824) ou encore le quartier Europe (1826).<br />
+						Ces lotissements marquent le début des nouvelles formes d’urbanisation parisienne. La plupart du temps, ils sont le fruit d’initiatives privées (groupes de banquiers, d’investisseurs ou de promoteurs) voulant répondre à une forte demande immobilière. Ainsi, Les parcelles rurales sont transformées et urbanisées.</p>
+
+						<p>La croissance démographique s’accompagne d’une densification du tissu urbain. La population s’amasse et se regroupe. Les risques de maladies s’aggravent au centre de Paris, où l’habitat ouvrier se concentre : la ville de Paris devient alors très insalubre. La montée de l’hygiénisme pousse à promulguer <b>le décret du 13 novembre 1806 qui interdit la présence d'animaux à l'intérieur de Paris</b>. En conséquence, cinq abattoirs apparaissent aux portes de Paris : Montmartre, Ménilmontant, Ivry, Grenelle et Miromesnil. L’agriculture entame alors un recul spatial qui s’affirmera tout au long  du XIXème siècle et particulièrement la première moitié du siècle, marquée par la volonté de repousser toute forme de production agricole vers l'extérieur au profit d’une extension de l’urbanisation.<br />
+						Dans le même temps, <b>les décrets se succèdent pour interdire les inhumations à l’intérieur de Paris</b> afin de rendre la ville plus salubre. L’ensemble des cimetières sont supprimés et un arrêté préfectoral de 1801 prévoit la création de trois cimetières hors des limites parisiennes : le Père Lachaise en 1804, le cimetière Montparnasse en 1824 et le cimetière de Montmartre en 1825. Le Père Lachaise et celui de Montmartre sont conçus et réalisés dans une esthétique romantique et « naturelle ». Le Père Lachaise est le premier témoignage parisien d’une réalisation funéraire dans laquelle la promenade a toute sa place.</p>
+
+						<p>Jusqu’au milieu du XIXe siècle et malgré l’urbanisation, <b>95% des fruits et légumes consommés dans la capitale sont produits en Ile-de-France</b>. Derrière la ceinture maraîchère, les cultures sur les coteaux de l’est parisien sont encore importantes, le plateau de Belleville-Montreuil notamment est majoritairement viticole. Ainsi, toute la banlieue horticole se spécialise, à Clichy, La Courneuve, Drancy, St-Ouen, St-Denis, La Chapelle ou encore Pantin, pour répondre à l’accroissement du marché parisien. Dans le même temps, les espaces de culture disparaissent du centre de Paris : des jardins privés des grandes institutions publiques du sud-ouest parisien sont créés sur d’anciennes parcelles maraîchères et un champ de manœuvre voit le jour, en 1765, entre l’Ecole Militaire et la colline de Chaillot. La périphérie parisienne montre également des signes de décroissance comme l’atteste le morcellement des espaces arboricoles d’Ivry, de Montreuil ou encore de Noisy-le-Sec.</p>
+
+						<p>Les grands parcs, jardins et bois sont progressivement ouverts au public et les grandes propriétés privées disparaissent au fil du temps. Un “hospice de vieillards” est construit sur l’emplacement du château de Madame d'Orléans et les grands jardins privés de Bercy sont transformés en entrepôts pour le vin en 1825. <b>Après la révolution, la superficie et le nombre de jardins ouverts à la population augmente</b>, le jardin de Neuilly apparaît et le jardin des plantes et le jardin du Luxembourg sont agrandis.</p>
+
+						<p>Les berges de la Seine et la Marne sont aménagées pour faciliter l’accès et l’usage. Certaines îles existant au siècle précédent sont rattachées aux terres, comme l’île des Cygnes ou l'ile de Monsieur, à Sèvres.<br />
+						Napoléon Ier fait réaliser, entre 1802 et 1825, le canal de l'Ourcq, dans un double objectif de navigation et de ressource pour l'alimentation en eau potable.<br />
+						Le canal de l’Ourcq et le bassin de La Villette deviennent rapidement des lieux de promenade et de distraction avant d’être des ports industriels.</p>
+
+						<p class="txt-source css-blue">Source : <span id="reactive-txt-source" class="css-blue"><a title="Géoapp &quot;L'évolution de la nature de 1730 à aujourd'hui&quot; sur le site de l'Apur" href="https://www.apur.org/dataviz/evolution_nature/index.html" target="_blank">Apur, application "L'évolution de la nature de 1730 à aujourd'hui" (2018)</a></span></p>
+
+					</article> <!-- end Carte d'État Major -->
+
+					<article class="txt-box" id="txt-box-1831"> <!-- Carte  de la banlieue de Paris à l’extérieur de l’enceinte des fermiers généraux -->
+						<p>Légende : A l’extérieur du mur des fermiers généraux sont dessinés les parcelles bâties, les bâtiments en rouge, le tracé des rues, et les bois en vert. Le relief est représenté par des courbes de niveau complétées par des points de nivellement. En dehors des agglomérations, aucune information n’est fournie, ni sur le parcellaire ni sur la nature des cultures. […] Le dessin a été gratté pour surajouter l’enceinte de Thiers.</p>
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1801">1801</time> : Le département de la Seine compte 632&nbsp;000 habitants, dont 548&nbsp;000 à Paris</li>
+							<li><time datetime="1802">1802</time> : Décret de Napoléon Bonaparte ordonnant la création du réseau des canaux parisiens</li>
+							<li><time datetime="1825">1802-1825</time> : Construction du canal de l'Ourcq</li>
+							<li><time datetime="1804">1804</time> : Mise en service du cimetière du Père-Lachaise (20e)</li>
+							<li><time datetime="1808">1808</time> : Inauguration du bassin de la Villette (19e)</li>
+							<li><time datetime="1810">1810</time> : Fin de la démolition du Grand Châtelet (1er), entamée en 1802 et décret interdisant l'implantation d'établissements insalubres ou dangeureux en zone urbaine</li>
+							<li><time datetime="1813">1813</time> : Inauguration du pont d'Iéna (7e, 16e); le reste du canal de l'île des Cygnes (7e) est comblé, finissant de rattacher cette dernière au quartier du Gros-Caillou</li>
+							<li><time datetime="1818">1818</time> : Ouverture des cinq abattoirs de Montmartre (9e), Ménilmontant (11e), Roule (8e), Grenelle (15e) et Villejuif (13e), en remplacement des nombreuses tueries présentes dans Paris. Les abattoirs se trouvent alors à l'extérieur des limites de Paris</li>
+							<li><time datetime="1821">1821</time> : Mise en service du canal Saint-Denis (19e, 93)</li>
+							<li><time datetime="1825">1825</time> : Inauguration du canal Saint-Martin (10e, 11e, essentiellement) et du cimetière de Montmartre (18e). Remise en état des entrepôts à vin de Bercy (12e).</li>
+						</ul>
+						<p>
+							Les éléments suivants ont été ajoutés sur le plan :
+						</p>
+						<ul>
+							<li><time datetime="1841">1841-1844</time> : Construction de l'enceinte de Thiers, et de la première ceinture de forts située à quelques kilomètres de Paris</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Le débat sur les stratégies et modalités de défense de Paris est une des questions politiques récurrentes, de la Révolution française à la monarchie de Juillet. Un comité des fortifications est créé en 1830. Il propose le renforcement de l’enceinte existante et la construction de dix ou onze forts reliés entre eux. Après l’insurrection des Trois Glorieuses et la chute de Charles X, le nouveau gouvernement confie les travaux de fortifications au général Valazé. L’objectif principal est résumé par le secrétaire d’Etat à la Guerre : « Ces travaux auraient l’inappréciable avantage de fournir de l’occupation tout cet hiver aux nombreux ouvriers de Paris, que le ralentissement momentané de nos manufactures prive d’ouvrage en ce moment. » Des fortifications en terre sont élevées en 1831 et 1832. Le chantier d’une ligne fortifiée est ouvert le long du canal, entre Saint-Denis et la Villette. Les défenses sont renforcées à l’est ; des expropriations de terrains sont conduites à Belleville et à Montmartre. Le glacis de Vincennes est étayé en 1831.</p>
+
+						<p>Le champ couvert par ces vingt-six cartes recoupe l’ensemble des travaux de fortifications y compris l’extension nord visant à inclure Saint-Denis dans le périmètre protégé […]. La ville de Paris,  délimitée par l’enceinte des fermiers généraux, est laissée en blanc. La carte a vraisemblablement été réalisée sur la base de différents documents cartographiques existants, complétée par les levers topographiques des officiers du Génie.</p>
+
+						<p>Ces plans montrent la banlieue de Paris dix ans avant la construction de sa nouvelle enceinte. Ils seront utilisés pour dresser les “plans de Paris et ses environs, fortifications de 1840”, (aujourd’hui conservés au musée des Plans-Reliefs), dont le dessin sera copié par les topographes au dépôt des fortifications de mars à juillet 1841, puis complété en 1841-1842 par le tracé des fortifications et des ouvrages en cours d’exécution, selon les détails fournis par les services du génie.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+					</article> <!-- end Carte  de la banlieue de Paris à l’extérieur de l’enceinte des fermiers généraux -->
+
+					<article class="txt-box" id="txt-box-1855"> <!-- Plan Lefèvre -->
+						<p>Légende : bâtiments communaux, en noir; en grisé, bâtiments d’administration publique; limite de cantons, de communes, de lieux-dits; chemins de fer; plâtrières; moulins à vent; hauteurs au-dessus de la mer, bornes kilométriques.</p>
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1801">1801</time> : Le département de la Seine compte 632&nbsp;000 habitants, dont 548&nbsp;000 à Paris</li>
+							<li><time datetime="1828">1828-1844</time> : Canalisation/rectification de la Bièvre</li>
+							<li><time datetime="1836">1806-1836</time> : Construction de l'arc de Triomphe (8e, 16e, 17e)</li>
+							<li><time datetime="1837">1837</time> : Ouverture de l'embarcadère Saint-Lazare (8e)</li>
+							<li><time datetime="1838">1838</time> : Percée de la rue Rambuteau</li>
+							<li><time datetime="1840">Années 1840</time> : Disparition de l'île Louviers (4e)</li>
+							<li><time datetime="1840">1840</time> : Ouverture des embarcadères Montparnasse (14e, 15e) et Austerlitz (13e)</li>
+							<li><time datetime="1841">1841-1844</time> : Construction de l'enceinte de Thiers, et de la première ceinture de forts située à quelques kilomètres de Paris</li>
+							<li><time datetime="1846">1846</time> : Ouverture de l'embarcadère du Nord (10e)</li>
+							<li><time datetime="1849">1849</time> : Ouverture des embarcadères de l'Est (10e) et de Lyon (12e)</li>
+							<li class="popDate-li"><time datetime="1851">1851</time> : Le département de la Seine compte 1&nbsp;422&nbsp;000 habitants, dont 1&nbsp;053&nbsp;000 à Paris</li>
+							<li><time datetime="1870">1852-1870</time> : Travaux haussmanniens dans Paris</li>
+								<ul>
+									<li>Construction de l'axe nord-sud, du boulevard de Sébastopol au boulevard Saint-Michel</li>
+									<li>Axe est-ouest, avec le prolongement de la rue de Rivoli juqu'à la rue Saint-Antoine</li>
+									<li>Aménagement des Halles et réaménagement de l'Île de la Cité et de ses ponts ; la nouvelle rue des Halles relie les Halles à la place du Châtelet</li>
+									<li>Premières percées sur la rive gauche, avec la rue des Écoles. Le boulevard Saint-Germain (5e, 6e, 7e) sera aménagé de 1857 à 1876</li>
+									<li>Percée d'axes reliant la première couronne de boulevards au centre de Paris (avenue de l'Opéra ou rue de Rennes, par exemple)</li>
+									<li>Aménagement du boulevard Votaire (ancien boulevard du Prince Eugène, 11e), pour contourner le centre de Paris ; il sera inauguré en 1662</li>
+									<li>Aménagement de l'avenue Dausmenil pour dégager les quartiers riverains de la gare de Lyon et assurer un accès au bois de Vincennes</li>
+									<li>Réaménagement des places existantes, comme la place de l'Étoile ou de l'Hôtel-de-Ville, et création de nouvelles places (de l'Opéra, de l'Alma, etc.)</li>
+									<li>Construction des gares (gare de Lyon en 1855 et du Nord en 1865) et de voies les reliant les unes aux autres</li>
+									<li>Construction de monuments prestigieux (l'Opéra Garnier, théâtes de la place du Châtelet, l'Hôtel-Dieu, etc.)</li>
+									<li>Début des travaux d'assainissement dont est issu le réseau d'égouts actuel. Nouveau système en eau potable, avec la construction d'un réseau d'aqueducs, et aménagement du système d'eau non potable. Aménagement du réseau de distribution de gaz.</li>
+									<li>Installation de mobilier public urbain</li>
+									<li>Création et aménagement de grands espaces verts (parc Monceau, Montsouris, des Buttes-Chaumont, bois de Vincennes et Boulogne) et de squares de proximité</li>
+								</ul>
+							<li><time datetime="1860">1860</time> : Destruction du mur des Fermiers généraux et annexion des communes situées entre le mur des Fermiers Généraux et l'enceinte de Thiers ; le nombre d'arrondissements de Paris passe de 12 à 20</li>
+							<li class="popDate-li"><time datetime="1860">1860</time> : Lors de l'annexion, Paris passe de 1&nbsp;174&nbsp;000 habitants en 1856 à 1&nbsp;697&nbsp;000 en 1861.</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Le plan au 1/5 000 publié par Lefèvre est un état des lieux de la couronne au moment de l’annexion. Extrait de l’Atlas communal paru entre 1855 et 1861, il rassemble les feuilles relatives aux dix-huit communes annexées.</p>
+
+						<p>Plan parcellaire, bâti en masse, noms des principales routes et rues, des lieux-dits et limites précises. Les plans ne donnent pas d’information sur la nature des parcelles (cultures, boisement ou parcs). Le plan est précieux pour la toponymie des anciens quartiers de Paris. Il a été utilisé comme support de projets.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>L’enceinte de Thiers est bâtie de 1840 à 1845. Les terrains compris entre le mur d’octroi et les fortifications accueillent peu à peu une importante activité industrielle. La question de l’annexion de ces territoires est posée dès l’origine. Refusée sous Rambuteau, elle est votée sous Napoléon III, en 1859.</p>
+
+						<p>Haussmann souhaite obtenir la mainmise sur le département de la Seine. Le projet d’annexion est présenté comme une volonté d’étendre à la périphérie le système de voirie, d’alimentation en eau et d’équipements mis en place dans Paris, sans lequel la ceinture de Paris laissée à l’abandon pourrait se révéler dangereuse.</p>
+
+						<p>La loi d’annexion prend effet le Ier janvier 1860. Un extrait de la carte du département de la Seine, conservée aux Archives nationales (F/31/97/2 ab), montre les nouvelles délimitations territoriales résultant de l’annexion. Onze communes sont supprimées (Auteuil, Passy, les Batignolles, Montmartre, la Chapelle, la Villette, Belleville, Charonne, Bercy, Vaugirard, Grenelle). Plusieurs autres communes céderont ou recevront des portions de territoires. « Neuilly cède les Ternes et ne reçoit rien en compensation. Clichy cède une parcelle comprise dans la zone défensive (…) et reçoit une parcelle du territoire des Batignolles. Saint-Ouen et Aubervilliers cèdent des terrains à l’intérieur de l’enceinte ou dans le périmètre de la zone défensive. Saint-Ouen reçoit des terrains provenant de Montmartre et d’Aubervilliers, des terrains de la Chapelle. Le Pré-Saint-Gervais et Pantin ne cèdent ni ne reçoivent rien. Bagnolet cède des parcelles comprises dans les ouvrages militaires et la zone défensive et reçoit deux petites parcelles de Charonne. Saint-Mandé, Ivry, Gentilly, Montrouge, Vanves et Issy donnent des territoires compris dans l’enceinte de Paris, sans compensation. Boulogne reçoit le territoire de Billancourt provenant d’Auteuil et une parcelle du bois de Boulogne provenant de Passy. Enfin, Saint-Denis reçoit des parcelles provenant de la Chapelle ; Montreuil, des parcelles de Charonne ; et Charenton, des parcelles de Bercy. »</p>
+
+						<p>Paris passe de 3 400 à 8 400 hectares et devient une ville industrielle à l’intérieur de ses limites administratives. La population augmente de 400 000 habitants.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+					</article> <!-- end Plan Lefèvre -->
+
+					<article class="txt-box" id="txt-box-1895"> <!-- Atlas communal du département de la Seine -->
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1851">1851</time> : Le département de la Seine compte 1&nbsp;422&nbsp;000 habitants, dont 1&nbsp;053&nbsp;000 à Paris</li>
+							<li><time datetime="1870">1852-1870</time> : Travaux haussmanniens dans Paris</li>
+								<ul>
+									<li>Construction de l'axe nord-sud, du boulevard de Sébastopol au boulevard Saint-Michel</li>
+									<li>Axe est-ouest, avec le prolongement de la rue de Rivoli juqu'à la rue Saint-Antoine</li>
+									<li>Aménagement des Halles et réaménagement de l'Île de la Cité et de ses ponts ; la nouvelle rue des Halles relie les Halles à la place du Châtelet</li>
+									<li>Premières percées sur la rive gauche, avec la rue des Écoles. Le boulevard Saint-Germain (5e, 6e, 7e) sera aménagé de 1857 à 1876</li>
+									<li>Percée d'axes reliant la première couronne de boulevards au centre de Paris (avenue de l'Opéra ou rue de Rennes, par exemple)</li>
+									<li>Aménagement du boulevard Votaire (ancien boulevard du Prince Eugène, 11e), pour contourner le centre de Paris ; il sera inauguré en 1662</li>
+									<li>Aménagement de l'avenue Dausmenil pour dégager les quartiers riverains de la gare de Lyon et assurer un accès au bois de Vincennes</li>
+									<li>Réaménagement des places existantes, comme la place de l'Étoile ou de l'Hôtel-de-Ville, et création de nouvelles places (de l'Opéra, de l'Alma, etc.)</li>
+									<li>Construction des gares (gare de Lyon en 1855 et du Nord en 1865) et de voies les reliant les unes aux autres</li>
+									<li>Construction de monuments prestigieux (l'Opéra Garnier, théâtes de la place du Châtelet, l'Hôtel-Dieu, etc.)</li>
+									<li>Début des travaux d'assainissement dont est issu le réseau d'égouts actuel. Nouveau système en eau potable, avec la construction d'un réseau d'aqueducs, et aménagement du système d'eau non potable. Aménagement du réseau de distribution de gaz.</li>
+									<li>Installation de mobilier public urbain</li>
+									<li>Création et aménagement de grands espaces verts (parc Monceau, Montsouris, des Buttes-Chaumont, bois de Vincennes et Boulogne) et de squares de proximité</li>
+								</ul>
+							<li><time datetime="1860">1860</time> : Destruction du mur des Fermiers généraux et annexion des communes situées entre le mur des Fermiers Généraux et l'enceinte de Thiers ; le nombre d'arrondissements de Paris passe de 12 à 20</li>
+							<li class="popDate-li"><time datetime="1860">1860</time> : Lors de l'annexion, Paris passe de 1&nbsp;174&nbsp;000 habitants en 1856 à 1&nbsp;697&nbsp;000 en 1861.</li>
+							<li><time datetime="1863">1863-1892</time> : Ouverture de la rue de Tolbiac (13e)</li>
+							<li><time datetime="1867">1867</time> : Ouverture des abattoirs de la Villette (19e) en remplacement des cinq abattoirs de 1818</li>
+							<li><time datetime="1874">1874-1885</time> : Construction de la deuxième ceinture de forts autour de Paris, dans le cadre d'un programme plus vaste de défense du pays</li>
+							<li><time datetime="1877">1877</time> : Ouverture de la Grande Ceinture, voie ferrée périphérique située à une quinzaine de kilomètres de Paris, qui raccorde les lignes principales rayonnant de Paris</li>
+							<li><time datetime="1889">1889</time> : Construction de la Tour Eiffel (7e) pour l'exposition universelle de la même année</li>
+							<li class="popDate-li"><time datetime="1891">1891</time> : Le département de la Seine compte 3&nbsp;142&nbsp;000 habitants, dont 2&nbsp;448&nbsp;000</li>
+						</ul>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Paris s’est développée au sein de ses enceintes successives jusqu’au milieu du 19e siècle. C’est à partir de la révolution industrielle et de l’arrivée des chemins de fer que l’expansion des banlieues commence autour de plusieurs phénomènes. La population ouvrière qui afflue vers la capitale attirée par l’industrie, couplée avec les travaux d’Haussmann qui la chasse du centre de Paris vient rapidement peupler les arrondissements périphériques de Paris et les communes qui l’entourent. En 1900 ; Paris intra-muros atteint près de trois millions d’habitants alors qu’il n’en avait qu’un million 50 ans plus tôt.</p>
+
+						<p>La création des faisceaux ferroviaires et l’installation des grandes gares de triage et des ports fluviaux le long de la Seine et des canaux vont favoriser les implantations industrielles au plus près du chemin de fer et du fleuve, particulièrement au sud-est entre Seine, Marne et ligne Paris-Lyon-Marseille, au nord et au nord-est entre Chemin de fer de l’est et du nord et canaux, au nord-ouest entre boucles de la Seine et ligne Paris-Normandie.</p>
+
+						<p>Près des gares de banlieue et des lignes de tramway, se développent une multitude de lotissements de pavillonnaire qui constituent la première phase d’expansion de la banlieue sur les terres agricoles. La distinction entre banlieues résidentielles bourgeoises sur les coteaux de l’ouest et du sud et en bord de Marne et banlieues ouvrières près des sites industriels s’établit alors.</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Atlas communal du département de la Seine -->
+
+					<article class="txt-box" id="txt-box-1900"> <!-- Carte de la banlieue de Paris avec les courbes de niveau -->
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1851">1851</time> : Le département de la Seine compte 1&nbsp;422&nbsp;000 habitants, dont 1&nbsp;053&nbsp;000 à Paris</li>
+							<li><time datetime="1870">1852-1870</time> : Travaux haussmanniens dans Paris</li>
+								<ul>
+									<li>Construction de l'axe nord-sud, du boulevard de Sébastopol au boulevard Saint-Michel</li>
+									<li>Axe est-ouest, avec le prolongement de la rue de Rivoli juqu'à la rue Saint-Antoine</li>
+									<li>Aménagement des Halles et réaménagement de l'Île de la Cité et de ses ponts ; la nouvelle rue des Halles relie les Halles à la place du Châtelet</li>
+									<li>Premières percées sur la rive gauche, avec la rue des Écoles. Le boulevard Saint-Germain (5e, 6e, 7e) sera aménagé de 1857 à 1876</li>
+									<li>Percée d'axes reliant la première couronne de boulevards au centre de Paris (avenue de l'Opéra ou rue de Rennes, par exemple)</li>
+									<li>Aménagement du boulevard Votaire (ancien boulevard du Prince Eugène, 11e), pour contourner le centre de Paris ; il sera inauguré en 1662</li>
+									<li>Aménagement de l'avenue Dausmenil pour dégager les quartiers riverains de la gare de Lyon et assurer un accès au bois de Vincennes</li>
+									<li>Réaménagement des places existantes, comme la place de l'Étoile ou de l'Hôtel-de-Ville, et création de nouvelles places (de l'Opéra, de l'Alma, etc.)</li>
+									<li>Construction des gares (gare de Lyon en 1855 et du Nord en 1865) et de voies les reliant les unes aux autres</li>
+									<li>Construction de monuments prestigieux (l'Opéra Garnier, théâtes de la place du Châtelet, l'Hôtel-Dieu, etc.)</li>
+									<li>Début des travaux d'assainissement dont est issu le réseau d'égouts actuel. Nouveau système en eau potable, avec la construction d'un réseau d'aqueducs, et aménagement du système d'eau non potable. Aménagement du réseau de distribution de gaz.</li>
+									<li>Installation de mobilier public urbain</li>
+									<li>Création et aménagement de grands espaces verts (parc Monceau, Montsouris, des Buttes-Chaumont, bois de Vincennes et Boulogne) et de squares de proximité</li>
+								</ul>
+							<li><time datetime="1860">1860</time> : Destruction du mur des Fermiers généraux et annexion des communes situées entre le mur des Fermiers Généraux et l'enceinte de Thiers ; le nombre d'arrondissements de Paris passe de 12 à 20</li>
+							<li class="popDate-li"><time datetime="1860">1860</time> : Lors de l'annexion, Paris passe de 1&nbsp;174&nbsp;000 habitants en 1856 à 1&nbsp;697&nbsp;000 en 1861.</li>
+							<li><time datetime="1863">1863-1892</time> : Ouverture de la rue de Tolbiac (13e)</li>
+							<li><time datetime="1867">1867</time> : Ouverture des abattoirs de la Villette (19e) en remplacement des cinq abattoirs de 1818</li>
+							<li><time datetime="1874">1874-1885</time> : Construction de la deuxième ceinture de forts autour de Paris, dans le cadre d'un programme plus vaste de défense du pays</li>
+							<li><time datetime="1877">1877</time> : Ouverture de la Grande Ceinture, voie ferrée périphérique située à une quinzaine de kilomètres de Paris, qui raccorde les lignes principales rayonnant de Paris</li>
+							<li><time datetime="1889">1889</time> : Construction de la Tour Eiffel (7e) pour l'exposition universelle de la même année</li>
+							<li class="popDate-li"><time datetime="1891">1891</time> : Le département de la Seine compte 3&nbsp;142&nbsp;000 habitants, dont 2&nbsp;448&nbsp;000 à Paris</li>
+							<li><time datetime="1900">1900</time> : Inauguration de la première ligne de métro entre Vincennes et la Porte Maillot.</li>
+						</ul>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Paris s’est développée au sein de ses enceintes successives jusqu’au milieu du 19e siècle. C’est à partir de la révolution industrielle et de l’arrivée des chemins de fer que l’expansion des banlieues commence autour de plusieurs phénomènes. La population ouvrière qui afflue vers la capitale attirée par l’industrie, couplée avec les travaux d’Haussmann qui la chasse du centre de Paris vient rapidement peupler les arrondissements périphériques de Paris et les communes qui l’entourent. En 1900 ; Paris intra-muros atteint près de trois millions d’habitants alors qu’il n’en avait qu’un million 50 ans plus tôt.</p>
+
+						<p>La création des faisceaux ferroviaires et l’installation des grandes gares de triage et des ports fluviaux le long de la Seine et des canaux vont favoriser les implantations industrielles au plus près du chemin de fer et du fleuve, particulièrement au sud-est entre Seine, Marne et ligne Paris-Lyon-Marseille, au nord et au nord-est entre Chemin de fer de l’est et du nord et canaux, au nord-ouest entre boucles de la Seine et ligne Paris-Normandie.</p>
+
+						<p>Près des gares de banlieue et des lignes de tramway, se développent une multitude de lotissements de pavillonnaire qui constituent la première phase d’expansion de la banlieue sur les terres agricoles. La distinction entre banlieues résidentielles bourgeoises sur les coteaux de l’ouest et du sud et en bord de Marne et banlieues ouvrières près des sites industriels s’établit alors.</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Carte de la banlieue de Paris avec les courbes de niveau -->
+
+					<article class="txt-box" id="txt-box-1906"> <!-- Carte topographique dite type 1900 -->
+						<p class="txt-source">Légende :</p>
+						<ul>
+							<li>en rouge, le bâti avec des signes conventionnels recensant églises, chapelles isolées, croix, mairies, gendarmeries, hôpitaux, ouvrages de fortifications, détails des bâtiments industriels…</li>
+							<li>en vert, les bois; en un second vert, les jardins. Les prés, vergers et vignes sont indiqués à l’aide d’une trame colorée;</li>
+							<li>en bleu, l’hydrographie (fleuves ou rivières, rivières ou ruisseaux importants, canaux navigables ou canalisés, ports-écluses et maisons d’éclusier, sources, fontaines, puits, détails des passages de rivière…) ;</li>
+							<li>en noir, écritures, tracé des routes (détail des routes et chemins carrossables, chemins d’exploitation, sentiers piétonniers, vestiges de voies anciennes…), et des chemins de fer et de tramways avec le nombre de voies et leurs franchissements.</li>
+							<li>Les limites administratives sont indiquées d’un pointillé noir et rouge (Etat, département, arrondissement, canton, commune). Un sigle repère préfectures, sous-préfectures ou cantons. Enfin, plusieurs sigles indiquent diverses administrations et des carrières.</li>
+						</ul>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur); <a href="https://www.geoportail.gouv.fr/depot/layers/GEOGRAPHICALGRIDSYSTEMS.1900TYPEMAPS/legendes/GEOGRAPHICALGRIDSYSTEMS.1900TYPEMAPS-legend.pdf" target="_blank">légende d'origine sur le site geoportail.gouv.fr</a>)</p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1851">1851</time> : Le département de la Seine compte 1&nbsp;422&nbsp;000 habitants, dont 1&nbsp;053&nbsp;000 à Paris</li>
+							<li><time datetime="1870">1852-1870</time> : Travaux haussmanniens dans Paris</li>
+								<ul>
+									<li>Construction de l'axe nord-sud, du boulevard de Sébastopol au boulevard Saint-Michel</li>
+									<li>Axe est-ouest, avec le prolongement de la rue de Rivoli juqu'à la rue Saint-Antoine</li>
+									<li>Aménagement des Halles et réaménagement de l'Île de la Cité et de ses ponts ; la nouvelle rue des Halles relie les Halles à la place du Châtelet</li>
+									<li>Premières percées sur la rive gauche, avec la rue des Écoles. Le boulevard Saint-Germain (5e, 6e, 7e) sera aménagé de 1857 à 1876</li>
+									<li>Percée d'axes reliant la première couronne de boulevards au centre de Paris (avenue de l'Opéra ou rue de Rennes, par exemple)</li>
+									<li>Aménagement du boulevard Votaire (ancien boulevard du Prince Eugène, 11e), pour contourner le centre de Paris ; il sera inauguré en 1662</li>
+									<li>Aménagement de l'avenue Dausmenil pour dégager les quartiers riverains de la gare de Lyon et assurer un accès au bois de Vincennes</li>
+									<li>Réaménagement des places existantes, comme la place de l'Étoile ou de l'Hôtel-de-Ville, et création de nouvelles places (de l'Opéra, de l'Alma, etc.)</li>
+									<li>Construction des gares (gare de Lyon en 1855 et du Nord en 1865) et de voies les reliant les unes aux autres</li>
+									<li>Construction de monuments prestigieux (l'Opéra Garnier, théâtes de la place du Châtelet, l'Hôtel-Dieu, etc.)</li>
+									<li>Début des travaux d'assainissement dont est issu le réseau d'égouts actuel. Nouveau système en eau potable, avec la construction d'un réseau d'aqueducs, et aménagement du système d'eau non potable. Aménagement du réseau de distribution de gaz.</li>
+									<li>Installation de mobilier public urbain</li>
+									<li>Création et aménagement de grands espaces verts (parc Monceau, Montsouris, des Buttes-Chaumont, bois de Vincennes et Boulogne) et de squares de proximité</li>
+								</ul>
+							<li><time datetime="1860">1860</time> : Destruction du mur des Fermiers généraux et annexion des communes situées entre le mur des Fermiers Généraux et l'enceinte de Thiers ; le nombre d'arrondissements de Paris passe de 12 à 20</li>
+							<li class="popDate-li"><time datetime="1860">1860</time> : Lors de l'annexion, Paris passe de 1&nbsp;174&nbsp;000 habitants en 1856 à 1&nbsp;697&nbsp;000 en 1861.</li>
+							<li><time datetime="1863">1863-1892</time> : Ouverture de la rue de Tolbiac (13e)</li>
+							<li><time datetime="1867">1867</time> : Ouverture des abattoirs de la Villette (19e) en remplacement des cinq abattoirs de 1818</li>
+							<li><time datetime="1874">1874-1885</time> : Construction de la deuxième ceinture de forts autour de Paris, dans le cadre d'un programme plus vaste de défense du pays</li>
+							<li><time datetime="1877">1877</time> : Ouverture de la Grande Ceinture, voie ferrée périphérique située à une quinzaine de kilomètres de Paris, qui raccorde les lignes principales rayonnant de Paris</li>
+							<li><time datetime="1889">1889</time> : Construction de la Tour Eiffel (7e) pour l'exposition universelle de la même année</li>
+							<li class="popDate-li"><time datetime="1891">1891</time> : Le département de la Seine compte 3&nbsp;142&nbsp;000 habitants, dont 2&nbsp;448&nbsp;000 à Paris</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>A la fin du XIXe siècle, les insuffisances de la carte d’état-major conduisent à créer une nouvelle Carte de France. La Commission centrale des travaux cartographiques (1891-1912) fait adopter le choix du 1/50 000 et le recours à des levés plus précis au 1/10 000, utilisant les plans cadastraux.</p>
+
+						<p>Plusieurs éléments nouveaux font leur apparition. Les courbes de niveau sont définitivement adoptées après plusieurs années d’hésitation ; pour faciliter la lecture du relief, elles restent accompagnées d’un estompage exprimant un éclairage théorique venant du nord-ouest. La carte s’appuie également sur un nouveau réseau géodésique, établi à la fin du XIXe siècle : la Nouvelle Triangulation de France (NTF, 1873-1891). Enfin, elle s’accompagne d’une légende pour faciliter sa consultation par de nouveaux publics. Le découpage géographique et la numérotation sont toujours en vigueur.</p>
+
+						<p>Bien que la lisibilité soit améliorée par l’impression lithographique en 10 ou 12 couleurs, la rédaction reste complexe et les mises à jour le sont davantage. Certains signes, trop précis sont peu clairs à cette échelle.</p>
+
+						<p>L’absence de soutien du ministère des Finances oblige le Service géographique de l’armée à commencer les travaux sur son propre budget. Les levés sont réalisés au1/10 000 ou au 1/20 000 suivant les régions. Les environs de Paris seront levés au 1/10 000 entre 1878 et 1900 et publiés en 1906 au 1/50 000.</p>
+
+						<p>En 1912, la lenteur des travaux impose de privilégier les zones stratégiques de l’est de la France. Deux ans plus tard, la déclaration du Premier Conflit mondial contraint à tout interrompre. La guerre va démontrer les lacunes de ce modèle, son manque de précision, son absence de quadrillage kilométrique, si bien que peu à peu, la carte « type 1900 au 1/50 000 » sera abandonnée.</p>
+
+						<p>En 1922, le SGA entame une campagne en faveur d’une nouvelle carte de France : le « type 1922 au 1/50 000 », Plus simple et moins coûteuse, elle est dessinée avec 6 couleurs, puis 4 seulement. Il est prévu d’en publier également une version à l’échelle des levés au 1/20 000. Ce modèle va supplanter le 1/50 000, qui n’en sera plus alors qu’une forme dérivée. La carte au 1/50 000, légèrement modifiée en 1972, est devenue la série orange à partir de 1977.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Paris s’est développée au sein de ses enceintes successives jusqu’au milieu du 19e siècle. C’est à partir de la révolution industrielle et de l’arrivée des chemins de fer que l’expansion des banlieues commence autour de plusieurs phénomènes. La population ouvrière qui afflue vers la capitale attirée par l’industrie, couplée avec les travaux d’Haussmann qui la chasse du centre de Paris vient rapidement peupler les arrondissements périphériques de Paris et les communes qui l’entourent. En 1900 ; Paris intra-muros atteint près de trois millions d’habitants alors qu’il n’en avait qu’un million 50 ans plus tôt.</p>
+
+						<p>La création des faisceaux ferroviaires et l’installation des grandes gares de triage et des ports fluviaux le long de la Seine et des canaux vont favoriser les implantations industrielles au plus près du chemin de fer et du fleuve, particulièrement au sud-est entre Seine, Marne et ligne Paris-Lyon-Marseille, au nord et au nord-est entre Chemin de fer de l’est et du nord et canaux, au nord-ouest entre boucles de la Seine et ligne Paris-Normandie.</p>
+
+						<p>Près des gares de banlieue et des lignes de tramway, se développent une multitude de lotissements de pavillonnaire qui constituent la première phase d’expansion de la banlieue sur les terres agricoles. La distinction entre banlieues résidentielles bourgeoises sur les coteaux de l’ouest et du sud et en bord de Marne et banlieues ouvrières près des sites industriels s’établit alors.</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Carte topographique dite type 1900 -->
+
+					<article class="txt-box" id="txt-box-1921"> <!-- Carte du département de la Seine -->
+						<p class="txt-source"><a href="assets/legende1921.png" target="_blank">Légende</a></p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1851">1851</time> : Le département de la Seine compte 1&nbsp;422&nbsp;000 habitants, dont 1&nbsp;053&nbsp;000 à Paris</li>
+							<li><time datetime="1870">1852-1870</time> : Travaux haussmanniens dans Paris</li>
+								<ul>
+									<li>Construction de l'axe nord-sud, du boulevard de Sébastopol au boulevard Saint-Michel</li>
+									<li>Axe est-ouest, avec le prolongement de la rue de Rivoli juqu'à la rue Saint-Antoine</li>
+									<li>Aménagement des Halles et réaménagement de l'Île de la Cité et de ses ponts ; la nouvelle rue des Halles relie les Halles à la place du Châtelet</li>
+									<li>Premières percées sur la rive gauche, avec la rue des Écoles. Le boulevard Saint-Germain (5e, 6e, 7e) sera aménagé de 1857 à 1876</li>
+									<li>Percée d'axes reliant la première couronne de boulevards au centre de Paris (avenue de l'Opéra ou rue de Rennes, par exemple)</li>
+									<li>Aménagement du boulevard Votaire (ancien boulevard du Prince Eugène, 11e), pour contourner le centre de Paris ; il sera inauguré en 1662</li>
+									<li>Aménagement de l'avenue Dausmenil pour dégager les quartiers riverains de la gare de Lyon et assurer un accès au bois de Vincennes</li>
+									<li>Réaménagement des places existantes, comme la place de l'Étoile ou de l'Hôtel-de-Ville, et création de nouvelles places (de l'Opéra, de l'Alma, etc.)</li>
+									<li>Construction des gares (gare de Lyon en 1855 et du Nord en 1865) et de voies les reliant les unes aux autres</li>
+									<li>Construction de monuments prestigieux (l'Opéra Garnier, théâtes de la place du Châtelet, l'Hôtel-Dieu, etc.)</li>
+									<li>Début des travaux d'assainissement dont est issu le réseau d'égouts actuel. Nouveau système en eau potable, avec la construction d'un réseau d'aqueducs, et aménagement du système d'eau non potable. Aménagement du réseau de distribution de gaz.</li>
+									<li>Installation de mobilier public urbain</li>
+									<li>Création et aménagement de grands espaces verts (parc Monceau, Montsouris, des Buttes-Chaumont, bois de Vincennes et Boulogne) et de squares de proximité</li>
+								</ul>
+							<li><time datetime="1860">1860</time> : Destruction du mur des Fermiers généraux et annexion des communes situées entre le mur des Fermiers Généraux et l'enceinte de Thiers ; le nombre d'arrondissements de Paris passe de 12 à 20</li>
+							<li class="popDate-li"><time datetime="1860">1860</time> : Lors de l'annexion, Paris passe de 1&nbsp;174&nbsp;000 habitants en 1856 à 1&nbsp;697&nbsp;000 en 1861.</li>
+							<li><time datetime="1863">1863-1892</time> : Ouverture de la rue de Tolbiac (13e)</li>
+							<li><time datetime="1867">1867</time> : Ouverture des abattoirs de la Villette (19e) en remplacement des cinq abattoirs de 1818</li>
+							<li><time datetime="1874">1874-1885</time> : Construction de la deuxième ceinture de forts autour de Paris, dans le cadre d'un programme plus vaste de défense du pays</li>
+							<li><time datetime="1877">1877</time> : Ouverture de la Grande Ceinture, voie ferrée périphérique située à une quinzaine de kilomètres de Paris, qui raccorde les lignes principales rayonnant de Paris</li>
+							<li><time datetime="1889">1889</time> : Construction de la Tour Eiffel (7e) pour l'exposition universelle de la même année</li>
+							<li class="popDate-li"><time datetime="1891">1891</time> : Le département de la Seine compte 3&nbsp;142&nbsp;000 habitants, dont 2&nbsp;448&nbsp;000</li>
+							<li><time datetime="1900">1900</time> : Inauguration de la première ligne de métro entre Vincennes et la Porte Maillot.</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Ce plan a servi de base au premier schéma directeur de la région parisienne, de 1934, dit « plan Prost »</p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Après la grande guerre, Paris a cessé de voir sa population progresser et les arrivées massives de population attirées par le développement de l’industrie, concernent les communes de la petite couronne qui se peuplent toutes, certaines très rapidement. Les lotissements faits à la va-vite sans confort se multiplient, les premiers bidonvilles apparaissent et les premiers ensembles de logement à bon marché sont construits. Si Paris atteint sa population maximale en 1921 avec 2 900 000 habitants, elle n’en a plus que 2 720 000 en 1946. Durant la même période, la population de petite couronne passe de 1 690 000 habitants à 2 400 000 habitants. 380 000 logements sont construits durant cette période (14% du parc actuel).</p>
+
+						<p>Dans cet entre-deux guerres, seul le mouvement des cités jardins, initié par les maires de ces nouvelles banlieues, va mettre en œuvre un urbanisme social, destiné aux populations ouvrières et aux mal logés qui s’entassent dans des quartiers insalubres, en proposant de nouvelles formes d’urbanisation de la banlieue, à partir de cités d’habitat à la fois collectif et individuel, dotées de confort, de services et d‘équipements.</p>
+
+						<p>Cette période de l’entre-deux guerres a légué de grands secteurs d’habitat pavillonnaire, d’architectures très diverses, de la villa de villégiature au simple pavillon sans décor qui ont en commun, la présence de jardins individuels, le calme et l’absence de service et de commerces et de grandes cités de logements collectifs, sur la couronne de Paris et dans les cités jardins, à Suresnes, Stains ou d’Epinay, caractérisées par une architecture de briques remarquable.</p>
+
+						<p>La 3e et la 4e République, dans le département de la Seine, ont équipé la petite couronne de mairies, d’écoles publiques et d’hôpitaux. Elle a aussi installé, en petite couronne, tous les grands services urbains nécessaires au fonctionnement de Paris, centrales électriques, usines d’incinération des ordures, de chauffage urbain, usines d’assainissement et de traitement des eaux. Ces grands services urbains, souvent vécus comme encombrants et facteur de pollution, forment de vastes enclaves intraversables. De plus, certains d’entre eux ont été identifiés comme des espaces utiles au seul fonctionnement de Paris « ville lumière » et ils ont été, de fait, mal vécus par les habitants des villes de banlieue. Cette période a aussi construit le premier réseau des infrastructures d’échelle métropolitaine nécessaires au développement de l’industrie, au transport et au stockage des marchandises et des matières premières. Ce sera notamment la création des Ports de Gennevilliers et de Bonneuil et leur raccordement au réseau ferré et aux gares de triage (Drancy, Villeneuve-Saint-Georges…), et par le rail au port du Havre.</p>
+
+						<p>L’intégration de ces grands équipements indispensables au fonctionnement de la Métropole, se pose aujourd’hui en des termes nouveaux car leur transformation est à l’ordre du jour pour intégrer les défis du changement climatique et de la transition énergétique. L’urbanisation d’avant 1945, a laissé des tissus urbains denses, hérités du Paris haussmannien et de ses faubourgs, des cités jardins et des lotissements de pavillons.</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Carte du département de la Seine -->
+
+					<article class="txt-box" id="txt-box-1924"> <!-- Carte topographique, dite type 1922 -->
+						<p class="txt-source">Légende : <a href="https://www.geoportail.gouv.fr/depot/layers/GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950/legendes/GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN50.1950-legend.png" target="_blank">légende d'origine sur le site geoportail.gouv.fr</a></p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1901">1901</time> : Le département de la Seine compte 3&nbsp;670&nbsp;000 habitants, dont 2&nbsp;700&nbsp;000</li>
+							<li><time datetime="1929">1919-1929</time> : Destruction de l'enceinte de Thiers</li>
+							<li><time datetime="1929">1919-1929</time> : Lotissement des communes de la banlieue pour loger la population ouvrière ; 16000 hectares seront lotis durant l'entre-deux-guerres</li>
+							<li><time datetime="1920">1920</time> : Premières cités-jardins (Dugny, Stains, Les Lilas, Drancy) (93) ; au final, une quinzaine de cités seront construites autour de Paris</li>
+							<li class="popDate-li"><time datetime="1921">1921</time> : Le département de la Seine compte 4&nbsp;412&nbsp;000 habitants, dont 2&nbsp;906&nbsp;000</li>
+							<li><time datetime="1925">1921-1925</time> : Période de construction des premières HBM de la Ville de Paris</li>
+							<li><time datetime="1925">1925</time> : Premier pavillon de la Cité Universitaire (14e)</li>
+							<li><time datetime="1939">1927-1939</time> : Deuxième génération d'HBM, période de production maximale des HBM</li>
+							<li><time datetime="1932">1932</time> : Construction de la cité de la Muette à Drancy (93), considée comme le premier exemple d'un "grand ensemble" ; une partie sera démolie en 1976</li>
+							<li><time datetime="1934">1934</time> : Fermeture de la ligne de la Petite Ceinture aux voyageurs, à l'exception de la ligne d'Auteuil, qui reste ouverte jusqu'en 1985 et sera rénovée et intégrée à la ligne C du RER en 1988</li>
+							<li><time datetime="1939">1939</time> : La majeure partie de la Grande Ceinture est fermée aux voyageurs ; la ligne est utilisée pour le fret</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Les premières éditions de la carte de France au 1/50 000 révèlent le besoin de documents plus détaillés. Pour les militaires, l’échelle s’avère trop imprécise pour être opérationnelle : au cours de la Première Guerre mondiale, ils ont dû effectuer des « plans directeurs de guerre » au 1/20 000 sur les zones de combat, en utilisant les documents du cadastre complétés par un agrandissement des courbes de niveau au 1/40 000.</p>
+
+						<p>En 1922, le Service géographique de l’armée plaide pour une nouvelle carte de France plus simple et moins coûteuse : le type 1922 au 1/50 000. Elle doit être dessinée en 4 ou 6 couleurs sur la base de levés dressés au 1/20 000. Il en est également proposé une version au 1/20 000, en monochrome ou en trois couleurs (noir, bleu, bistre). Les environs de Paris forment un cas particulier. Ils sont réalisés à partir de 1921, en 36 feuilles d’après les anciens levés au 1/10 000 révisés.</p>
+
+						<p>La photographie aérienne, utilisée à partir de 1932, améliore la rentabilité et la précision et permet de sauver l’entreprise de la carte de France. La carte au 1/50 000 sera désormais conçue comme un dérivé de la carte au 1/20 000.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<p>Le coût trop élevé de tirage de la carte de type 1900 du fait de ses 12 couleurs et les progrès techniques  réalisés durant la Première guerre mondiale vont conduire à son abandon. Le service géographique de l’Armée lance en 1922 une nouvelle carte de France :  fondée sur de nouvelles bases géodésiques, elle utilise la  projection conique conforme de Lambert. La carte éditée au 1/50 000 et au 1/20 000 dispose de cinq couleurs, elle est plus précise et plus juste que la carte d’Etat major. L’Île-de-France et les Hauts-de-Seine sont couverts mais pas l’ensemble de la France.</p>
+
+						<p class="txt-source css-blue"><a href="http://archives.hauts-de-seine.fr/archeologie-patrimoines/patrimoine-culturel/la-cartotheque-historique/principaux-plans-et-cartes-du-xxe-siecle-utiles-en-cartographie-historique/">La carte de France au 1/20 000 et au 1/50 000 type 1922, type 1972 et Série Orange. Archives des Haus-de-Seine</a></p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Après la grande guerre, Paris a cessé de voir sa population progresser et les arrivées massives de population attirées par le développement de l’industrie, concernent les communes de la petite couronne qui se peuplent toutes, certaines très rapidement. Les lotissements faits à la va-vite sans confort se multiplient, les premiers bidonvilles apparaissent et les premiers ensembles de logement à bon marché sont construits. Si Paris atteint sa population maximale en 1921 avec 2 900 000 habitants, elle n’en a plus que 2 720 000 en 1946. Durant la même période, la population de petite couronne passe de 1 690 000 habitants à 2 400 000 habitants. 380 000 logements sont construits durant cette période (14% du parc actuel).</p>
+
+						<p>Dans cet entre-deux guerres, seul le mouvement des cités jardins, initié par les maires de ces nouvelles banlieues, va mettre en œuvre un urbanisme social, destiné aux populations ouvrières et aux mal logés qui s’entassent dans des quartiers insalubres, en proposant de nouvelles formes d’urbanisation de la banlieue, à partir de cités d’habitat à la fois collectif et individuel, dotées de confort, de services et d‘équipements.</p>
+
+						<p>Cette période de l’entre-deux guerres a légué de grands secteurs d’habitat pavillonnaire, d’architectures très diverses, de la villa de villégiature au simple pavillon sans décor qui ont en commun, la présence de jardins individuels, le calme et l’absence de service et de commerces et de grandes cités de logements collectifs, sur la couronne de Paris et dans les cités jardins, à Suresnes, Stains ou d’Epinay, caractérisées par une architecture de briques remarquable.</p>
+
+						<p>La 3e et la 4e République, dans le département de la Seine, ont équipé la petite couronne de mairies, d’écoles publiques et d’hôpitaux. Elle a aussi installé, en petite couronne, tous les grands services urbains nécessaires au fonctionnement de Paris, centrales électriques, usines d’incinération des ordures, de chauffage urbain, usines d’assainissement et de traitement des eaux. Ces grands services urbains, souvent vécus comme encombrants et facteur de pollution, forment de vastes enclaves intraversables. De plus, certains d’entre eux ont été identifiés comme des espaces utiles au seul fonctionnement de Paris « ville lumière » et ils ont été, de fait, mal vécus par les habitants des villes de banlieue. Cette période a aussi construit le premier réseau des infrastructures d’échelle métropolitaine nécessaires au développement de l’industrie, au transport et au stockage des marchandises et des matières premières. Ce sera notamment la création des Ports de Gennevilliers et de Bonneuil et leur raccordement au réseau ferré et aux gares de triage (Drancy, Villeneuve-Saint-Georges…), et par le rail au port du Havre.</p>
+
+						<p>L’intégration de ces grands équipements indispensables au fonctionnement de la Métropole, se pose aujourd’hui en des termes nouveaux car leur transformation est à l’ordre du jour pour intégrer les défis du changement climatique et de la transition énergétique. L’urbanisation d’avant 1945, a laissé des tissus urbains denses, hérités du Paris haussmannien et de ses faubourgs, des cités jardins et des lotissements de pavillons.</p>
+
+						<p>Une première tentative de réalisation d’un schéma directeur d’aménagement régional aboutit en 1934 à l’élaboration d’un plan d’aménagement dénommé « plan Prost » qui pose le principe de création d’un réseau autoroutier structurant et d’un réseau de grands parcs.</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Carte topographique, dite type 1922 -->
+
+					<article class="txt-box" id="txt-box-1972"> <!-- Carte topographique 1972 -->
+						<p>Légende : En bleu : hydrographie. En vert : végétation. En orange : courbes de niveau et routes. En noir : écritures, bâti, points de nivellement, habillage, estompage.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li class="popDate-li"><time datetime="1946">1946</time> : Le département de la Seine compte 4&nbsp;776&nbsp;000 habitants, dont 2&nbsp;726&nbsp;000</li>
+							<li><time datetime="1950">1945-1950</time> : Reconstruction d'après-guerre, initiée sur le modèle des HBM de l'entre-deux-guerres</li>
+							<li><time datetime="1956">1956</time> : Début des travaux de la Cité des Quatre Mille logements à La Courneuve (93), exemple d'un grand ensemble</li>
+							<li><time datetime="1970">1956-1970</time> : Aménagement du boulevard périphérique de Paris, à l'emplacement de l'enceinte de Thiers </li>
+							<li><time datetime="1960">1960</time> : Plan d'aménagement et d'organisation générale de la région parisienne (PADOG)</li>
+							<li><time datetime="1960">1960</time> : Décision de transférer le marché des Halles à Rungis (94) et la Villette (19e)</li>
+							<li><time datetime="1977">1961-1977</time> : Aménagement du RER A, première ligne de RER</li>
+							<li><time datetime="1962">1962</time> : Décision est prise de supprimer le département de la Seine et de créer quatre nouveaux départements à sa place : Paris (75), les Hauts-de-Seine (92), la Seine-Saint-Denis (93) et le Val-de-Marne (94)</li>
+							<li><time datetime="1964">1964</time> : Le plan d'aménagement de la Défense est approuvé par l'Etat ; les travaux commencent</li>
+							<li><time datetime="1965">1965</time> : Adoption du Schéma directeur d'aménagement et d'urbanisme de la région de Paris (SDAURP), qui lance les projets des villes nouvelles, du réseau express régional et des autoroutes de banlieue</li>
+							<li><time datetime="1967">1967</time> : Première mission d'étude et d'aménagement à Evry (91), la première ville nouvelle d'Ile-de-France ; suivront Cergy-Pontoise (95), Saint-Quentin-en-Yvelines (78), Marne-la-Vallée (77, 94, 95) et Melun-Sénart (77, 91)</li>
+							<li><time datetime="1967">1967</time> : Les préfectures des trois nouveaux départements de la petite couronnes sont conçues : Créteil, Nanterre et Bobigny</li>
+							<li><time datetime="1969">1969</time> : Fermeture de la gare de la Bastille (12e) et lancement de l'opération Italie 13, avec la construction de 55 tours programmée dans le 13e arrondissement, dont les tours des Olympiades. Ouverture du premier centre commercial d'Ile-de-France, Parly 2, au Chesnay (78). Transfert des Halles à Rungis (94) et la Villette (19e)</li>
+							<li><time datetime="1970">1970</time> : Inauguration du campus de Jussieu, sur l'emplacement de l'ancienne Halle aux vins (5e)</li>
+							<li><time datetime="1973">1973</time> : Inauguration de la tour Montparnasse (15e) et du boulevard périphérique</li>
+							<li><time datetime="1974">1974</time> : Abandon du projet de l'axe Nord-Sud et de l'ensemble du plan autoroutier pour Paris</li>
+							<li><time datetime="1974">1974</time> : Destruction des abattoirs de la Villette (19e) et inauguration de l'aéroport Charles de Gaulle (95)</li>
+							<li class="popDate-li"><time datetime="1975">1975</time> : Le territoire de la future Métropole du Grand Paris compte 6&nbsp;507&nbsp;000 habitants</li>
+							<li><time datetime="1976">1976</time> : Création de la Région Ile-de-France et adoption du Schéma directeur d'aménagement et d'urbanisme de la Ville de Paris</li>
+						</ul>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>L’après-guerre et la crise du logement qui l’accompagne voient la mise en œuvre d’une forme d‘urbanisation radicalement différente et d’une production de masse du logement.</p>
+
+						<p>Au lendemain de la guerre, le projet, d’éradication de l’habitat insalubre et de lutte contre les taudis, élaboré au tout début du 20 siècle, est remis au goût du jour. Dès le début des années 1950, les « grands ensembles » de logements collectifs destinés à loger rapidement et décemment un très grand nombre de familles jusqu’alors entassées dans les taudis parisiens et dans les vastes bidonvilles de Nanterre ou de La Courneuve, (70 000 logements livrés en 1958 dans le département de la Seine) vont venir occuper les terres agricoles encore présentes dans la petite couronne. Ces grands ensembles sont conçus selon les principes de l’urbanisme moderne, à partir de plans masse composés de séries de barres et de tours. En même temps, on assiste à une extension brutale et massive des lotissements pavillonnaires sur ces mêmes terres agricoles.</p>
+
+						<p>La décision de la suppression du département de la Seine au profit de la création de 4 départements – Paris, Hauts de Seine, Seine Saint Denis et Val de Marne est prise en 1962. Les préfectures des trois nouveaux départements de la petite couronne (1967) – Créteil, Nanterre et Bobigny – sont conçues, elles aussi selon les principes de l’urbanisme moderne, et constituent des créations ex nihilo de villes nouvelles.</p>
+
+						<p>Avec les années 60, s’amorce la désindustrialisation de Paris et de la petite couronne. Elle trouve son apogée à la fin des années 80, avec le déménagement de l’industrie, (notamment automobile vers des sites plus lointains, Aulnay, Flins, Poissy…). Dans le même temps, la politique volontariste de l’Etat inscrit dans le schéma directeur de 1965 la création des grandes zones monofonctionnelles -le quartier d’affaires de la Défense, le MIN et la plateforme logistique de Rungis, la zone industrielle de Garonor, etc. en relation avec les grands tracés autoroutiers, et enfin, cinq villes nouvelles.</p>
+
+						<p>Les schémas directeurs régionaux instaurent alors une politique globale de zonage par grands territoires monofonctionnels.</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Carte topographique 1972 -->
+
+					<article class="txt-box" id="txt-box-1985"> <!-- Carte topographique 1985 -->
+						<p>Légende : En bleu : hydrographie. En vert : végétation. En orange : courbes de niveau et routes. En noir : écritures, bâti, points de nivellement, habillage, estompage.</p>
+
+						<p class="txt-source css-blue">Source : Apur (Cartographie parisienne, un répertoire – Plans d’ensemble de Paris, Apur)</p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li><time datetime="1979">1979</time> : Inauguration du Forum des Halles (1er)</li>
+							<li><time datetime="1980">Fin des années 80</time> : Apogée de la désindustrialisation de Paris et la petite couronne vers des sites plus lointains</li>
+							<li><time datetime="1987">1987</time> : Inauguration du Parc de la Villette (19e)</li>
+							<li class="popDate-li"><time datetime="1990">1990</time> : Le territoire de la future Métropole du Grand Paris compte 6&nbsp;356&nbsp;000 habitants, dont 2 152 000 à Paris</li>
+							<li><time datetime="1990">Années 80 et 90</time> : Grands travaux d'aménagement de François Mitterrand, avec par exemple l'inauguration du musée d'Orsay (1986), de l'Institut du Monde Arabe (1987), de l'Opéra Bastille (1989), projet du Grand Louvre (inauguration de la Pyramide du Louvre en 1989), etc.</li>
+							<li><time datetime="1992">1992</time> : Ouverture de Disneyland Paris (77)</li>
+							<li><time datetime="1996">1996</time> : Inauguration du parc André-Citroën (15e), sur le site de l'ancienne usine Citroën</li>
+							<li><time datetime="1997">1997</time> : Démantellement de l'usine Kodak à Sevran (93)</li>
+							<li><time datetime="1998">1998</time> : Inauguration du Stade de France à Saint-Denis (93), à l'emplacement d'anciennes usines à gaz, et couverture de l'A1 à cette occasion</li>
+							<li><time datetime="1998">1998</time> : Inauguration du Centre national de la danse à Pantin (93)</li>
+							<li class="popDate-li"><time datetime="1999">1999</time> : Le territoire de la future Métropole du Grand Paris compte 6 356 000 habitants, dont 2&nbsp;125&nbsp;000 à Paris</li>
+						</ul>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Tandis que Paris se rénove (Olympiades, Front de Seine…) et se dépeuple, les banlieues voient affluer les habitants, dans de nouveaux lotissements de pavillons, mais surtout dans les grands ensembles de logements. De la fin de la guerre au début des années 1990, plus de la moitié du parc actuel de logements a été construit (746 000 logements construits entre 1946 et 1970, soit 28% du parc actuel, et 652 000 entre 1971 et 1990, soit 24% du parc actuel). Paris qui avait plus de 2 720 000 habitants en 1946 n’en a plus que 2 150 000 en 1990 alors que la petite couronne qui avait seulement 2 400 000 habitants en 1946 en a 3 990 000 en 1990.</p>
+
+						<p>Cette période a laissé un territoire composé d’une multitude de zones à fonction unique, de vastes étendues de pavillons, un parc de logements sociaux, enclavé et appauvri, qui est, depuis plus de vingt ans, la cible des politiques de renouvellement urbain de l’Etat sous les différentes formes de ses programmes prioritaires – politique de la ville, DSQ, QPV, puis ANRU 1 et 2 - , des immenses zones d’activités et d’entrepôts enclavées, de vastes centres commerciaux près des autoroutes, des nouveaux quartiers d’affaires, des infrastructures autoroutières qui ont profondément coupé le territoire et développé d’importantes nuisances, des friches industrielles qui se sont multipliées avec la délocalisation des grands sites industriels.</p>
+
+						<p>Ces sites industriels abandonnés sont devenus de grands sites de projets urbains dès les années 1990 et 2000 (terrains Citroën à Paris, Renault à Boulogne-Billancourt, Alstom à Saint Ouen, Sanofy à Romainville…) et ils sont, pour la plupart d’entre eux, les sites des grands projets d’aujourd’hui et de demain (Les Ardoines, la plaine de l’Ourcq…)</p>
+
+						<p><b>Un processus de transformation des villes de la Métropole très actif depuis trente ans.</b></p>
+
+						<p><b>Depuis la loi de décentralisation de 1983, les politiques d’aménagement urbain sont menées par les collectivités territoriales à l’exception des projets d’intérêt national.</b></p>
+
+						<p>À l’exception des villes nouvelles, des pôles aéroportuaires et des secteurs d’aménagement d’intérêt national (La Défense, MIN…) restés de la compétence de l’Etat, la loi de 1983 a initié un nouveau type de projets urbains mis en œuvre par les villes et les intercommunalités qui se sont dotées d’outils d’aménagement pour les mener.</p>
+
+						<p>Dans les années 1990-2000 cette nouvelle génération de projets permet la requalification de centres villes (Ex : Montreuil, Arcueil, Blanc Mesnil, Pantin…), la construction de nouveaux quartiers mixtes sur les friches industrielles et ferroviaires (ex : Paris rive Gauche, Clichy Batignolles ; PNE à Paris ; ZAC du Trapèze et de l’Ile Seguin à Boulogne-Billancourt, des Docks à Saint-Ouen, de l‘Horloge à Romainville, les Terrasses à Nanterre…).</p>
+
+						<p>Depuis 2000, Paris et les communes de la petite couronne regagnent des habitants après une baisse spectaculaire liée à la désindustrialisation. Cette période a été propices aux grands projets de l’Etat notamment durant les années 19801990 ( Opéra, Parc de la Villette, Grande Arche, musée du Quai Branly, Stade de France …), puis à de grands projets des collectivités territoriales avec la création d’une série de grands parcs publics, (Ex: parc de Bercy, parc Jean Moulin, parc des Cormailles, Parc des Hautes Bruyéres, Parc Martin Luther King, parc des Docks, les jardins de l’Arche…; à la création des projets de grands équipements culturels (CND, 104 Aubervilliers, Cité du Cinéma, Seine musicale, MacVal…. Durant cette dernière période la reconquête de bords de Seine et des canaux pour leur ouverture au public et la création de promenades sur les berges a été amorcée. S’y ajoutent la requalification des grandes voies (RN186, RD7, RD906…) souvent conjuguée avec l’arrivée du tramway T1, T2, T3, T4… même si la plupart d’entre elles restent encore routières et n’ont bénéficié d’aucuns travaux de transformation (Ex RN2 et RN3, RD 115, RD34…).</p>
+
+						<p>À la fin des années 90, des projets ont été mis en œuvre pour réduire les nuisances des grandes emprises autoroutières, (couverture de l’A1 à l’occasion de la construction du stade de France, couverture partielle de l’A3 et de l’A6…) Aujourd’hui, des études sont en cours pour initier une transformation des autoroutes (A1 et A4, boulevard périphérique…) afin de les rendre plus urbaines et d’y intégrer des lignes de transports en commun. [...]</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Carte topographique 1985 -->
+
+					<article class="txt-box" id="txt-box-1990"> <!-- Plan parcellaire de Paris, dit hauteur d'étage -->
+						<p class="txt-source"><a href="assets/legende1990.png" target="_blank">Légende</a><span class="txt-source css-blue"> (Apur)</span></p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li><time datetime="1979">1979</time> : Inauguration du Forum des Halles (1er)</li>
+							<li><time datetime="1980">Fin des années 80</time> : Apogée de la désindustrialisation de Paris et la petite couronne vers des sites plus lointains</li>
+							<li><time datetime="1987">1987</time> : Inauguration du Parc de la Villette (19e)</li>
+							<li class="popDate-li"><time datetime="1990">1990</time> : Le territoire de la future Métropole du Grand Paris compte 6&nbsp;356&nbsp;000 habitants, dont 2 152 000 à Paris</li>
+							<li><time datetime="1990">Années 80 et 90</time> : Grands travaux d'aménagement de François Mitterrand, avec par exemple l'inauguration du musée d'Orsay (1986), de l'Institut du Monde Arabe (1987), de l'Opéra Bastille (1989), projet du Grand Louvre (inauguration de la Pyramide du Louvre en 1989), etc.</li>
+							<li><time datetime="1992">1992</time> : Ouverture de Disneyland Paris (77)</li>
+							<li><time datetime="1996">1996</time> : Inauguration du parc André-Citroën (15e), sur le site de l'ancienne usine Citroën</li>
+							<li><time datetime="1997">1997</time> : Démantellement de l'usine Kodak à Sevran (93)</li>
+							<li><time datetime="1998">1998</time> : Inauguration du Stade de France à Saint-Denis (93), à l'emplacement d'anciennes usines à gaz, et couverture de l'A1 à cette occasion</li>
+							<li><time datetime="1998">1998</time> : Inauguration du Centre national de la danse à Pantin (93)</li>
+							<li class="popDate-li"><time datetime="1999">1999</time> : Le territoire de la future Métropole du Grand Paris compte 6 356 000 habitants, dont 2&nbsp;125&nbsp;000 à Paris</li>
+						</ul>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>Tandis que Paris se rénove (Olympiades, Front de Seine…) et se dépeuple, les banlieues voient affluer les habitants, dans de nouveaux lotissements de pavillons, mais surtout dans les grands ensembles de logements. De la fin de la guerre au début des années 1990, plus de la moitié du parc actuel de logements a été construit (746 000 logements construits entre 1946 et 1970, soit 28% du parc actuel, et 652 000 entre 1971 et 1990, soit 24% du parc actuel). Paris qui avait plus de 2 720 000 habitants en 1946 n’en a plus que 2 150 000 en 1990 alors que la petite couronne qui avait seulement 2 400 000 habitants en 1946 en a 3 990 000 en 1990.</p>
+
+						<p>Cette période a laissé un territoire composé d’une multitude de zones à fonction unique, de vastes étendues de pavillons, un parc de logements sociaux, enclavé et appauvri, qui est, depuis plus de vingt ans, la cible des politiques de renouvellement urbain de l’Etat sous les différentes formes de ses programmes prioritaires – politique de la ville, DSQ, QPV, puis ANRU 1 et 2 - , des immenses zones d’activités et d’entrepôts enclavées, de vastes centres commerciaux près des autoroutes, des nouveaux quartiers d’affaires, des infrastructures autoroutières qui ont profondément coupé le territoire et développé d’importantes nuisances, des friches industrielles qui se sont multipliées avec la délocalisation des grands sites industriels.</p>
+
+						<p>Ces sites industriels abandonnés sont devenus de grands sites de projets urbains dès les années 1990 et 2000 (terrains Citroën à Paris, Renault à Boulogne-Billancourt, Alstom à Saint Ouen, Sanofy à Romainville…) et ils sont, pour la plupart d’entre eux, les sites des grands projets d’aujourd’hui et de demain (Les Ardoines, la plaine de l’Ourcq…)</p>
+
+						<p><b>Un processus de transformation des villes de la Métropole très actif depuis trente ans.</b></p>
+
+						<p><b>Depuis la loi de décentralisation de 1983, les politiques d’aménagement urbain sont menées par les collectivités territoriales à l’exception des projets d’intérêt national.</b></p>
+
+						<p>À l’exception des villes nouvelles, des pôles aéroportuaires et des secteurs d’aménagement d’intérêt national (La Défense, MIN…) restés de la compétence de l’Etat, la loi de 1983 a initié un nouveau type de projets urbains mis en œuvre par les villes et les intercommunalités qui se sont dotées d’outils d’aménagement pour les mener.</p>
+
+						<p>Dans les années 1990-2000 cette nouvelle génération de projets permet la requalification de centres villes (Ex : Montreuil, Arcueil, Blanc Mesnil, Pantin…), la construction de nouveaux quartiers mixtes sur les friches industrielles et ferroviaires (ex : Paris rive Gauche, Clichy Batignolles ; PNE à Paris ; ZAC du Trapèze et de l’Ile Seguin à Boulogne-Billancourt, des Docks à Saint-Ouen, de l‘Horloge à Romainville, les Terrasses à Nanterre…).</p>
+
+						<p>Depuis 2000, Paris et les communes de la petite couronne regagnent des habitants après une baisse spectaculaire liée à la désindustrialisation. Cette période a été propices aux grands projets de l’Etat notamment durant les années 19801990 ( Opéra, Parc de la Villette, Grande Arche, musée du Quai Branly, Stade de France …), puis à de grands projets des collectivités territoriales avec la création d’une série de grands parcs publics, (Ex: parc de Bercy, parc Jean Moulin, parc des Cormailles, Parc des Hautes Bruyéres, Parc Martin Luther King, parc des Docks, les jardins de l’Arche…; à la création des projets de grands équipements culturels (CND, 104 Aubervilliers, Cité du Cinéma, Seine musicale, MacVal…. Durant cette dernière période la reconquête de bords de Seine et des canaux pour leur ouverture au public et la création de promenades sur les berges a été amorcée. S’y ajoutent la requalification des grandes voies (RN186, RD7, RD906…) souvent conjuguée avec l’arrivée du tramway T1, T2, T3, T4… même si la plupart d’entre elles restent encore routières et n’ont bénéficié d’aucuns travaux de transformation (Ex RN2 et RN3, RD 115, RD34…).</p>
+
+						<p>À la fin des années 90, des projets ont été mis en œuvre pour réduire les nuisances des grandes emprises autoroutières, (couverture de l’A1 à l’occasion de la construction du stade de France, couverture partielle de l’A3 et de l’A6…) Aujourd’hui, des études sont en cours pour initier une transformation des autoroutes (A1 et A4, boulevard périphérique…) afin de les rendre plus urbaines et d’y intégrer des lignes de transports en commun. [...]</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+
+					</article> <!-- end Plan parcellaire de Paris, dit hauteur d'étage -->
+
+					<article class="txt-box" id="txt-box-2020"> <!-- Plan actuel -->
+						<p class="txt-source"><a href="assets/FDP_LEGENDE.pdf" target="_blank">Légende</a><span class="txt-source css-blue"> (Apur)</span></p>
+
+						<h3 class="important-dates css-blue">Repères chronologiques :</h3>
+						<ul>
+							<li><time datetime="2010">Années 2010</time> : Années 2010 : début du réaménagement de la plaine de l'Ourcq (Romainville, Bobigny, Noisy-le-Sec, Bondy et Pantin)</li>
+							<li><time datetime="2011">2011</time> : Adoption du Schéma d'ensemble du réseau de transport du Grand Paris pour le développement du Grand Paris Express</li>
+							<li><time datetime="2014">2014</time> : Obtention du permis d'aménager pour le projet Chapelle International (18e), avec la construction d'un hôtel logistique, de logements, équipements et services, activités.</li>
+							<li class="popDate-li"><time datetime="2015">2015</time> : La Métropole du Grand Paris compte 7&nbsp;020&nbsp;000 habitants</li>
+							<li><time datetime="2015">2015</time> : Début de l'expérience des Grands Voisins, sur le site de l'ancien hôpital Saint-Vincent-de-Paul (14e), en attente des travaux de reconversion (construction de logements, espaces verts)</li>
+							<li><time datetime="2015">2015</time> : Signature du "protocole-cadre entre la Ville de Paris et le groupe SNCF concernant le devenir de la Petite Ceinture ferroviaire à Paris", avec une volonté de préserver la continuité spatiale de la Petite Ceinture et que les aménagements mis en place soient réversibles.</li>
+							<li><time datetime="2016">2016</time> : Lancement de l'appel à projet "Inventons la Métropole du Grand Paris". Les lauréats du 2e volet "Inventons la Métropole du Grand Paris 2" sont annoncés en 2019.</li>
+						</ul>
+
+						<h3>À propos de la carte :</h3>
+
+						<p>Le fond de plan actuel est un plan multi-échelles constitué à partir des données SIG de référence de l’Apur.  Il comprend des données de fabrication propre à l’Apur (Ilots/pâtés de maison, emprises d’équipement, emprises bâties, certains éléments topographiques), ainsi que d’autres données intégrées à partir de sources extérieures diverses, notamment :</p>
+
+						<ul>
+							<li>• Ville de Paris – Adresses, parcelles cadastrales (via convention DGFiP), certains détails topographiques (trottoirs, arbres)</li>
+							<li>• DGFiP – Parcelles cadastrales hors Paris, adresses</li>
+							<li>• Brigade de sapeurs-pompiers de Paris (BSPP) – Voies</li>
+							<li>• RATP – Données de transport en commun</li>
+						</ul>
+
+						<p>Ces données sont intégrées et mises en cohérence afin qu’elles soient exploitables à toutes les échelles, en particulier à grande échelle.  Les données parcellaires représentées sont fabriquées à partir des données de référence (ilots, emprises d’équipement, parcelles cadastrales/fichiers fonciers).  Elles tiennent compte d’une approche physique du terrain et d’une approche foncière.  Ainsi, des regroupements en fonction de la propriété au sol (unité foncière) et de l’usage (équipement) sont opérés.  Les emprises d’équipement sont considérées comme une seule unité foncière, de même que les parcelles cadastrales adjacentes de même propriétaire.  Les parcelles cadastrales sur le domaine de voirie ne sont pas représentées.</p>
+
+						<p>Les données sont régulièrement mises à jour sur le territoire de la Métropole du Grand Paris (MGP).  En dehors du territoire de la MGP, un traitement spécifique est fait à partir des données de la BDTopo ® de façon à avoir un fond homogène sur le reste de l’Ile de France.</p>
+
+						<p class="txt-source css-blue">Apur, 2020</p>
+
+						<h3>Éléments de lecture :</h3>
+
+						<p>La Métropole du Grand Paris compte, au 1er janvier 2015, 7 020 210 habitants au lieu de 6 902 389 en 2010. Elle s’est ainsi accrue de 117 820 habitants en cinq ans, ce qui représente un accroissement annuel de 23 560 habitants (soit un taux de +0,3%).</p>
+
+						<p>Cette hausse prolonge à un rythme ralenti celle constatée dans la période 1999‐2010, au cours de laquelle le taux de croissance annuel était de +0,7%. En 2015, la métropole représente 58% de la population de la région Ile‐de‐France et contribue pour 39% à la croissance démographique francilienne, sur 11% de son territoire.</p>
+
+						<p><b>La population de la métropole a évolué de façon assez contrastée selon les territoires.</b>Paris, qui gagnait des habitants depuis la fin des années 90 perd désormais des habitants au rythme de ‐0,3% par an. Dans les autres territoires, les rythmes de croissance démographique varient de +0,1 % par an à +1,2 % par an. Le territoire de Plaine Commune (EPT6) enregistre le taux de croissance le plus élevé (+1,2% par an) suivi des territoires Grand Paris Grand Est (EPT9) à l’est (+0,9%) et Grand‐Orly Seine Bièvre (EPT12) au sud (+0,8%). Inversement, Paris Ouest la Défense (EPT4) a un rythme de croissance de +0,1%, soit le plus fort ralentissement par rapport à la période précédente (+1% entre 1999 et 2010).</p>
+
+						<p class="txt-source css-blue"><a title="Page de téléchargement du Schéma de cohérence territorial métropolitain – Synthèse du diagnostic sur le site de l'Apur" href="https://www.apur.org/fr/nos-travaux/schema-coherence-territorial-metropolitain-synthese-diagnostic" target="_blank">Le Schéma de cohérence territorial métropolitain – Synthèse du diagnostic</a></p>
+
+						<p><b>Un processus de transformation des villes de la Métropole très actif depuis trente ans.</b></p>
+
+						<p>[...]</p>
+
+						<p><b>Les projets actuels s’appuient sur l’héritage de la ville existante. Ils sont élaborés selon les principes de la ville dense et mixte. Ils ont à relever un double défi : gérer l’adaptation au changement climatique et améliorer la qualité de la vie urbaine.</b></p>
+
+						<p>Ces nombreux grands projets qui sont en cours et à l’étude vont contribuer à supprimer de grandes enclaves et à ressouder entre eux des territoires urbains qui se sont ignorés jusqu’alors, qu’il s’agisse de friches industrielles ou de quartiers enclavés. Sur le territoire de la Métropole, 184 ZAC sont en cours de réalisation (sur environ 2930 ha) et 28 ZAC sont à l’étude (sur près de 270 ha). D’autres sont à l’étude. [...]</p>
+
+						<p><b>Les projets NPNRU, des leviers pour réintégrer les quartiers fragiles dans le développement urbain</b></p>
+
+						<p>Depuis le début des années 2000, les grands ensembles de logement sociaux et de copropriété dégradées des années 1950-1980 vieillissants, enclavés et stigmatisés font l’objet de politiques publiques (programme ANRU 1 et ANRU 2) de renouvellement urbain destiné à les transformer profondément. Plusieurs types de projets sont menés :</p>
+
+						<p>• des projets de démolition/reconstruction de grands ensembles de tours et/ou de barres (Ex : La Courneuve sur le site des 4000, Aulnay-sous-Bois, Clichy Montfermeil…)</p>
+
+						<p>• des projets de résidentialisation et de modification des espaces publics de ces ensembles pour créer un fonctionnement et une ambiance plus urbains en conservant l’esthétique héritée du mouvement moderne, (Ex : le Tremblay en France, la cité Michelet à Paris…) [...]</p>
+
+						<p><b>Les projets urbains dans les quartiers de gare</b></p>
+
+						<p>Parmi tous les projets en cours et en préparation dans la métropole, les quartiers de gare du Grand Paris Express apparaissent comme des secteurs de développement urbain privilégiés. Ils sont, dès aujourd’hui, des secteurs en profonde mutation dont le nouveau visage ne sera connu que dans une dizaine d’années. [...]</p>
+
+						<p>Le Grand Paris Express crée donc un effet de levier qui se manifeste par une concentration de plusieurs projets dont les échéances convergent. C’est le cas pour le quartier de gare de Saint-Denis Pleyel où se concentrent le projet de gare avec l’interconnexion des lignes 14, 15, 16 et 17, le secteur des Lumières Pleyel (Inventons la Métropole du Grand Paris 1), le franchissement Pleyel et le Village Olympique de Paris 2024.</p>
+
+						<p>L’arrivée de la gare du GPE constitue souvent une opportunité de créer de nouvelles centralités urbaines, qu’elles soient entièrement nouvelles ou qu’elles permettent l’extension d’une centralité existante. Dans les quartiers de gare de Bry – Villiers – Champigny, des Ardoines (ligne 15 sud) ou celui de Nanterre La Folie (ligne 15 ouest), ce sont de vastes morceaux de ville qui vont émerger. D’autres projets vont créer des liens et des continuités fortes entre des communes marquées aujourd’hui par des coupures engendrées par la présence d’infrastructures lourdes, par exemple au Pont de Bondy (ligne 15 est), Pont de Rungis (ligne 14) ou Rosny -Bois-Perrier (ligne 15 est).</p>
+
+						<p>Les quartiers de gare sont apparus également comme attractifs pour des sites d’appels à projets innovants. 1 quartier de gare sur 3 accueille en effet un projet « Inventons la Métropole du Grand Paris 1 » et 10 sites « Inventons la Métropole du Grand Paris 2 » sont situés dans ou à proximité d’un quartier de gare.</p>
+
+						<p><b>De nouvelles méthodes pour faire émerger des projets innovants</b></p>
+
+						<p>Les consultations « Réinventer Paris » et « Inventons la Métropole du Grand Paris (IMGP 1 et IMGP2) ont, quant à elles, initié 80 projets avec des méthodes nouvelles en créant des partenariats entre secteur privé et secteur public.</p>
+
+						<p>Ces projets mettent les enjeux climatiques et environnementaux au cœur de la réflexion ; ils vont avoir un caractère exemplaire car ils seront autant démonstrateurs des possibilités de réussite de la transition énergétique et de l’adaptation au changement climatique.</p>
+
+						<p><b>À côté des grands projets, les tissus urbains constitués évoluent et une multitude de projets, de moindre envergure, concourent à leur transformation.</b></p>
+
+						<p><b>Les tissus urbains denses et continus</b> sur 26% du territoire métropolitain mais 44% du territoire parisien, évoluent peu en apparence. À Paris notamment, les tissus urbains denses ont été fortement requalifiés et restaurés depuis trente ans et leur valeur a fortement augmenté, amenant une population résidente plus aisée. Des pratiques spéculatives se sont développées ainsi qu’une tendance à la transformation de leur usage en bureaux au centre et à l’ouest. Des politiques d’éradication de l’habitat insalubre, combinées à des injonctions de ravalement et des actions incitatives notamment dans le cadre d’OPAH, ont augmenté la pérennité du bâti ancien et arrêter les démolitions comme moyen privilégié de le rénover. Les tissus anciens, des villes de la petite couronne proches de Paris, moins denses qu’à Paris, avec des industries encore présentes, ont eu tendance, ces dernières années, à se densifier par la mise en œuvre d’opérations de logements multiples (ex : Pantin, les Lilas, Aubervilliers, Issy les Moulineaux, Saint Ouen, le Kremlin Bicêtre…).</p>
+
+						<p><b>Les tissus pavillonnaires</b> (23% du territoire métropolitain, mais 0,1% du territoire parisien) font aussi l’objet d’évolutions diverses. Environ 10% de ce parc se modifie et se densifie chaque année, soit par des extensions et surélévations, (plutôt modestes car les PLU les empêchent souvent), soit par des divisions de pavillons et des découpages de parcelles.</p>
+
+						<p>Dans les quartiers pavillonnaires où réside une population modeste cumulant difficultés économiques et sociales, un processus de division des pavillons s’enclenche amenant une sur-occupation du bâtiment et des situations d’habitat indigne (insalubrité des logements, occupation de locaux -caves, garages, - impropres à l’habitation). Ce phénomène est rarement isolé et plutôt concentré.er dans certains quartiers des villes du nord et de l’est.</p>
+
+						<p>Les tissus pavillonnaires, en raison de la présence de la multitude des jardins, jouent également un rôle environnemental et climatique important. Ils sont moins impactés par les ilots de chaleur urbains lors des épisodes caniculaires car 40% en moyenne de la surface des parcelles est occupés par des jardins privés.</p>
+
+						<p><b>Les zones d’activités économiques (ZAE) et les quartiers d’affaire et autres pôles de bureaux</b> (20,4% du territoire métropolitain-toutes activités confondues y compris les grands pôles commerciaux) sont de grandes zones monofonctionnelles héritées de la séparation des zones industrielles des quartiers d’habitation en raison de leurs nuisances et, pour les quartiers consacrés aux bureaux, le résultat de politiques publiques volontaristes pour créer des « quartiers d’affaires ».</p>
+
+						<p>Les ZAE sont généralement des lotissements de bâtiments d’entreposage et de production d’un seul niveau, alignés le long de larges routes permettant l’accès des camions. Elles accueillent toutes sortes d’entreprises de production, de logistique et de e.commerce. La plupart des ZAE sont anciennes et peu gérées. Elles occupent de grandes surfaces et forment des enclaves dans les villes.</p>
+
+						<p>Les pôles de bureaux et les quartiers d’affaires sont des quartiers où l’immobilier est voué à l’activité tertiaire. Le plus visible est le quartier de Paris– La Défense conçu à partir des années 60 à l’image d’un « Manhattan à la française » composé de tours disposés autour d’une vaste dalle centrale, le moins visible mais le plus important est le Quartier central des affaires (QCA) parisien essentiellement installé dans les immeubles Haussmannien et post haussmanniens.</p>
+
+						<p>S’y ajoutent des pôles plus récents à Boulogne et Issy les Moulineaux, à Val de Fontenay, à Saint Denis… Depuis 20 ans, ils ont commencé leur mue. Les bureaux obsolètes se rénovent pour s’adapter aux normes environnementales et aux nouveaux modes de travail, à l’accueil de nouvelles fonctions et services aux usagers.</p>
+
+						<p>[...]</p>
+
+						<p class="txt-source css-blue"><a title="Téléchargement du diagnostic d'avril 2019 du Schéma de cohérence territorial métropolitain (document de travail) sur le site metropolegrandparis.fr" href="https://www.metropolegrandparis.fr/scot/wp-content/uploads/2019/05/190510_MGP_SCOT_Diagnostic_06_BD.pdf" target="_blank">Le Diagnostic du Schéma de cohérence territorial métropolitain – Document de travail, avril 2019</a></p>
+					</article> <!-- end Plan actuel -->
+				</div> <!-- end description-main-container -->
+				<div class="reactive-main-container"  id="couchesSupplementaires-main-container">
+					<div id="panel-parameters-right"> <!-- right extra layers parameters panel -->
+
+						<div id="colorPicker-container" class="parameters-container">
+							<div id="colorPicker-icon" class="parameters-icon"><img src="assets/color-circle.svg"/></div>
+							<div><input type="text" class="colorPicker" id="colorPicker"/></div>
+							<div id="colorPicker-main"></div>
+						</div>
+
+						<div id="widthSlider-container" class="parameters-container">
+							<div id="widthSlider-icon" class="parameters-icon"><span></span></div>
+							<div id="widthSlider"></div>
+						</div>
+
+						<div id="transparencySlider-container" class="parameters-container">
+							<div id="transparencySlider-icon" class="parameters-icon"></div>
+							<div id="transparencySlider"></div>
+						</div>
+					</div>
+
+					<div id="extraLayers-container" class="open">
+						<div id="streeview-container">
+							<img id="streetview" src="assets/street-view.png"/>
+							<p>
+								Cliquez la carte pour ouvrir StreetView, et découvrir la ville d'aujourd'hui (<a href="https://support.google.com/maps/answer/3093484?co=GENIE.Platform%3DAndroid&hl=fr&oco=0" title="Lien &quot;Utiliser Street View dans Google Maps&quot; sur le site support.google.com" target="_blank">comment utiliser StreetView</a>).
+							</p>
+						</div>
+			    	<div>
+							<ul>
+								<h3 class="sub-group-layer-title">
+									Données actuelles <span>(en téléchargement sur <a href="https://opendata.apur.org/" title="Lien vers le site open data de l'Apur" target="_blank"> le site open data de l'Apur</a>)</span> :
+								</h3>
+								<li>
+									<input type="checkbox" name="toponymes" id="toponymes-cb" class="addData-cb"></input>
+									<label for="toponymes" id="toponymes-label">
+										<span>Toponymes</span></label>
+								</li>
+								<li id="intro-li">
+									<input type="checkbox" name="bati" id="bati-cb" class="addData-cb"></input>
+									<label for="bati" id="bati-label">
+										<span>Bâti actuel<div class="lds-ring"><div></div><div></div><div></div><div></div></div></span>
+									</label>
+									<button id="intro-btn" class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+								<li>
+									<input type="checkbox" name="parcelles" id="parcelles-cb" class="addData-cb"></input>
+									<label for="parcelles" id="parcelles-label">
+										<span>Limites parcellaires<div class="lds-ring"><div></div><div></div><div></div><div></div></div></span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+								<li>
+									<input type="checkbox" name="ilots" id="ilots-cb" class="addData-cb" ></input>
+									<label for="ilots" id="ilots-label">
+										<span>Limites d'îlots<div class="lds-ring"><div></div><div></div><div></div><div></div></div></span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+								<li>
+									<input type="checkbox" name="communesLimits" id="communesLimits-cb" class="addData-cb" checked></input>
+									<label for="communesLimits" id="communesLimits-label">
+										<span>Limites communales</span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+								<!--<li>
+									<input type="checkbox" name="plan2020" id="plan2020-cb" class="addData-cb"></input>
+									<label for="plan2020" id="plan2020-label">
+										<span>Plan - 2020</span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>-->
+								<li>
+									<input type="checkbox" name="ortho2015" id="ortho2015-cb" class="addData-cb"></input>
+									<label for="ortho2015" id="ortho2015-label">
+										<span>Orthophoto 2015</span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+								<h3 class="sub-group-layer-title">
+									Enceintes historiques de Paris :
+								</h3>
+								<li>
+									<input type="checkbox" name="thiers" id="thiers-cb" class="addData-cb"></input>
+									<label for="thiers" id="thiers-label">
+										<div class="css-circle"></div>
+										<span>Fortifications de Thiers (1841-1929)<div class="lds-ring"><div></div><div></div><div></div><div></div></div></span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+								<li>
+									<input type="checkbox" name="fermiersGx" id="fermiersGx-cb" class="addData-cb"></input>
+									<label for="fermiersGx" id="fermiersGx-label">
+										<div class="css-circle"></div>
+										<span>Fermiers Généraux (1784-1860)<div class="lds-ring"><div></div><div></div><div></div><div></div></div></span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+								<li>
+									<input type="checkbox" name="enceintesPrev" id="enceintesPrev-cb" class="addData-cb"></input>
+									<label for="enceintesPrev" id="enceintesPrev-label">
+										<div class="css-circle"></div>
+										<span>Enceintes antérieures au 18e siècle<div class="lds-ring"><div></div><div></div><div></div><div></div></div></span>
+									</label>
+									<button class="parameters-btn"><i class="fi-widget size-21"></i></button>
+								</li>
+							</ul>
+						</div>
+			    </div> <!-- end extra layers container -->
+				</div>
+			</div> <!-- end .side-container -->
+		</div> <!-- end #main-panel (contains all the map informations)-->
+
+		<div id="map" class="css-pointer"></div> <!-- map container, see map.js -->
+		<div id="compare-map"></div>
+
+		<div id="map-overlay">
+			<div id="second-pointer"></div>
+		</div>
+
+
+	</main>
+
+	<svg width="200" height="100">
+		<defs>
+			<pattern id="myPattern1" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1730_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern2" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1830_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern3" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1930_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern4" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1975_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern5" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster2019_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern6" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1785_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern7" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1900_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern8" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1810_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern9" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1774_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern10" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1921_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern11" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1842_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern12" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1855_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern13" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1895_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern14" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1817_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern15" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1990_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern16" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1934_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern17" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1747_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern18" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1831_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+			<pattern id="myPattern19" patternContentUnits = "objectBoundingBox"
+		           width="100%" height="100%">
+				<image href="https://www.apur.org/dataviz/cassini-grand-paris/assets/raster1985_bg.png"
+				preserveAspectRatio = "none" width = "1" height = "1" />
+		  </pattern>
+		</defs>
+	</svg>
+
+
+<script src="lib/pace-master/pace.min.js"></script> <!-- page load progress bar js file -->
+
+<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+<script src="lib/jquery-ui-1.12.1/jquery-ui.min.js"></script> <!-- included for the jquery-ui sliders (transparency and width sliders) -->
+<script type="text/javascript" src="lib/jQuery-ui-Slider-Pips-master/dist/jquery-ui-slider-pips.min.js"></script> <!-- js file for the sliders -->
+
+<script src="lib/pickr/pickr.min.js"></script> <!-- js for Pickr -->
+
+<script type="text/javascript" src="lib/d3js.js"></script> <!-- d3js library-->
+<script type="text/javascript" src="lib/momentjs.js"></script> <!-- used with d3js for the timeline -->
+<script type="text/javascript" src="lib/timeline.js"></script> <!-- main js file of the interactive horizontal timeline -->
+
+<script type="text/javascript" src="lib/proj4js/proj4js-compressed.js"></script> <!-- used for the streetview fonctionnality -->
+
+<script src="lib/intro/intro.js"></script>  <!-- js file of the introjs library (page tour guide) -->
+
+<script type="text/javascript" src="https://js.arcgis.com/4.13/"></script> <!-- main js file of the ArcGIS API for JavaScript 4.11 -->
+
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="main.js"></script> <!-- main js file for all that does not concern the map -->
+<script type="text/javascript" src="map.js"></script> <!-- map -->
+
+<script>
+function ieversion()
+{
+	var ua = window.navigator.userAgent;
+	if(ua.indexOf("Trident") > -1) {
+		$("#ie-fallback-container").addClass("css-visible");
+	}
+}
+ieversion();
+</script>
+
+
+</body>
+</html>
