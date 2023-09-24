@@ -1,7 +1,12 @@
 <?php
+$file_size = 10 * 1024 * 1024; //  10 MB 
+$targetDirectory = 'uploads/';
+
+if (!is_dir($targetDirectory)) {
+    mkdir($targetDirectory, 0755, true);
+}
 // File Upload
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
-    $targetDirectory = 'uploads/';
     $targetFile = $targetDirectory . basename($_FILES['file']['name']);
 
     // Check if file already exists
@@ -9,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
         echo 'Le fichier existe déjà.';
     } else {
         // Check file size (adjust to your needs)
-        if ($_FILES['file']['size'] > 10 * 1024 * 1024) {
+        if ($_FILES['file']['size'] > $file_size) {
             echo 'Le fichier est trop lourd.';
         } else {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
