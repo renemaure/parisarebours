@@ -1,0 +1,11 @@
+{	
+"_commentaire": "stucture fichier json version: 1.0.1 au 29/01/2022",
+	"chem": "systeme",
+  	"f_json" : "reperechoppe",
+  	"tabbord" : true,
+  	"fich_tabbord" : "tab_bord",
+  	"pas_bord" :"f01d1fd45f58e645bef1fd0075999080",
+  	"trt_head" : "Repere Echoppe 89",
+	"version" : "1.4.10",
+	"date" : "25/07/2022"
+}
