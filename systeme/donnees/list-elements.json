@@ -1,0 +1,77 @@
+{
+	"_commentaire": "section données pour footer fiche produit",
+
+	"trt_nav" : "titre_nav",
+	"nbr_txt_foot" : 12,
+	"ft0" : "Disponible au magasin",
+	"ft1" : "Disponible au magasin",
+	"ft2" : "Contient 2 DVD",
+	"ft3": "Encore neuf et emballé",
+	"ft4": "Film en Blu ray",
+	"ft5": "Vérifié au testeur",
+	"ft6" : "DVD rayé",
+	"ft7" : "boitier cassé",
+	"ft8": "sans documentation",
+	"ft9" : "Produit neuf & emballé",
+	"ft10": "Documents inclus dans la boite",
+	"ft11" : "Attention jeu pour 3DS",
+	"ft12" : "Pochette en mauvaise état",
+	
+	"dirimgprd" : "images_produits",
+	"dirimgfam" : "img_familles",
+	"trt_fam_bout" : "Familles de produits disponible sur le site",
+	
+	"_commentaire": "données dates dans le html",
+	"date_mini" : "2022-12-01",
+	"date_max" : "2024-01-31",
+
+
+	"_commentaire": "section données html",
+	"etat" : {
+				"cmpt" : 3,
+				"v1" : "pas commencer",
+				"v2" : "en cours",
+				"v3" : "terminer",
+				"d1" : "Pas commencer",
+				"d2" : "En cours",
+				"d3" : "Terminer"
+			 },
+	"avance" : {
+				"cmpt" : 9,
+				"v1" : "vide",
+				"v2" : "attente client",
+				"v3" : "pièce à commander",
+				"v4" : "pièce en commande",
+				"v5" : "client contacté",
+				"v6" : "a payer",
+				"v7" : "payé",
+				"v8" : "pas recupérer",
+				"v9" : "pour piéces",
+				"d1" : " ",
+				"d2" : "Attente client",
+				"d3" : "Pièce à commander",
+				"d4" : "Pièce en commande",
+				"d5" : "Client contacté",
+				"d6" : "A payer",
+				"d7" : "Payé",
+				"d8" : "Pas recupérer",
+				"d9" : "Pour piéces"
+		       },
+	"paiement" : {
+				"cmpt" : 6,
+				"v1" : "vide",
+				"v2" : "espece",
+				"v3" : "cheque",
+				"v4" : "carte blue",
+				"v5" : "virement",
+				"v6" : "la cagniole",
+				"d1" : " ",
+				"d2" : "Espèce",
+				"d3" : "Cheque",
+				"d4" : "carte bleu",
+				"d5" : "virement",
+				"d6" : "La cagniole"
+			 }
+
+		
+}

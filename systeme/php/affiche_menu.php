@@ -2,7 +2,11 @@
 
     /*
     fichier personalisé d'affichage du menu conçu par l'association collectif 11880.
-    version 1.0.6 au 16/01/2022.  fichier personalisé pour reperechoppe89.com.
+    version 1.1.1 au 24/09/2023.  
+    fichier personalisé au départ pour le site www.reperechoppe89.com.
+    dernieres modifs importante au 24/09/2023:
+    1) rajout d'une condition true/false avec la variable "panier" définit dans le json peronalisé
+    2) corection d'un bug si la variable "auro_menu est false cela provoquais une erreur, car on avait plus accées a la fonction genenu 
     */
 
            echo "<div id=\"logo-nav\">".$rn;
@@ -20,19 +24,25 @@
              include $dirlien.$liens["dirtxt"]."/".$affichtxt["trt_nav"].$lp;
             echo "</div>".$rn;
          }
-         
+         /* corection de bug 24/09/2023 2) lance la fonction gérération du menu */
+         if ($liens["auto_menu"]){ 
          echo "<ul id=\"menu\">".$rn;
-         Genenu($activ, $liens, $rn);      /* lance la fonction gérération du menu */
+         Genenu($activ, $liens, $rn);     
          echo "</ul>".$rn;
-
-         // rajout logo et lien panier gérer par le javascript
-         echo "<article id=\"logo_panier\">".$rn; 
-         echo "<a href=\"".$liens["indic14"]["lien_pg"] ."\">".$rn; 
-         echo "<img src=\"".$chem_princ."/".$liens["dirimg"]."/".$liens["img_panier"]."\"/>".$rn;
-         echo "<span id=\"chif_pan\"></span>";
-         echo "</a>";
-         echo "</article>".$rn;
-
+         }
+        /*  modif 1) 24/09/2023 rajout logo et lien panier gérer par le javascript */
+         if ($liens["panier"]) {
+          echo "<article id=\"logo_panier\">".$rn; 
+          echo "<a href=\"".$liens["indic14"]["lien_pg"] ."\">".$rn; 
+          echo "<img src=\"".$chem_princ."/".$liens["dirimg"]."/".$liens["img_panier"]."\"/>".$rn;
+          echo "<span id=\"chif_pan\"></span>";
+          echo "</a>";
+          echo "</article>".$rn;
+         }
+         /* nouveau 3) 24/09/2023 rajout de code pour une fonction de recherche pour le site www.parisarebours.org*/
+         if ($liens["recherche"]) {
+          echo" <input class=\"form-control\" type=\"text\" placeholder=\"".$liens["trt_rech"]."\" aria-label=\"Search\"";
+         }
         if ($liens["lien_social"]) {
         echo "<article id=\"zon_conect\">".$rn; 
         if ($liens["auto_fb"]) {
