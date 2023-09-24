@@ -1,11 +1,10 @@
 <?php 
-  session_start();// bug possible
+//   session_start();// bug possible
   $json = file_get_contents("donnees_site.json");
   $demar = json_decode($json, true);
   $chem_princ =$demar["chem"]; 
   $jsonsite = $demar["f_json"]; 
   include($chem_princ."/php/index_deb.php");
-  include_once ($chem_princ."/php/base_donnees.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">

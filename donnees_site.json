@@ -2,10 +2,11 @@
 "_commentaire": "stucture fichier json version: 1.0.1 au 29/01/2022",
 	"chem": "systeme",
   	"f_json" : "parisarebours",
-  	"tabbord" : false,
+  	"tabbord" : true,
   	"fich_tabbord" : "tab_bord_parisarebours",
-  	"pas_bord" :"",
+  	"pas_bord" :"1a992c6b675055112c57130fa9579fef",
   	"trt_head" : "Paris A Rebours",
 	"version" : "0.0.2",
-	"date" : "24/09/2023"
+	"date" : "24/09/2023",
+	"code entree" : "sisyphe_2023"
 }
