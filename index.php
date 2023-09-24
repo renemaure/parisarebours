@@ -6,9 +6,6 @@
   $jsonsite = $demar["f_json"]; 
   include($chem_princ."/php/index_deb.php");
   include_once ($chem_princ."/php/base_donnees.php");
-  $result_site = $laison->query('SELECT * FROM mise_jour_site');
-  $misjoursite = $result_site->fetch(PDO::FETCH_ASSOC);
-  // $laison=NULL;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
