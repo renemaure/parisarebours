@@ -1,0 +1,43 @@
+/* acces securisé */
+
+#form-bord{
+    background-color: #a78abe;
+    border: 1px solid #201962;
+    height: 380px;
+    width: 780px;
+    text-align: center;
+    font-family: verdana;
+    color: #ffffff;
+    margin: 5rem auto;
+}
+#form-bord h4{
+    font-weight: bolder;
+    padding-top: 3em;
+    color: #201962;
+    font-family: arial black;
+}
+#form-bord section{
+    margin: 0 auto;
+    margin-top: 4rem;
+    width: 50%;
+    font-size: 0.8rem;
+}
+#form-bord input[type="password"]{
+    width: 200px;
+    font-size: 1.2rem;
+}
+
+#form-bord input[type="submit"]:hover{
+    background-color: #66CC33;
+    color:#ffffff;
+}  
+#form-bord input[type="reset"]:hover{
+    background-color: var(--blanc);
+    color:#ffffff;
+}
+#form-bord article {
+    font-style: italic;
+    padding-top: 2em;
+    margin: 0 auto;
+    font-size: 0.9rem;
+}
