@@ -1,7 +1,7 @@
 <?php
-$file_size = 10 * 1024 * 1024; //  10 MB 
+$file_size = 10 * 1024 * 1024; //  10 MB
 $targetDirectory = 'uploads/';
-
+$fileStatus = '';
 if (!is_dir($targetDirectory)) {
     mkdir($targetDirectory, 0755, true);
 }
@@ -9,18 +9,18 @@ if (!is_dir($targetDirectory)) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $targetFile = $targetDirectory . basename($_FILES['file']['name']);
 
-    // Check if file already exists
+    // cheque si le fichier existe déjà
     if (file_exists($targetFile)) {
-        echo 'Le fichier existe déjà.';
+        $fileStatus = '<div class="error-message">Le fichier existe déjà.</div>';
     } else {
-        // Check file size (adjust to your needs)
+        // cheque si le fichier est trop lourd (10 Mo)
         if ($_FILES['file']['size'] > $file_size) {
-            echo 'Le fichier est trop lourd.';
+            $fileStatus = '<div class="error-message">Le fichier est trop lourd. 10Mo max</div>';
         } else {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
-                echo 'Fichier téléchargé avec succès.';
+                $fileStatus = 'Fichier téléchargé avec succès.';
             } else {
-                echo 'Erreur lors du téléchargement du fichier.';
+                $fileStatus = '<div class="error-message">Erreur lors du téléchargement du fichier.</div>';
             }
         }
     }
@@ -47,28 +47,31 @@ if (isset($_GET['file'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload and Download</title>
+    <title>maintenance</title>
+    <link rel="stylesheet" href="../systeme/css/parisarebours.css">
 </head>
 <body>
     <!-- File Upload Form -->
     <form action="" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" required>
+        <label for="file" id="drop-container">
+            <span id="drop-title">Déposez les fichiers ici</span>or
+            <input type="file" id="file" name="file" required>
+            <?php echo $fileStatus;?>
+        </label>
         <input type="submit" value="Upload File">
     </form>
-
-    <!-- File Download Links -->
-    <h2>Files Available for Download:</h2>
+    
+    <h2>Fichiers disponibles en téléchargement:</h2>
     <ul>
         <?php
         $files = glob('uploads/*');
         foreach ($files as $file) {
-            if(filesize($file) < 1024 * 1024){
+            if (filesize($file) < 1024 * 1024) {
                 $size = round(filesize($file) / 1024, 2) . ' KB';
-            }else{
+            } else {
                 $size = round(filesize($file) / (1024 * 1024), 2) . ' MB';
             }
-            echo '<li><a href="test_serveur.php?file=' . basename($file) . '">' . basename($file) . ' </a> ' . $size. '</li>';
-
+            echo '<li><a href="test_serveur.php?file='. basename($file) .'">' .basename($file) .' </a> ' .$size .'</li>';
         }
         ?>
     </ul>
