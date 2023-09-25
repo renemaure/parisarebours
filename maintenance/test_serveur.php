@@ -62,7 +62,13 @@ if (isset($_GET['file'])) {
         <?php
         $files = glob('uploads/*');
         foreach ($files as $file) {
-            echo '<li><a href="?file=' . urlencode(basename($file)) . '">' . basename($file) . '</a></li>';
+            if(filesize($file) < 1024 * 1024){
+                $size = round(filesize($file) / 1024, 2) . ' KB';
+            }else{
+                $size = round(filesize($file) / (1024 * 1024), 2) . ' MB';
+            }
+            echo '<li><a href="test_serveur.php?file=' . basename($file) . '">' . basename($file) . ' </a> ' . $size. '</li>';
+
         }
         ?>
     </ul>
