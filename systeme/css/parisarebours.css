@@ -289,10 +289,18 @@ font-weight: bold;
 text-align: center;
 transition: color .2s ease-in-out;
 }
-.error-message {
-color: red;
-font-weight: bold;
+.drag-active {
+  background: #eee;
+  border-color: #111;
 }
+
+.drag-active #drop-title {
+  color: #222;
+}
+.error-message {
+  color: red;
+  font-weight: bold;
+  }
 /* fin test_serveur */
 /* media querry */
 @media (min-width: 992px){

@@ -54,7 +54,7 @@ if (isset($_GET['file'])) {
     <!-- File Upload Form -->
     <form action="" method="post" enctype="multipart/form-data">
         <label for="file" id="drop-container">
-            <span id="drop-title">Déposez les fichiers ici</span>or
+            <span id="drop-title">Déposez les fichiers ici</span>ou
             <input type="file" id="file" name="file" required>
             <?php echo $fileStatus;?>
         </label>
@@ -75,5 +75,6 @@ if (isset($_GET['file'])) {
         }
         ?>
     </ul>
+    <script src="../systeme/js/drag-drop.js"></script>
 </body>
 </html>
