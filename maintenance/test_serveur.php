@@ -11,16 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
 
     // cheque si le fichier existe déjà
     if (file_exists($targetFile)) {
-        $fileStatus = '<div class="error-message">Le fichier existe déjà.</div>';
+        $fileStatus = "Le fichier existe déjà.";
     } else {
         // cheque si le fichier est trop lourd (10 Mo)
         if ($_FILES['file']['size'] > $file_size) {
-            $fileStatus = '<div class="error-message">Le fichier est trop lourd. 10Mo max</div>';
+            $fileStatus = 'Le fichier est trop lourd. 10Mo max';
         } else {
             if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
                 $fileStatus = 'Fichier téléchargé avec succès.';
+                $uploadDateTime = time();
             } else {
-                $fileStatus = '<div class="error-message">Erreur lors du téléchargement du fichier.</div>';
+                $fileStatus = 'Erreur lors du téléchargement du fichier.';
             }
         }
     }
@@ -35,7 +36,7 @@ if (isset($_GET['file'])) {
         header('Content-Disposition: attachment; filename="' . basename($file) . '"');
         header('Content-Length: ' . filesize($file));
         readfile($file);
-        exit;
+        exit();
     } else {
         echo 'File not found.';
     }
@@ -58,11 +59,11 @@ if (isset($_GET['file'])) {
             <input type="file" id="file" name="file" required>
             <?php echo $fileStatus;?>
         </label>
-        <input type="submit" value="Upload File">
-    </form>
+        <button type="submit" id="upload-button">Upload File</button>
+     </form> 
     
+    <ul id="file-container">
     <h2>Fichiers disponibles en téléchargement:</h2>
-    <ul>
         <?php
         $files = glob('uploads/*');
         foreach ($files as $file) {
@@ -71,7 +72,9 @@ if (isset($_GET['file'])) {
             } else {
                 $size = round(filesize($file) / (1024 * 1024), 2) . ' MB';
             }
-            echo '<li><a href="test_serveur.php?file='. basename($file) .'">' .basename($file) .' </a> ' .$size .'</li>';
+        $uploadTimestamp   = filemtime($file);
+        $uploadDateAndTime = date("d/m/Y H:i:s", $uploadTimestamp);
+        echo '<li><a href="test_serveur.php?file=' . basename($file) . '">' . basename($file) . "</a> <span>" . $uploadDateAndTime . " </span>" . "<span>" . $size . "</span>" . "</li>";
         }
         ?>
     </ul>

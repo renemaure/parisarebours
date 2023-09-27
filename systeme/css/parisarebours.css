@@ -297,10 +297,64 @@ transition: color .2s ease-in-out;
 .drag-active #drop-title {
   color: #222;
 }
-.error-message {
-  color: red;
-  font-weight: bold;
-  }
+
+#upload-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 10px; /* Add some space between the input and the button */
+}
+
+#upload-button:hover {
+    background-color: #0056b3;
+}
+
+#file-container {
+  list-style-type: none;
+  padding: 0;
+  width: 90vw;
+  margin: 0 auto;
+}
+
+#file-container li {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+#file-container li:hover {
+  background-color: #e5e5e5;
+}
+
+#file-container li a {
+  text-decoration: none;
+  color:black;
+  font-weight:bold;
+  letter-spacing: .5px;
+  width: 50%;
+}
+
+#file-container li a:hover {
+  color:#007BFF;
+  text-decoration: underline;
+}
+
+#file-container span {
+  font-size: 0.9em;
+  color: #555;
+}
+  
 /* fin test_serveur */
 /* media querry */
 @media (min-width: 992px){
