@@ -3,6 +3,10 @@ $file_size = 10 * 1024 * 1024; //  10 MB
 $targetDirectory = 'uploads/';
 $fileStatus = '';
 $error_state = '';
+if(!file_exists($targetDirectory)){
+    mkdir($targetDirectory , 0777 , true);
+}
+
 if(isset($_POST['folder_name'])) {
     $uploadsDir = 'uploads/';
     $newFolderName = $_POST['folder_name'];
@@ -16,30 +20,33 @@ if(isset($_POST['folder_name'])) {
     }
 }
 // File Upload
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
-    $targetFile = $targetDirectory . basename($_FILES['file']['name']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files'])) {
+    $fileStatus = array(); // une array qui contient les messages d'erreur
+    
+    foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
+        $targetFile = $targetDirectory . basename($_FILES['files']['name'][$key]);
 
-    // cheque si le fichier existe déjà
-    if (file_exists($targetFile)) {
-        $fileStatus = "Le fichier existe déjà.";
-    } else {
-        // cheque si le fichier est trop lourd (10 Mo)
-        if ($_FILES['file']['size'] > $file_size) {
-            $fileStatus = 'Le fichier est trop lourd. 10Mo max';
+        // cheque si le fichier existe déjà
+        if (file_exists($targetFile)) {
+            $fileStatus[] = "Le fichier " . $_FILES['files']['name'][$key] . " existe déjà.";
         } else {
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
-                $fileStatus = 'Fichier téléchargé avec succès.';
-                $uploadDateTime = time();
+            // cheque si le fichier est trop lourd 10Mo max
+            if ($_FILES['files']['size'][$key] > $file_size) {
+                $fileStatus[] = "Le fichier " . $_FILES['files']['name'][$key] . " est trop lourd. 10Mo max";
             } else {
-                $fileStatus = 'Erreur lors du téléchargement du fichier.';
+                if (move_uploaded_file($_FILES['files']['tmp_name'][$key], $targetFile)) {
+                    $fileStatus[] = "succès";
+                } else {
+                    $fileStatus[] = "Erreur lors du téléchargement du fichier " . $_FILES['files']['name'][$key];
+                }
             }
         }
     }
 }
+
 // File Download
 if (isset($_GET['file'])) {
     $file = 'uploads/' . basename($_GET['file']);
-
     if (file_exists($file)) {
         // Set appropriate headers for the file download
         header('Content-Type: application/octet-stream');
@@ -74,11 +81,20 @@ if (isset($_GET['file'])) {
     <form action="" method="post" enctype="multipart/form-data">
         <label for="file" id="drop-container">
             <span id="drop-title">Déposez les fichiers ici</span>ou
-            <input type="file" id="file" name="file" required>
-            <?php echo $fileStatus;?>
+            <input type="file" id="file" name="files[]" required multiple>
+            <?php 
+            if(!empty($fileStatus)){
+                foreach($fileStatus as $status){
+                    if($status != 'succès'){
+                        echo '<span class="success">' . $status . '</span>';
+                    }
+                }
+            }
+            ?>
         </label>
-        <button type="submit" id="upload-button">Upload File</button>
-     </form> 
+        <button type="submit" id="upload-button">Upload Files</button>
+    </form>
+
     
     <ul id="file-container">
     <h2>Fichiers disponibles en téléchargement:</h2>
@@ -97,7 +113,7 @@ if (isset($_GET['file'])) {
             // si le fichier est un dossier, il affiche le nom du dossier et la date de création si non il affiche le nom du fichier, la date de création et la taille du fichier en Ko ou Mo
             if(is_dir($file)) {
                 $size = '';
-                echo '<li><a href="#">' . basename($file) . "</a> <span>". $uploadDateAndTime." </span> <span> Fichier</span> </li>";
+                echo '<li><a href="#">' . basename($file) . "</a> <span>". $uploadDateAndTime." </span> <span>Dossier</span> </li>";
             }else{
                 echo '<li><a href="test_serveur.php?file=' . basename($file) . '">' . basename($file) . "</a> <span>" . $uploadDateAndTime . " </span>" . "<span>" . $size . "</span>" . "</li>";
             }
