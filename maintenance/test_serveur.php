@@ -6,7 +6,6 @@ $error_state = '';
 if(!file_exists($targetDirectory)){
     mkdir($targetDirectory , 0777 , true);
 }
-
 if(isset($_POST['folder_name'])) {
     $uploadsDir = 'uploads/';
     $newFolderName = $_POST['folder_name'];
@@ -19,7 +18,14 @@ if(isset($_POST['folder_name'])) {
         echo "Folder already exists at " . $newFolderPath;
     }
 }
-// File Upload
+if(isset($_POST['dossier_choisi'])){
+    $dossier_choisi = $_POST['dossier_choisi'];
+    $targetDirectory = 'uploads/' . $dossier_choisi . '/';
+       if(!file_exists($targetDirectory)){
+            mkdir($targetDirectory , 0777 , true);
+        }
+    echo $targetDirectory;
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files'])) {
     $fileStatus = array(); // une array qui contient les messages d'erreur
     
@@ -34,8 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files'])) {
             if ($_FILES['files']['size'][$key] > $file_size) {
                 $fileStatus[] = "Le fichier " . $_FILES['files']['name'][$key] . " est trop lourd. 10Mo max";
             } else {
-                if (move_uploaded_file($_FILES['files']['tmp_name'][$key], $targetFile)) {
-                    $fileStatus[] = "succès";
+                if (move_uploaded_file($_FILES['files']['tmp_name'][$key], $targetDirectory . $_FILES['files']['name'][$key])) {
+                    $fileStatus[] = "Le fichier " . basename($targetDirectory) . " a été téléchargé avec succès.";
+                    // $fileStatus[] = "succès";
                 } else {
                     $fileStatus[] = "Erreur lors du téléchargement du fichier " . $_FILES['files']['name'][$key];
                 }
@@ -43,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files'])) {
         }
     }
 }
+
 
 // File Download
 if (isset($_GET['file'])) {
@@ -112,8 +120,7 @@ if (isset($_GET['file'])) {
             $uploadDateAndTime = date("d/m/Y H:i:s", $uploadTimestamp);
             // si le fichier est un dossier, il affiche le nom du dossier et la date de création si non il affiche le nom du fichier, la date de création et la taille du fichier en Ko ou Mo
             if(is_dir($file)) {
-                $size = '';
-                echo '<li><a href="#">' . basename($file) . "</a> <span>". $uploadDateAndTime." </span> <span>Dossier</span> </li>";
+                echo '<li class="folder" data-folder="'. basename($file) . '"><a>' . basename($file) . "</a> <span>". $uploadDateAndTime." </span> <span>Dossier</span> </li>";
             }else{
                 echo '<li><a href="test_serveur.php?file=' . basename($file) . '">' . basename($file) . "</a> <span>" . $uploadDateAndTime . " </span>" . "<span>" . $size . "</span>" . "</li>";
             }

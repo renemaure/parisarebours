@@ -4,6 +4,7 @@ const popupContainer = document.getElementById("popup_container");
 const folderInput = document.getElementById("folder_name");
 const folderButton = document.getElementById("folder_button");
 const close = document.getElementById("close");
+const folder = document.querySelectorAll(".folder");
 close.addEventListener("click", function() {
     popupContainer.style.display = 'none';
 });
@@ -14,6 +15,20 @@ createFolder.addEventListener("click", function() {
         popupContainer.style.display = 'none';
     }
 });
+for(let i = 0; i < folder.length; i++){
+    folder[i].addEventListener("click", function() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '../maintenance/test_serveur.php');
+        const formData = new FormData();
+        formData.append('dossier_choisi', folder[i].dataset.folder);
+        xhr.send(formData);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                console.log(xhr.responseText);
+            }   
+        }
+    });
+}
 // create folder button
 folderButton.addEventListener("click", function() {
     if (folderInput.value !== '') {
