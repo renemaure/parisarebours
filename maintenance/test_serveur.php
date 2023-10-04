@@ -107,7 +107,6 @@ if (isset($_GET['file'])) {
     
     <ul id="file-container">
     <h2>Fichiers disponibles en téléchargement:</h2>
-    <div class="folder-list">
         <?php
         $files = glob('uploads/*');
         foreach ($files as $file) {
@@ -128,7 +127,6 @@ if (isset($_GET['file'])) {
             }
         }
         ?>
-        </div>
     </ul>
      <div class="folder-list">
         <button class="folder-title"></button>
