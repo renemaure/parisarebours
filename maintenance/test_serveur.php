@@ -128,10 +128,18 @@ if (isset($_GET['file'])) {
         ?>
     </ul>
     
-    <p>Text <span class="tooltip">Explanation<span class="tooltiptext">Text explaining the text</span></span></p>
-
+    <p>
+    This is a test of another with apple,
+</p>
+<p>
+    This is a test of another with apple,
+</p> 
+<p>
+    This is a <span class="tooltip">test <span class="tooltiptext">this is a test hope it works</span></span> of <span class="tooltip">another <span class="tooltiptext">this is another test hope it works</span></span> with apple,
+</p>
     <button id="popup_button">cree une dossier</button>
     <script src="../systeme/js/drag-drop.js"></script>
+    <script src="../systeme/js/tooltip.js"></script>
     <script src="../systeme/js/maintenance.js"></script>
 </body>
 </html>
