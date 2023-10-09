@@ -1,3 +1,11 @@
+/* 
+  module tooltip version 1.0.5 crée le  01/10/2023 par Fateh [manque nom]
+  pour l'association collectif 1180 
+  affiche une bulle d'eplication sur un mot technique et renvoi sur une popup lexique
+  pour plus d'information sur ce mot
+ en phase alpha (le code suivant riste de me pas toujur fonctionner)
+*/
+
 const obj = {
   test: ["test", "this is a test hope it works", "https://www.google.com"],
   another: [
@@ -51,29 +59,22 @@ const obj = {
 };
 const tooltip = document.querySelectorAll(".tooltip");
 const paragraphs = document.querySelectorAll("p");
-function tooltipTextReplacement(obj, paragraphs) {
-  const wordsSet = new Set(Object.keys(obj));
 
+function tooltipTextReplacement(obj, paragraphs) //ou est l'utilisation de cette fonction je la voi pas
+{
+  const wordsSet = new Set(Object.skey(obj)); // manque explication
   const tooltipsMap = new Map();
   for (const word of Object.keys(obj)) {
-    tooltipsMap.set(
-      word,
-      `<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]}</span></span>`
-    );
-  }
-
+    tooltipsMap.set(word,`<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]}</span></span>`);
+  }// extraire le code html dans un json pourquoi 2 span imbriqué pas possible normalemnt en inline
   for (const paragraph of paragraphs) {
     const words = paragraph.textContent.split(" ");
     const newContent = [];
 
     for (const word of words) {
-      if (wordsSet.has(word)) {
-        newContent.push(tooltipsMap.get(word));
-      } else {
-        newContent.push(word);
-      }
+      if (wordsSet.has(word))  newContent.push(tooltipsMap.get(word));
+      else newContent.push(word);
     }
-
     paragraph.innerHTML = newContent.join(" ");
   }
 }
@@ -83,21 +84,16 @@ function anotherWayToDoTheToolTip(obj) {
   const wordsSet = new Set(Object.keys(obj));
   const tooltipsMap = new Map();
   for (const word of Object.keys(obj)) {
-    tooltipsMap.set(
-      word,
-      `<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]} <img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img></span></span>`
-    );
+    tooltipsMap.set(word, `<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]} <img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img></span></span>`); 
+    // extraire le code html dans un json
   }
   const paragraphs = document.querySelectorAll(`.tooltip`);
   for (const paragraph of paragraphs) {
     const words = paragraph.textContent.split(" ");
     const newContent = [];
     for (const word of words) {
-      if (wordsSet.has(word)) {
-        newContent.push(tooltipsMap.get(word));
-      } else {
-        newContent.push(word);
-      }
+      if (wordsSet.has(word)) newContent.push(tooltipsMap.get(word));
+      else newContent.push(word);
     }
     paragraph.innerHTML = newContent.join(" ");
   }
