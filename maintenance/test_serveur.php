@@ -135,7 +135,7 @@ if (isset($_GET['file'])) {
     This is a test of another with apple,
 </p> 
 <p>
-    This is a <span class="tooltip">test <span class="tooltiptext">this is a test hope it works</span></span> of <span class="tooltip">another <span class="tooltiptext">this is another test hope it works</span></span> with apple,
+    This is a <span class="tooltip">test</span> of <span class="tooltip">another</span> with apple,
 </p>
     <button id="popup_button">cree une dossier</button>
     <script src="../systeme/js/drag-drop.js"></script>
