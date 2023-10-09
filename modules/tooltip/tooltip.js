@@ -84,7 +84,7 @@ function anotherWayToDoTheToolTip(obj) {
   const wordsSet = new Set(Object.keys(obj));
   const tooltipsMap = new Map();
   for (const word of Object.keys(obj)) {
-    tooltipsMap.set(word, `<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]} <img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img></span></span>`); 
+    tooltipsMap.set(word, `<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]} <img class="exit_tooltip" src="icon/x.svg"></span></span>`); 
     // extraire le code html dans un json
   }
   const paragraphs = document.querySelectorAll(`.tooltip`);

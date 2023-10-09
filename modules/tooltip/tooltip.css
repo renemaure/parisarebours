@@ -7,7 +7,7 @@
   text-underline-offset: 3px;
 }
 
-.tooltip .tooltiptext {
+.tooltiptext {
   visibility: hidden;
   width: 200px;
   background-color: #007BFF;
