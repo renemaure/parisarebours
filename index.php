@@ -12,18 +12,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="aplication parisarebours.org">
-    <meta name="author" content="">
+    <meta name="author" content="association Collectif 11880, club CMIT">
     <meta name="generator" content="Collectif 11880">
     <title>Paris à rebours</title>
     <!--que pour test a virer ensuite -->
     <!-- <link href="systeme/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- fin -->
     <link href="systeme/css/parisarebours.css" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-        <?php  include $chem_princ."/php/affiche_menu.php"; ?>
-    </header>
+  <?php 
+ /*  modif au 08/10/2023 rajout d'un fichier installation des blogs */
+    include $chem_princ."/php/instal_module.php";
+/*               
+          if ($aside) {
+              echo"<main id=\"main\">".$rn;
+              echo"<aside id=\"aside\">".$rn; 
+              include $affasi; 
+              echo "</aside>".$rn;
+          }
+           else{
+              echo"<main id=\"main_total\">".$rn; 
+           }
+          include $affpg; 
+          $laison=NULL; */
+      ?>
     <aside id="menu-aside">
       <ul>
           <li>
@@ -38,39 +49,6 @@
             <a href="#">Reports</a>
           </li>
         </ul>
-
-        <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li>
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul> -->
       </aside>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
