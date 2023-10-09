@@ -44,21 +44,22 @@
          }
          /* nouveau 3) 24/09/2023 rajout de code pour une fonction de recherche pour le site www.parisarebours.org*/
          if ($liens["recherche"]) {
-          echo" <input class=\"form-control\" type=\"text\" placeholder=\"".$liens["trt_rech"]."\" aria-label=\"Search\"";
+          echo" <input class=\"form-control\" type=\"text\" placeholder=\"".$liens["trt_rech"]."\" aria-label=\"Search\">";
          }
         if ($liens["lien_social"]) {
-        echo "<article id=\"zon_conect\">".$rn; 
-        if ($liens["auto_fb"]) {
+          echo "<article id=\"zon_conect\">".$rn; 
+          if ($liens["auto_fb"]) {
             echo "<a href=\"".$liens["lien_fb"]."\" target=\"_blank\"><i class=\"bi bi-facebook\"></i></a>".$rn;
-        }
-        if ($liens["auto_insta"]) {
+          }
+          if ($liens["auto_insta"]) {
             echo "<a href=\"".$liens["lien_insta"]."\" target=\"_blank\"><i class=\"bi bi-instagram\"></i></a>".$rn; 
-        }
-         if ($liens["auto_youtube"]) {
+          }
+          if ($liens["auto_youtube"]) {
             echo "<a href=\"".$liens["lien_youtube"]."\" target=\"_blank\"><i class=\"bi bi-youtube\"></i></a>".$rn; 
-        }
-    echo "</article>".$rn;
-    if ($liens["quote_html"]) echo "</header>".$rn;
-    else echo "</main>".$rn;
-  }  
+          }
+          echo "</article>".$rn;
+        } 
+        if ($liens["quote_html"]) echo "</header>".$rn;
+        else echo "</nav>".$rn; 
+
 ?>

@@ -10,9 +10,9 @@
 	"dirlien" : "pages",
 	"dirimg" : "img",
 	"dirtxt" : "elements",
-	"index" : "accueil",
-	"aside" : false,
-	"fich_aside" : "",
+	"index" : "vue_principale",
+	"aside" : true,
+	"fich_aside" : "bloc_option_aside",
 	"dirimage" : "images",
 	"trt_head" : "Paris A Rebours",
 
@@ -28,7 +28,7 @@
 	"trt_rech" : "Search",
 
 "_commentaire": "données à renseigner pour le lien social",
-	"lien_social" : true,
+	"lien_social" : false,
 	"auto_fb" : true,
 	"lien_fb" : "https://www.facebook.com/reperechoppe89",
 	"auto_insta" : false,

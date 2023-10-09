@@ -15,53 +15,22 @@
     <meta name="author" content="association Collectif 11880, club CMIT">
     <meta name="generator" content="Collectif 11880">
     <title>Paris à rebours</title>
-    <!--que pour test a virer ensuite -->
-    <!-- <link href="systeme/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- fin -->
     <link href="systeme/css/parisarebours.css" rel="stylesheet">
   <?php 
  /*  modif au 08/10/2023 rajout d'un fichier installation des blogs */
     include $chem_princ."/php/instal_module.php";
-/*               
-          if ($aside) {
-              echo"<main id=\"main\">".$rn;
-              echo"<aside id=\"aside\">".$rn; 
-              include $affasi; 
-              echo "</aside>".$rn;
-          }
-           else{
-              echo"<main id=\"main_total\">".$rn; 
-           }
-          include $affpg; 
-          $laison=NULL; */
-      ?>
-    <aside id="menu-aside">
-      <ul>
-          <li>
-            <a href="#">Dashboard</a>
-          </li><li>
-            <a href="#">Orders</a>
-          </li><li>
-            <a href="#">Products</a>
-          </li><li>
-            <a href="#">Customers</a>
-          </li><li>
-            <a href="#">Reports</a>
-          </li>
-        </ul>
-      </aside>
-
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div id="btn_zoom">
-            <button type="button" onclick="agrandir()">Zoom +</button>
-            <button type="button" onclick="diminuer()">Zoom -</button>
-          </div>
-      <!-- zone d'affichage de la map -->
-      <!-- <canvas class="my-4 w-100" id="map_paris" width="900" height="410"> -->
-      <section id="map_paris" width="900" height="410">
-        <!-- <img src="images/plans/test_plan-paris.png" id="plan1"> -->
-      </section>
-    </main>
-  <script src="systeme/js/parisarebours.js"></script>
+    /* modification au 09/10/2023 rajout d'un container pour installer une grille*/
+    echo "<div id=\"container\">".$rn;
+    if ($aside) {
+      echo"<aside id=\"aside\">".$rn; 
+      include $affasi; 
+      echo "</aside>".$rn;
+      echo"<main id=\"main\">".$rn;
+    } else echo"<main id=\"main_total\">".$rn; 
+    include $affpg; 
+    echo "</main>".$rn."</div>".$rn;
+    $laison=NULL;
+ ?>
+ <script src="systeme/js/parisarebours.js"></script>
   </body>
 </html>
