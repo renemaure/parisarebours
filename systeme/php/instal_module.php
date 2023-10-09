@@ -12,10 +12,11 @@
 
 /* condition pour lancer le module blog ou non modif du 01/10/2023 */
 if ($liens["mod_blog"]) include("modules/blog/installblog.php");
+
 echo $rn."</head>".$rn."<body>".$rn;
 
 /* modif module header 09/10/2023 rajout d'une condition si le module est utilisé */
 
-if ($liens["auto_menu"]) include $chem_princ."/php/affiche_menu.php";
+if ($liens["auto_menu"]) include "modules/blog/affiche_menu.php";
 
 ?>
