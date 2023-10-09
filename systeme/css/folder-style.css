@@ -1,0 +1,56 @@
+.folder-list {
+  margin: 30px 5%;
+  padding: 5%;
+}
+
+.folder-list ul {
+  margin-left: 10px;
+  padding-left: 20px;
+  border-left: 1px dashed #555;
+}
+.folder-list li {
+  list-style: none;
+  color: #333;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: normal;
+}
+.folder-list button {
+  cursor: pointer;
+  border: none;
+}
+.folder-list li:before,
+.folder-list button:before {
+  margin-right: 10px;
+  content: '';
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-image: url(../img/icon/file.svg);
+}
+.folder-list button:before {
+  content:'';
+  background-repeat: transparent;
+  background-image: url('../img/icon/folder.svg');
+}
+.parent-of-kids {
+  height: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+.parent-of-kids.active-parent {
+  height: 116px;
+}
+@media (min-width: 544px) {
+  .folder-list {
+    margin: 40px auto;
+    max-width: 440px;
+    padding: 40px;
+  }
+}
