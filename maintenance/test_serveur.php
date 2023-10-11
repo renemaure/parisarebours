@@ -137,6 +137,10 @@ if (isset($_GET['file'])) {
 <p>
     This is a <span class="tooltip">test</span> of <span class="tooltip">another</span> with apple,
 </p>
+<!-- tooltip poupup -->
+<div id="tooltip-popup">
+    
+</div>
     <button id="popup_button">cree une dossier</button>
     <script src="../systeme/js/drag-drop.js"></script>
     <script src="../systeme/js/tooltip.js"></script>

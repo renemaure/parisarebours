@@ -18,14 +18,17 @@
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  text-align: center;
   left: 50%;
   margin-left: -100px;
   opacity: 0;
   transition: opacity 0.3s;
-  /* clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 64% 100%, 50% 75%, 0% 75%); */
-
+  font-style: normal;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
+
 .tooltiptext::after{
   content: '';
 	position: absolute;
@@ -41,16 +44,24 @@
 }
 .exit_tooltip{
   display: inline-flex;
-  height: 24px;
-  width: 24px;  
+  height: 26px;
+  width: 26px;  
   position:absolute;
   top:0%;
   right:0%;
-  /* transform: translate(-50%,-50%); */
+  /* inverser la couleur fill ne fonctionne pas  :(  */ 
+  filter: invert(1);
+}
+.learn_more{
+  display:inline-flex;
+  height:20px;
+  width:20px;
+  filter:invert(1);
+  padding:0;
 }
 .tooltip:hover .tooltiptext {
-  /* visibility: visible;  handled in javascript from now on */
-  /* opacity: 1; */
+  visibility: visible;  
+  opacity: 1;
 }
 p{
   margin-left:150px;

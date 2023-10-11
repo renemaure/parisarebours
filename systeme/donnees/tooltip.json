@@ -1,0 +1,102 @@
+{
+  "test": [
+    "test",
+    "this is a test hope it works",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "another": [
+    "another test",
+    "this is another test hope it works",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "apple": [
+    "apple",
+    "A delicious fruit",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "banana": [
+    "banana",
+    "A yellow fruit",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "car": [
+    "car",
+    "A mode of transportation",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "dog": [
+    "dog",
+    "A loyal companion",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "cat": [
+    "cat",
+    "A furry friend",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "book": [
+    "book",
+    "A source of knowledge",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "computer": [
+    "computer",
+    "A technological marvel",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "code": [
+    "code",
+    "A set of instructions for computers",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "music": [
+    "music",
+    "An auditory delight",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "coffee": [
+    "coffee",
+    "A caffeinated beverage",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "keyboard": [
+    "keyboard",
+    "An input device for computers",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "guitar": [
+    "guitar",
+    "A musical instrument",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "beach": [
+    "beach",
+    "A sandy shoreline",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "mountain": [
+    "mountain",
+    "A towering landform",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "ocean": [
+    "ocean",
+    "A vast body of water",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "sun": [
+    "sun",
+    "A bright celestial object",
+    "this is a large text hope it will work but yeah it's a very big text so I have to write anything here so from now on it won't make anything so if you're still reading this you're just wasting your time but yeah if you're still reading, good man"
+  ],
+  "planet": [
+    "planet",
+    "Celestial bodies in space",
+    "this is a large text hope it will work but yeah it's a very big text so i have to write anything here so from now on it won't make anything so if you still reading this your just wasting your time but yeah if you still reading good man"
+  ],
+  "star": [
+    "star",
+    "Distant luminous objects",
+    "this is a large text hope it will work but yeah it's a very big text so i have to write anything here so from now on it won't make anything so if you still reading this your just wasting your time but yeah if you still reading good man"
+  ]
+}

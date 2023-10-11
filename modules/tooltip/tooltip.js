@@ -1,118 +1,246 @@
-const obj = {
-  test: ["test", "this is a test hope it works", "https://www.google.com"],
-  another: [
-    "another test",
-    "this is another test hope it works",
-    "https://www.google.com",
-  ],
-  apple: ["apple", "A delicious fruit", "https://www.example.com/apple"],
-  banana: ["banana", "A yellow fruit", "https://www.example.com/banana"],
-  car: ["car", "A mode of transportation", "https://www.example.com/car"],
-  dog: ["dog", "A loyal companion", "https://www.example.com/dog"],
-  cat: ["cat", "A furry friend", "https://www.example.com/cat"],
-  book: ["book", "A source of knowledge", "https://www.example.com/book"],
-  computer: [
-    "computer",
-    "A technological marvel",
-    "https://www.example.com/computer",
-  ],
-  code: [
-    "code",
-    "A set of instructions for computers",
-    "https://www.example.com/code",
-  ],
-  music: ["music", "An auditory delight", "https://www.example.com/music"],
-  coffee: [
-    "coffee",
-    "A caffeinated beverage",
-    "https://www.example.com/coffee",
-  ],
-  keyboard: [
-    "keyboard",
-    "An input device for computers",
-    "https://www.example.com/keyboard",
-  ],
-  guitar: ["guitar", "A musical instrument", "https://www.example.com/guitar"],
-  beach: ["beach", "A sandy shoreline", "https://www.example.com/beach"],
-  mountain: [
-    "mountain",
-    "A towering landform",
-    "https://www.example.com/mountain",
-  ],
-  ocean: ["ocean", "A vast body of water", "https://www.example.com/ocean"],
-  sun: ["sun", "A bright celestial object", "https://www.example.com/sun"],
-  moon: ["moon", "Earth's natural satellite", "https://www.example.com/moon"],
-  planet: [
-    "planet",
-    "Celestial bodies in space",
-    "https://www.example.com/planet",
-  ],
-  star: ["star", "Distant luminous objects", "https://www.example.com/star"],
-};
-const tooltip = document.querySelectorAll(".tooltip");
+// class TooltipManager {
+//   constructor() {
+//     tooltipData = null;
+//     tooltips = document.querySelectorAll(".tooltip");
+//     paragraphs = document.querySelectorAll("p");
+//   }
+
+//  async loadData() {
+//     try {
+//       const response = await fetch('../systeme/donnees/tooltip.json');
+//       tooltipData = await response.json();
+//       setupTooltipEvents();
+//     } catch (error) {
+//       console.error("Error loading tooltip data:", error);
+//     }
+//   }
+
+//   initializeTooltipsAutomatically() {
+//     if (tooltipData) {
+//       const wordsSet = new Set(Object.keys(tooltipData));
+
+//       const tooltipsMap = new Map();
+//       for (const word of Object.keys(tooltipData)) {
+//         tooltipsMap.set(
+//           word,
+//           `<span class="tooltip">${word}
+//           <span class="tooltiptext">${tooltipData[word][1]} <img class="exit_tooltip" src="../systeme/img/icon/x.svg">
+//           <img class="learn_more" src="../systeme/img/icon/book.svg"></span></span>`
+//         );
+//       }
+
+//       for (const paragraph of paragraphs) {
+//         const words = paragraph.textContent.split(" ");
+//         const newContent = [];
+
+//         for (const word of words) {
+//           if (wordsSet.has(word)) {
+//             newContent.push(tooltipsMap.get(word));
+//           } else {
+//             newContent.push(word);
+//           }
+//         }
+
+//         paragraph.innerHTML = newContent.join(" ");
+//       }
+
+//       setupTooltipEvents();
+//     }
+//   }
+
+//   initializeTooltipsManually() {
+//     // Add manual initialization logic here, similar to the `showTooltip` function
+//     if (tooltipData) {
+//       const AutoParagrahs = document.querySelectorAll('.tooltip');
+//       const wordsSet = new Set(Object.keys(tooltipData));
+//       const tooltipsMap = new Map();
+//       for (const word of Object.keys(tooltipData)) {
+//         tooltipsMap.set(
+//           word,
+//           `${word}
+//           <span class="tooltiptext">${tooltipData[word][1]}<img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img>
+//           <img class="learn_more" src="../systeme/img/icon/book.svg"></img></span>`
+//         );
+//       }
+//       for (const paragraph of AutoParagrahs) {
+//         const words = paragraph.textContent.split(" ");
+//         const newContent = [];
+//         for (const word of words) {
+//           if (wordsSet.has(word)) {
+//             newContent.push(tooltipsMap.get(word));
+//           } else {
+//             newContent.push(word);
+//           }
+//         }
+//         paragraph.innerHTML = newContent.join(" ");
+//       }
+//       setupTooltipEvents();
+//     }
+//   }
+
+//   showTooltip(tooltip) {
+//     const tooltipText = tooltip.getElementsByClassName("tooltiptext")[0];
+//     tooltipText.style.visibility = "visible";
+//     tooltipText.style.opacity = "1";
+//   }
+
+//   hideTooltip(tooltip) {
+//     const tooltipText = tooltip.getElementsByClassName("tooltiptext")[0];
+//     tooltipText.style.visibility = "hidden";
+//     tooltipText.style.opacity = "0";
+//   }
+
+//   setupTooltipEvents() {
+//     tooltips.forEach((tooltip) => {
+//       tooltip.addEventListener("mouseenter", () => {
+//         console.log("Mouse entered tooltip");
+//         showTooltip(tooltip);
+//       });
+
+//       tooltip.addEventListener("mouseleave", () => {
+//         console.log("Mouse left tooltip");
+//         hideTooltip(tooltip);
+//       });
+
+//       tooltip.addEventListener("mouseover", (event) => {
+//         console.log("Mouse over tooltip");
+//       });
+//       // Add a click event listener to the image elements
+//       const exitButton = tooltip.querySelector(".exit_tooltip");
+//       const learnMoreButton = tooltip.querySelector(".learn_more");
+
+//       if (exitButton) {
+//         exitButton.addEventListener("click", (event) => {
+//           event.stopPropagation(); // Stop event propagation
+//           hideTooltip(tooltip);
+//         });
+//       }
+//       console.log(tooltip.addEventListener)
+//       console.log(tooltip);
+//     });
+//   }
+// }
+
+// const tooltipManager = new TooltipManager();
+
+// // Load tooltip data
+// tooltipManager.loadData().then(() => {
+//   // Initialize tooltips automatically
+//   tooltipManager.initializeTooltipsAutomatically();
+
+//   // OR
+
+//   // tooltipManager.initializeTooltipsManually();
+// });
 const paragraphs = document.querySelectorAll("p");
-function tooltipTextReplacement(obj, paragraphs) {
-  const wordsSet = new Set(Object.keys(obj));
 
-  const tooltipsMap = new Map();
-  for (const word of Object.keys(obj)) {
-    tooltipsMap.set(
-      word,
-      `<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]}</span></span>`
-    );
+async function loadData() {
+  try {
+    const response = await fetch("../systeme/donnees/tooltip.json");
+    tooltipData = await response.json();
+    return tooltipData;
+  } catch (error) {
+    console.error("Error loading tooltip data:", error);
+  }
+}
+function tooltipManager() {
+  // handle click event on tooltip
+  function setupTooltipEvents() {
+    const tooltips = document.querySelectorAll(".tooltip");
+    tooltips.forEach((tooltip) => {
+      const tooltipText = tooltip.getElementsByClassName("tooltiptext")[0];
+      const tooltipImg = tooltip.getElementsByClassName("exit_tooltip")[0];
+      // Afficher le tooltip lorsque l'utilisateur la survole
+      tooltip.addEventListener("mouseenter", () => {
+        tooltipText.style.visibility = "visible";
+        tooltipText.style.opacity = "1";
+      });
+
+      // Masquer le tooltip lorsque l'utilisateur éloigne sa souris
+      tooltip.addEventListener("mouseleave", () => {
+        tooltipText.style.visibility = "hidden";
+        tooltipText.style.opacity = "0";
+      });
+
+      // Empêche le tooltip de se masquer lorsque l'utilisateur survole le tooltip elle-même
+      tooltip.addEventListener("mouseover", (event) => {
+        event.stopPropagation();
+      });
+      tooltipImg.addEventListener("click", () => {
+        tooltipText.style.visibility = "hidden";
+        tooltipText.style.opacity = "0";
+      });
+    });
   }
 
-  for (const paragraph of paragraphs) {
-    const words = paragraph.textContent.split(" ");
-    const newContent = [];
-
-    for (const word of words) {
-      if (wordsSet.has(word)) {
-        newContent.push(tooltipsMap.get(word));
-      } else {
-        newContent.push(word);
-      }
+  // display tooltip auto when element have a word that in side tooltipData aka tooltip.json
+  function autoTooltip(data, elements) {
+    const wordSet = new Set(Object.keys(data));
+    const tooltipMap = new Map();
+    for (const word of Object.keys(data)) {
+      tooltipMap.set(
+        word,
+        `<span class="tooltip">${word}
+        <span class="tooltiptext">${data[word][1]}<img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img>
+        <img class="learn_more" src="../systeme/img/icon/book.svg"></img></span></span>`
+      );
     }
-
-    paragraph.innerHTML = newContent.join(" ");
-  }
-}
-// tooltipTextReplacement(obj, paragraphs);
-
-function anotherWayToDoTheToolTip(obj) {
-  const wordsSet = new Set(Object.keys(obj));
-  const tooltipsMap = new Map();
-  for (const word of Object.keys(obj)) {
-    tooltipsMap.set(
-      word,
-      `<span class="tooltip">${word} <span class="tooltiptext">${obj[word][1]} <img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img></span></span>`
-    );
-  }
-  const paragraphs = document.querySelectorAll(`.tooltip`);
-  for (const paragraph of paragraphs) {
-    const words = paragraph.textContent.split(" ");
-    const newContent = [];
-    for (const word of words) {
-      if (wordsSet.has(word)) {
-        newContent.push(tooltipsMap.get(word));
-      } else {
-        newContent.push(word);
+    for (const element of elements) {
+      const words = element.textContent.split(" ");
+      const newContent = [];
+      for (const word of words) {
+        if (wordSet.has(word)) {
+          newContent.push(tooltipMap.get(word));
+        } else {
+          newContent.push(word);
+        }
       }
+      element.innerHTML = newContent.join(" ");
     }
-    paragraph.innerHTML = newContent.join(" ");
+    setupTooltipEvents();
+  }
+  // display tooltip manual when element have a word that in side tooltipData aka tooltip.json
+  function manualTooltip(data) {
+   const wordSet = new Set(Object.keys(data));
+    const tooltipMap = new Map();
+    for (const word of Object.keys(data)) {
+      tooltipMap.set(
+        word,
+        `<span class="tooltip">${word}
+        <span class="tooltiptext">${data[word][1]}<img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img>
+        <img class="learn_more" src="../systeme/img/icon/book.svg"></img></span></span>`
+      );
+    }
+    const elements = document.querySelectorAll(".tooltip");
+    for(const element of elements){
+      const words = element.textContent.split(" ");
+      const newContent = [];
+      for(const word of words){
+        if(wordSet.has(word)){
+          newContent.push(tooltipMap.get(word));
+        }else{
+          newContent.push(word);
+        }
+      }
+      element.innerHTML = newContent.join(" ");
+      
+    }
+    setupTooltipEvents();
+
+  }
+  
+  return {
+    autoTooltip: autoTooltip,
+    manualTooltip: manualTooltip,
+  };
+}
+async function initialize(mode) {
+  const tooltipData = await loadData();
+  const manualTooltipManager = tooltipManager();
+  if (mode === "auto") {
+    manualTooltipManager.autoTooltip(tooltipData, paragraphs);
+  }else if(mode === "manual"){
+    manualTooltipManager.manualTooltip(tooltipData);
   }
 }
-anotherWayToDoTheToolTip(obj);
-
-for (let i = 0; i < tooltip.length; i++) {
-  const tooltiptext = tooltip[i].getElementsByClassName("tooltiptext");
-  const tooltipimg = tooltip[i].getElementsByClassName("exit_tooltip");
-  tooltip[i].addEventListener("mouseover", () => {
-    tooltiptext[0].style.visibility = "visible";
-    tooltiptext[0].style.opacity = "1";
-  });
-  tooltipimg[0].addEventListener("click", () => {
-    tooltiptext[0].style.visibility = "hidden";
-    tooltiptext[0].style.opacity = "0";
-  });
-}
+initialize("manual");
