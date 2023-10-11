@@ -7,7 +7,7 @@
 
 //  async loadData() {
 //     try {
-//       const response = await fetch('tooltip.json');
+//       const response = await fetch('../systeme/donnees/tooltip.json');
 //       tooltipData = await response.json();
 //       setupTooltipEvents();
 //     } catch (error) {
@@ -136,7 +136,7 @@ const paragraphs = document.querySelectorAll("p");
 
 async function loadData() {
   try {
-    const response = await fetch("tooltip.json");
+    const response = await fetch("../systeme/donnees/tooltip.json");
     tooltipData = await response.json();
     return tooltipData;
   } catch (error) {
