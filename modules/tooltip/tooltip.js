@@ -1,3 +1,10 @@
+/* 
+  module tooltip version 1.0.5 crée le  01/10/2023 par Fateh [manque nom]
+  pour l'association collectif 1180 
+  affiche une bulle d'eplication sur un mot technique et renvoi sur une popup lexique
+  pour plus d'information sur ce mot
+ en phase alpha (le code suivant riste de me pas toujur fonctionner)
+*/
 // class TooltipManager {
 //   constructor() {
 //     tooltipData = null;

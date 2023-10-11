@@ -1,23 +1,22 @@
 {	
-	"_commentaire": "stucture fichier json version: 1.2.0 au 04/08/2022",
+"_commentaire": "stucture fichier json version: 1.5.0 au 09/10/2023",
 	
 "_commentaire": "modules principaux",
-	"list" :true,
+	"list" : true,
 	"auto_menu" : true,
-	"activ_li"	: false,
 	"mod_blog" : false,
 
 "_commentaire": "données à renseigner pour le site",
 	"dirlien" : "pages",
 	"dirimg" : "img",
 	"dirtxt" : "elements",
-	"index" : "accueil",
-	"aside" : false,
-	"fich_aside" : "",
+	"index" : "vue_principale",
+	"aside" : true,
+	"fich_aside" : "bloc_option_aside",
 	"dirimage" : "images",
 	"trt_head" : "Paris A Rebours",
 
-"_commentaire": "données à renseigner pour le menu",
+"_commentaire": "données à renseigner pour le cartouche",
 	"typ_logo" : false,
 	"img_nav" : "",
 	"txt_alt" : "",
@@ -29,7 +28,7 @@
 	"trt_rech" : "Search",
 
 "_commentaire": "données à renseigner pour le lien social",
-	"lien_social" : true,
+	"lien_social" : false,
 	"auto_fb" : true,
 	"lien_fb" : "https://www.facebook.com/reperechoppe89",
 	"auto_insta" : false,
@@ -37,8 +36,12 @@
 	"auto_youtube" : true,
 	"lien_youtube" :"https://www.youtube.com/channel/UC30BeX_kJhIK41QMWD4fyIQ",
 
+
+"_commentaire": "données à renseigner pour le module header",
+	"activ_li"	: false,
+	"css_a_menu" : false,
+	"quote_html" : true,
 	"nbr_menu" :1,
-	"css_a_menu" : "false",
 	
 	"indic1" :{
 				"valid" : true,
@@ -47,9 +50,9 @@
 				"lrm" : "",
 				"arm" : "vide"
 	},
-	
 
-	"_commentaire": "données du footer",
+"_commentaire": "données du footer",
+
 	"indic11" :{
 				"valid" : false,
 				"lien_pg" :"index.php?pg=11",
@@ -61,22 +64,17 @@
 				"lrm" :"auto_produit",
 				"arm" : "nav_produits"
 	},
-		"indic13" :{
+	"indic13" :{
 				"valid" : false,
 				"lien_pg" :"",
 				"lrm" :"auto_produit",
 				"arm" : "nav_produits"
 	},
-		"indic14" :{
+	"indic14" :{
 				"valid" : false,
 				"trt_menu" : "Panier",
 				"lien_pg" : "index.php?pg=14",
 				"lrm" : "panier",
 				"arm" : "vide"
-	},
-
-	"_commentaire": "module blog",
-	"tmp_blog" : "20000",
-	"id_blog" : "info_accueil",
-	"fich_blog" : "accueil"
+	}
 }
