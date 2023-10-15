@@ -2,19 +2,15 @@
 	/*
 		Fichier de gestion pour la navigation des sites conçu ou gérer par l'association collectif 11880 
 
-	 	Date de création: 18/02/2012  / version 5.0.0 alpha au 15/10/2023.
+	 	Date de création: 18/02/2012  / version 5.0.1 beta au 15/10/2023.
 
 	 	Ce fichier est libre d'utilisation en citant l'association: www.collectif11880.org.
 
 	 	Nouvelle version 5: 
-
 			la nouvelle version permet d'intégrer le mode front-end et back-end avec la gestion des liens du menu par le javascript.
-
 			le code de la version 4 fonctionnant grace au php devient une option definie dans le fichier json : donnees_site.json à la racine du site.
-
 			supression de toutes données en dur, elles sont définie dans le fichier json donnees_site.json
-
-			rajout de [ok_v5] pour les morceaux de codes validés pour la version 5.
+			rajout de [ok_v5] pour les morceaux de codes validés.
 
 	 	Si vous vouyez un bug ou une amélioration contactez le collectif sur infos@collectif11880.com, on sitera votre nom, merci!
 	*/
@@ -30,7 +26,7 @@
 	if ($demar["tabbord"]) 	include ($demar["fich_instal"]); 
 	else  $jsonsite = $demar["f_json"];
 	/* récupération du fichier json de personalisation du site [ok_v5] 
-	modification v5: rajout d'une variable dirdonne pour contenir le nom du repertoire des données*/
+	modification v5: rajout d'une variable dirdonne pour contenir le nom du repertoire des données [ok_v5] */
 	$json = file_get_contents($chem_princ."/".$demar["dirdonne"]."/".$jsonsite.$jsn);
 	$liens = json_decode($json, true);
 
@@ -38,7 +34,7 @@
 	$dirlien = $liens["dirlien"]."/";
 	/* variables par défaut pour afficher la page en index [ok_v5] */
 	$affpg =  $dirlien.$liens["index"].$lp; 
-	/* modifier par une variable json possibilité de bug l'ancienne variable était en string!! [ok_v5]*/
+	/* modifier par une variable json possibilité de bug l'ancienne variable était en string!! [ok_v5] */
 	$activ = $liens["defactiv"]; 
 	/* récuperation du nom du fichier à affiché en aside par défaut */
 	if ($liens["aside"]){
@@ -48,7 +44,7 @@
 	/* modification pour la version 5 rajout d'une condition optionnelle pour l'utilisation des requetes en get */
 	if($demar["liens_get"]){
 		if(isset($_GET['pg'])) {
-			$pgmain = $_GET['pg'];// rajout d'une variable 23/09/2023
+			$pgmain = $_GET['pg'];
 			$affpg =  $dirlien.$liens["indic".$pgmain]["lrm"].$lp;
 			if(isset($_GET['act'])) $activ = $_GET['act'];
 			else  $activ = $_GET['pg']; 
