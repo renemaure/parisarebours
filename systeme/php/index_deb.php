@@ -23,8 +23,8 @@
 	$lh = ".html";
 	$lxt = ".txt";
 	
-	/* verifier à quoi correspondent ses deux variables! */
-	$aside = false; // pourlancer l'aside en index
+	/* verifier à quoi correspondent cette variable! */
+	$aside = false; // pour lancer l'aside en index
 	
 	/* condition pour lancer le module tab_bord  [ok_v5]*/
 	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
@@ -36,10 +36,6 @@
 
 	/*  variable permet d'indexer le repertoire contenant les pages du site [ok_v5] */
 	$dirlien = $liens["dirlien"]."/";
-
-	/* version 5: cette variable n'a rien a faire ici elle doit etre dans le dossier blog */
-	$fich_blog = $liens["index"]; // variable lance le blog sur une page unique 
-	
 
 	/* variables par défaut pour afficher la page en index */
 	$affpg =  $dirlien.$liens["index"].$lp; 
