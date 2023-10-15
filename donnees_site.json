@@ -2,6 +2,7 @@
 "_commentaire": "stucture fichier json version: 1.0.1 au 29/01/2022",
 	"chem": "systeme",
   	"f_json" : "parisarebours",
+	"dirdonne" : "donnees",
   	"tabbord" : true,
   	"fich_tabbord" : "tab_bord_parisarebours",
   	"pas_bord" :"1a992c6b675055112c57130fa9579fef",
