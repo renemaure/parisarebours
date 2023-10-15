@@ -34,7 +34,7 @@
 	/*  variable permet d'indexer le repertoire contenant les pages du site [ok_v5] */
 	$dirlien = $liens["dirlien"]."/";
 
-	/* variables par défaut pour afficher la page en index */
+	/* variables par défaut pour afficher la page en index [ok_v5] */
 	$affpg =  $dirlien.$liens["index"].$lp; 
 
 	$activ = "1"; //à modifier, faire une variable json
