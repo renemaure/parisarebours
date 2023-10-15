@@ -25,14 +25,17 @@
 	
 	/* verifier à quoi correspondent ses deux variables! */
 	$aside = false; // pourlancer l'aside en index
-	$v_tbrd = true; // peut etre lié au tableaude bord
 	
+	/* condition pour lancer le module tab_bord  [ok_v5]*/
 	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
 
-	$json = file_get_contents($chem_princ."/donnees/".$jsonsite.".json");
+	/* récupération du fichier json de personalisation du site [ok_v5] 
+	modification v5: rajout d'une variable dirdonne pour contenir le nom du repertoire des données*/
+	$json = file_get_contents($chem_princ."/".$demar["dirdonne"]."/".$jsonsite.".json");
 	$liens = json_decode($json, true);
 
-	$dirlien = $liens["dirlien"]."/";// permet d'indexer le repertoire
+	/*  variable permet d'indexer le repertoire contenant les pages du site [ok_v5] */
+	$dirlien = $liens["dirlien"]."/";
 
 	/* version 5: cette variable n'a rien a faire ici elle doit etre dans le dossier blog */
 	$fich_blog = $liens["index"]; // variable lance le blog sur une page unique 
