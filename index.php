@@ -3,7 +3,7 @@
   $json = file_get_contents("donnees_site.json");
   $demar = json_decode($json, true);
   $chem_princ =$demar["chem"]; 
-  $jsonsite = $demar["f_json"]; 
+  // $jsonsite = $demar["f_json"];  a definir dans index_deb
   include($chem_princ."/php/index_deb.php");
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,8 @@
     include $chem_princ."/php/instal_module.php";
     /* modification au 09/10/2023 rajout d'un container pour installer une grille*/
     echo "<div id=\"container\">".$rn;
-    if ($aside) {
+    /* modification de variable utilise celle en json v5 15/10/2023*/
+    if ($liens["aside"]){
       echo"<aside id=\"aside\">".$rn; 
       include $affasi; 
       echo "</aside>".$rn;

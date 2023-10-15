@@ -1,54 +1,55 @@
 {	
-"_commentaire 1": "stucture fichier json version: 2.0.0 au 14/10/2023 nouvelle version pout le site parisarebours",
+	"_commentaire 1": "stucture fichier json version: 2.0.1 au 15/10/2023 nouvelle version pour le site parisarebours",
 
-"_commentaire 2": "données collectif pour le moteur ne pas modifier",
+	"_commentaire 2": "données collectif pour le moteur ne pas modifier",
 	"dirlien" : "pages",
 	"dirimg" : "img",
 	"dirtxt" : "elements",
 	"dirimage" : "images",
+	"defactiv" : 1,
 
-"_commentaire 6": "Noms des pages au démarage du site",
+	"_commentaire 6": "Noms des pages au démarage du site",
 	"index" : "vue_principale",
 	"fich_aside" : "bloc_option_aside",
 	"trt_head" : "Paris A Rebours",
 	
-"_commentaire 3": "modules principaux du moeur du collectif ",
+	"_commentaire 3": "modules principaux du moteur du collectif ",
 	"list" : true,
 	"auto_menu" : true,
 	"aside" : true,
 
-"_commentaire 4": "modules aditionels collectif ",
+	"_commentaire 4": "modules aditionels collectif ",
 	"mod_blog" : false,
+	"panier" : false,
+	"img_panier" :"",
+	"recherche" : true,
+	"trt_rech" : "Search",
 	
-"_commentaire 5": "module principal header",
+	"_commentaire 5": "module principal header",
+	"quote_html" : true,
+	"typ_logo" : false,
+	"trt_home" : "Paris A Rebours",
+	"sous_trt" : false,
+	"nbr_menu" :1,
+	"activ_li"	: false,
+	"css_a_menu" : "false",
+	"img_nav" : "",
+	"txt_alt" : "",
 
+	"_commentaire 7": "données à renseigner pour le lien social",
+	"lien_social" : false,
+	"auto_fb" : true,
+	"lien_fb" : "",
+	"auto_insta" : false,
+	"lien_insta" :"",
+	"auto_youtube" : true,
+	"lien_youtube" :"",
 
-
-
-"_commentaire": "données du footer",
-
-	"indic11" :{
-				"valid" : false,
-				"lien_pg" :"index.php?pg=11",
-				"lrm" :"entrer_seruriser"
-	},
-	"indic12" :{
-				"valid" : false,
-				"lien_pg" :"",
-				"lrm" :"auto_produit",
-				"arm" : "nav_produits"
-	},
-	"indic13" :{
-				"valid" : false,
-				"lien_pg" :"",
-				"lrm" :"auto_produit",
-				"arm" : "nav_produits"
-	},
-	"indic14" :{
-				"valid" : false,
-				"trt_menu" : "Panier",
-				"lien_pg" : "index.php?pg=14",
-				"lrm" : "panier",
-				"arm" : "vide"
+	"indic1" :{
+		"valid" : true,
+		"trt_menu" : "Apropos",
+		"lien_pg" : "#",
+		"lrm" : "",
+		"arm" : "vide"
 	}
 }

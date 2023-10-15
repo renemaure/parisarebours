@@ -1,12 +1,28 @@
 {	
-"_commentaire": "stucture fichier json version: 1.0.1 au 29/01/2022",
+	"_commentaire 1": "création  au 29/01/2022, stucture fichier json version: 1.1.1 au 15/10/2023 ",
 	"chem": "systeme",
   	"f_json" : "parisarebours",
-  	"tabbord" : true,
+	"dirdonne" : "donnees",
+	"dirphp" : "php",
+
+	"_commentaire 5": "Données pour le option liens en get version 5 du moteur",
+  	"liens_get" : false,
+
+
+	"_commentaire 2": "Données pour le module tab_bord",
+  	"tabbord" : false,
+	"fich_instal" : "tabbord_deb.php",
   	"fich_tabbord" : "tab_bord_parisarebours",
   	"pas_bord" :"1a992c6b675055112c57130fa9579fef",
   	"trt_head" : "Paris A Rebours",
 	"version" : "0.0.2",
 	"date" : "24/09/2023",
-	"code entree" : "sisyphe_2023"
+	"code entree" : "sisyphe_2023",
+
+	"_commentaire 3": "Données pour l'option élements_list",
+	"nom_elmemnt" : "list-elements",
+
+	"_commentaire 4": "Données pour l'option auto_menu",
+	"instl_automn" : "menu_deb"
+
 }
