@@ -12,6 +12,8 @@
 
 			le code de la version 4 fonctionnant grace au php devient une option definie dans le fichier json : donnees_site.json à la racine du site.
 
+			supression de toutes données en dur, elles sont définie dans le fichier json donnees_site.json
+
 			rajout de [ok_v5] pour les morceaux de codes validés pour la version 5.
 
 	 	Si vous vouyez un bug ou une amélioration contactez le collectif sur infos@collectif11880.com, on sitera votre nom, merci!
@@ -22,15 +24,14 @@
 	$lp = ".php";
 	$lh = ".html";
 	$lxt = ".txt";
-	$jsonsite = "";
-	
+	$jsn = ".json"; // nouvelle variable pour extention json V5
+
 	/* condition pour lancer le module tab_bord  et lancer soit le fichier json tabbord ou celui du site [ok_v5]*/
-	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
+	if ($demar["tabbord"]) 	include ($demar["fich_instal"]); 
 	else  $jsonsite = $demar["f_json"];
-	echo  $jsonsite;
 	/* récupération du fichier json de personalisation du site [ok_v5] 
 	modification v5: rajout d'une variable dirdonne pour contenir le nom du repertoire des données*/
-	$json = file_get_contents($chem_princ."/".$demar["dirdonne"]."/".$jsonsite.".json");
+	$json = file_get_contents($chem_princ."/".$demar["dirdonne"]."/".$jsonsite.$jsn);
 	$liens = json_decode($json, true);
 
 	/*  variable permet d'indexer le repertoire contenant les pages du site [ok_v5] */
@@ -39,10 +40,10 @@
 	$affpg =  $dirlien.$liens["index"].$lp; 
 	/* modifier par une variable json possibilité de bug l'ancienne variable était en string!! [ok_v5]*/
 	$activ = $liens["defactiv"]; 
-	/* récuperation du nom du fichier à affiché rn aside par défaut [ok_v5] */
+	/* récuperation du nom du fichier à affiché en aside par défaut */
 	if ($liens["aside"]){
 		$affasi =  $dirlien.$liens["fich_aside"].$lp; 
-		$aside = true;
+		// $aside = true; // plus utilisé!
 	}
 
 	/* requetes en get */
@@ -51,26 +52,25 @@
 		$affpg =  $dirlien.$liens["indic".$pgmain]["lrm"].$lp;
 		if(isset($_GET['act'])) $activ = $_GET['act'];
 		else  $activ = $_GET['pg']; 
-		/* modification du 08/10/2023 pour les orgues d'auxerre */
+		/* modification du 08/10/2023 pour les orgues d'auxerre  condition géstion des liens de menu inside*/
 		if (isset($_GET['sm'])) {
 			$sous_menu = $_GET['sm'];
 			$affpg = $dirlien.$liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu].$lp;
-			// echo $liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu];
 		}
 		if (isset($_GET['asi'])) {
 			$affasi =  $dirlien.$liens["indic".$_GET['pg']]["arm"].$lp;
 			$aside = true;
 		}
-		/*si la variable 'aupg' existe elle reference en BDD une table produit le 23/09/2023*/
+		/*condition pour que variable 'aupg' reference le nom d'une table en BDD le 23/09/2023*/
 		if(isset($_GET['aupg'])){
 			$autopg = $_GET['aupg'];
 		}
 	}
-        /*  en option fichier list-elements.json. contient tous les nons des éléments à afficher sur le site 	 */
+        /*  condition pour utiliser le fichier list-elements.json, qui contient des données optionelles à afficher sur le site. entierement réecrit pour la version 5 */
 	if($liens["list"]){
-		$lstelemt = file_get_contents($chem_princ."/donnees/list-elements.json");
+		$lstelemt = file_get_contents($chem_princ."/".$demar["dirdonne"]."/".$demar["nom_elmemnt"].$jsn);
 		$affichtxt = json_decode($lstelemt, true);
 	}
-	/* générateur de menu: appel de la fonction dans <ul> avec  <?php Genenu($activ, $liens, $rn);  */
-	if ($liens["auto_menu"]) include ($chem_princ."/php/menu_deb.php");
+	/* générateur de menu: appel de la fonction dans <ul> avec  <?php Genenu($activ, $liens, $rn); entierement réecrit pour la version 5*/
+	if ($liens["auto_menu"]) include ($chem_princ."/".$demar["dirphp"]."/".$demar["instl_automn"].$lp);
 ?>	
