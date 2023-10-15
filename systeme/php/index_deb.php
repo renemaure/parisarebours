@@ -23,9 +23,6 @@
 	$lh = ".html";
 	$lxt = ".txt";
 	
-	/* verifier à quoi correspondent cette variable! */
-	$aside = false; // pour lancer l'aside en index
-	
 	/* condition pour lancer le module tab_bord  [ok_v5]*/
 	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
 
