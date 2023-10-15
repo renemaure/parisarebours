@@ -2,28 +2,16 @@
 	/*
 		Fichier de gestion pour la navigation des sites conçu ou gérer par l'association collectif 11880 
 
-	 	Date de création: 18/02/2012  / version 4.20.1 du 08/10/2023.
+	 	Date de création: 18/02/2012  / version 5.0.0 alpha au 15/10/2023.
 
 	 	Ce fichier est libre d'utilisation en citant l'association: www.collectif11880.org.
 
-	 	DERNIERE MODIFS 
+	 	Nouvelle version 5: 
 
-	 	Nouvelle version 4.20.1 du 08/10/2023: 
-			La varaible $fich_blog  contennant le nom de la page active pour l'option blog auto *!
-			Elle ne doit pas etre modifiée  constante! 
-			
-			Rajout d'un fichier json à la racine du site pour activer des modules particuliers comme un tableau de bord ou 
-			l'utilisation de différantes langues. 
-		
-			Modif sur la variable $active: elle est egale à l'indice du lien dans le menu supression du tableau.
-	 	
-			Rajout d'une condition si un Get'act' est présent pour consever l'active sur une page à affichage automatique. remis en option dans les variables get
+			la nouvelle version permet d'intégrer le mode front-end et back-end avec la gestion des liens du menu par le javascript.
+			le code de la version 4 fonctionnant grace au php devient une option definie dans le fichier json : donnees_site.json à la racine du site.
 
-	 		La variable $tempo_cle pour la durée du cookie (elle est déplacée dans le fichier tabbord_deb.php
-
-			Nouvelle variable Get'sm' crée pour le site orgueauxerre.net. Indexe un sous-lien dans un menu aside.
-
-	 	Si vous vouyez un bug ou une amélioration contactez le collectif, on sitera votre nom, merci!
+	 	Si vous vouyez un bug ou une amélioration contactez le collectif sur infos@collectif11880.com, on sitera votre nom, merci!
 	*/
 	
 	/* extensions utilisées pour le site */
@@ -32,20 +20,24 @@
 	$lh = ".html";
 	$lxt = ".txt";
 	
-	
-	$aside = false;
+	//verifier à quoi correspondent ses deux variables!
+	$aside = false; 
 	$v_tbrd = true;
+	
 	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
 
 	$json = file_get_contents($chem_princ."/donnees/".$jsonsite.".json");
 	$liens = json_decode($json, true);
 
 	$dirlien = $liens["dirlien"]."/";// permet d'indexer le repertoire
+
+	/* version 5: cette variable n'a rien a faire ici elle doit etre dans le dossier blog */
 	$fich_blog = $liens["index"]; // variable lance le blog sur une page unique 
-	//verifier son fonctionnement au 23/09/2023
+	
 
 	/* variables par défaut pour afficher la page en index */
 	$affpg =  $dirlien.$liens["index"].$lp; 
+
 	$activ = "1"; //à modifier, faire une variable json
 	if ($liens["aside"]){
 		$affasi =  $dirlien.$liens["fich_aside"].$lp; 
