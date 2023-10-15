@@ -21,7 +21,8 @@
     include $chem_princ."/php/instal_module.php";
     /* modification au 09/10/2023 rajout d'un container pour installer une grille*/
     echo "<div id=\"container\">".$rn;
-    if ($aside) {
+    /* modification de variable utilise celle en json v5 15/10/2023*/
+    if ($liens["aside"]){
       echo"<aside id=\"aside\">".$rn; 
       include $affasi; 
       echo "</aside>".$rn;
