@@ -1,6 +1,6 @@
 <?php
 	/*
-	création fichier tabbord_deb.php le 20/04/2023 version 2.1.1
+	création fichier tabbord_deb.php le 15/10/2023 version 2.1.2
 
 	par l'association collectif 11880
 
@@ -10,6 +10,8 @@
 	le 20/04/2023 par Fateh: rajout d'un test si la variable quit existe et est égale à 1 
 	permet de quiter le mode tabbord et suprimer le cookie
 	*/
+	$v_tbrd = true; // expliquer son fonctionnement! aucun code associé
+
 	$tempo_cle = 86400; /* modif de la valeur: nouvelle valeur= 24h */
 
 		if (isset($_POST['acces']) && md5($_POST['acces']) == $demar["pas_bord"]){
