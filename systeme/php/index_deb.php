@@ -22,10 +22,12 @@
 	$lp = ".php";
 	$lh = ".html";
 	$lxt = ".txt";
+	$jsonsite = "";
 	
-	/* condition pour lancer le module tab_bord  [ok_v5]*/
+	/* condition pour lancer le module tab_bord  et lancer soit le fichier json tabbord ou celui du site [ok_v5]*/
 	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
-
+	// else  $jsonsite = $demar["f_json"];
+	echo  $jsonsite;
 	/* récupération du fichier json de personalisation du site [ok_v5] 
 	modification v5: rajout d'une variable dirdonne pour contenir le nom du repertoire des données*/
 	$json = file_get_contents($chem_princ."/".$demar["dirdonne"]."/".$jsonsite.".json");
@@ -33,15 +35,16 @@
 
 	/*  variable permet d'indexer le repertoire contenant les pages du site [ok_v5] */
 	$dirlien = $liens["dirlien"]."/";
-
 	/* variables par défaut pour afficher la page en index [ok_v5] */
 	$affpg =  $dirlien.$liens["index"].$lp; 
-
-	$activ = "1"; //à modifier, faire une variable json
+	/* modifier par une variable json possibilité de bug l'ancienne variable était en string!! [ok_v5]*/
+	$activ = $liens["defactiv"]; 
+	/* récuperation du nom du fichier à affiché rn aside par défaut [ok_v5] */
 	if ($liens["aside"]){
 		$affasi =  $dirlien.$liens["fich_aside"].$lp; 
 		$aside = true;
 	}
+
 	/* requetes en get */
 	if(isset($_GET['pg'])) {
 		$pgmain = $_GET['pg'];// rajout d'une variable 23/09/2023

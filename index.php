@@ -3,7 +3,7 @@
   $json = file_get_contents("donnees_site.json");
   $demar = json_decode($json, true);
   $chem_princ =$demar["chem"]; 
-  $jsonsite = $demar["f_json"]; 
+  // $jsonsite = $demar["f_json"];  a definir dans index_deb
   include($chem_princ."/php/index_deb.php");
 ?>
 <!DOCTYPE html>

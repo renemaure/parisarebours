@@ -10,7 +10,7 @@
     3) lancement du fichier css icons de bootstrap inclu dans le module "header"
 
 */
-
+$fich_blog = $liens["index"]; // variable lance le blog sur une page unique 
 /* lancement du fichier css icons de bootstrap inclu dans le module "header" 01/10/2023 */
 echo "<link href=\"modules/header/bootstrap-icons.css\" rel=\"stylesheet\">";
 
