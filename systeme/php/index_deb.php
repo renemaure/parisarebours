@@ -9,20 +9,23 @@
 	 	Nouvelle version 5: 
 
 			la nouvelle version permet d'intégrer le mode front-end et back-end avec la gestion des liens du menu par le javascript.
+
 			le code de la version 4 fonctionnant grace au php devient une option definie dans le fichier json : donnees_site.json à la racine du site.
+
+			rajout de [ok_v5] pour les morceaux de codes validés pour la version 5.
 
 	 	Si vous vouyez un bug ou une amélioration contactez le collectif sur infos@collectif11880.com, on sitera votre nom, merci!
 	*/
 	
-	/* extensions utilisées pour le site */
+	/* extensions utilisées pour le site [ok_v5]*/
 	$rn = "\r\n";
 	$lp = ".php";
 	$lh = ".html";
 	$lxt = ".txt";
 	
-	//verifier à quoi correspondent ses deux variables!
-	$aside = false; 
-	$v_tbrd = true;
+	/* verifier à quoi correspondent ses deux variables! */
+	$aside = false; // pourlancer l'aside en index
+	$v_tbrd = true; // peut etre lié au tableaude bord
 	
 	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
 
