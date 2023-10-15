@@ -139,6 +139,7 @@
 
 //   // tooltipManager.initializeTooltipsManually();
 // });
+
 const paragraphs = document.querySelectorAll("p");
 
 async function loadData() {
