@@ -5,6 +5,10 @@
 	"dirdonne" : "donnees",
 	"dirphp" : "php",
 
+	"_commentaire 5": "Données pour le option liens en get version 5 du moteur",
+  	"liens_get" : false,
+
+
 	"_commentaire 2": "Données pour le module tab_bord",
   	"tabbord" : false,
 	"fich_instal" : "tabbord_deb.php",

@@ -45,25 +45,24 @@
 		$affasi =  $dirlien.$liens["fich_aside"].$lp; 
 		// $aside = true; // plus utilisé!
 	}
-
-	/* requetes en get */
-	if(isset($_GET['pg'])) {
-		$pgmain = $_GET['pg'];// rajout d'une variable 23/09/2023
-		$affpg =  $dirlien.$liens["indic".$pgmain]["lrm"].$lp;
-		if(isset($_GET['act'])) $activ = $_GET['act'];
-		else  $activ = $_GET['pg']; 
-		/* modification du 08/10/2023 pour les orgues d'auxerre  condition géstion des liens de menu inside*/
-		if (isset($_GET['sm'])) {
-			$sous_menu = $_GET['sm'];
-			$affpg = $dirlien.$liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu].$lp;
-		}
-		if (isset($_GET['asi'])) {
-			$affasi =  $dirlien.$liens["indic".$_GET['pg']]["arm"].$lp;
-			$aside = true;
-		}
-		/*condition pour que variable 'aupg' reference le nom d'une table en BDD le 23/09/2023*/
-		if(isset($_GET['aupg'])){
-			$autopg = $_GET['aupg'];
+	/* modification pour la version 5 rajout d'une condition optionnelle pour l'utilisation des requetes en get */
+	if($demar["liens_get"]){
+		if(isset($_GET['pg'])) {
+			$pgmain = $_GET['pg'];// rajout d'une variable 23/09/2023
+			$affpg =  $dirlien.$liens["indic".$pgmain]["lrm"].$lp;
+			if(isset($_GET['act'])) $activ = $_GET['act'];
+			else  $activ = $_GET['pg']; 
+			/* modification du 08/10/2023 pour les orgues d'auxerre  condition géstion des liens de menu inside*/
+			if (isset($_GET['sm'])) {
+				$sous_menu = $_GET['sm'];
+				$affpg = $dirlien.$liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu].$lp;
+			}
+			if (isset($_GET['asi'])) {
+				$affasi =  $dirlien.$liens["indic".$_GET['pg']]["arm"].$lp;
+				// $aside = true;
+			}
+			/*condition pour que variable 'aupg' reference le nom d'une table en BDD le 23/09/2023*/
+			if(isset($_GET['aupg'])) $autopg = $_GET['aupg'];
 		}
 	}
         /*  condition pour utiliser le fichier list-elements.json, qui contient des données optionelles à afficher sur le site. entierement réecrit pour la version 5 */
