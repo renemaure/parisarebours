@@ -10,6 +10,8 @@
 	le 20/04/2023 par Fateh: rajout d'un test si la variable quit existe et est égale à 1 
 	permet de quiter le mode tabbord et suprimer le cookie
 	*/
+	$fich_blog = $liens["index"]; // variable lance le blog sur une page unique 
+	
 	$v_tbrd = true; // expliquer son fonctionnement! aucun code associé
 
 	$tempo_cle = 86400; /* modif de la valeur: nouvelle valeur= 24h */
