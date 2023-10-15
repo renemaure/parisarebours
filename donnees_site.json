@@ -3,7 +3,7 @@
 	"chem": "systeme",
   	"f_json" : "parisarebours",
 	"dirdonne" : "donnees",
-  	"tabbord" : true,
+  	"tabbord" : false,
   	"fich_tabbord" : "tab_bord_parisarebours",
   	"pas_bord" :"1a992c6b675055112c57130fa9579fef",
   	"trt_head" : "Paris A Rebours",

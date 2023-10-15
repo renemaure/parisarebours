@@ -26,7 +26,7 @@
 	
 	/* condition pour lancer le module tab_bord  et lancer soit le fichier json tabbord ou celui du site [ok_v5]*/
 	if ($demar["tabbord"]) 	include ("tabbord_deb.php"); 
-	// else  $jsonsite = $demar["f_json"];
+	else  $jsonsite = $demar["f_json"];
 	echo  $jsonsite;
 	/* récupération du fichier json de personalisation du site [ok_v5] 
 	modification v5: rajout d'une variable dirdonne pour contenir le nom du repertoire des données*/
