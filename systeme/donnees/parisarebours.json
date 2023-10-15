@@ -1,55 +1,29 @@
 {	
-"_commentaire": "stucture fichier json version: 1.5.0 au 09/10/2023",
-	
-"_commentaire": "modules principaux",
-	"list" : true,
-	"auto_menu" : true,
-	"mod_blog" : false,
+"_commentaire 1": "stucture fichier json version: 2.0.0 au 14/10/2023 nouvelle version pout le site parisarebours",
 
-"_commentaire": "données à renseigner pour le site",
+"_commentaire 2": "données collectif pour le moteur ne pas modifier",
 	"dirlien" : "pages",
 	"dirimg" : "img",
 	"dirtxt" : "elements",
-	"index" : "vue_principale",
-	"aside" : true,
-	"fich_aside" : "bloc_option_aside",
 	"dirimage" : "images",
+
+"_commentaire 6": "Noms des pages au démarage du site",
+	"index" : "vue_principale",
+	"fich_aside" : "bloc_option_aside",
 	"trt_head" : "Paris A Rebours",
-
-"_commentaire": "données à renseigner pour le cartouche",
-	"typ_logo" : false,
-	"img_nav" : "",
-	"txt_alt" : "",
-	"trt_home" : "Paris A Rebours",
-	"panier" : false,
-	"img_panier" :"",
-	"sous_trt" : false,
-	"recherche" : true,
-	"trt_rech" : "Search",
-
-"_commentaire": "données à renseigner pour le lien social",
-	"lien_social" : false,
-	"auto_fb" : true,
-	"lien_fb" : "https://www.facebook.com/reperechoppe89",
-	"auto_insta" : false,
-	"lien_insta" :"",
-	"auto_youtube" : true,
-	"lien_youtube" :"https://www.youtube.com/channel/UC30BeX_kJhIK41QMWD4fyIQ",
-
-
-"_commentaire": "données à renseigner pour le module header",
-	"activ_li"	: false,
-	"css_a_menu" : false,
-	"quote_html" : true,
-	"nbr_menu" :1,
 	
-	"indic1" :{
-				"valid" : true,
-				"trt_menu" : "Apropos",
-				"lien_pg" : "#",
-				"lrm" : "",
-				"arm" : "vide"
-	},
+"_commentaire 3": "modules principaux du moeur du collectif ",
+	"list" : true,
+	"auto_menu" : true,
+	"aside" : true,
+
+"_commentaire 4": "modules aditionels collectif ",
+	"mod_blog" : false,
+	
+"_commentaire 5": "module principal header",
+
+
+
 
 "_commentaire": "données du footer",
 

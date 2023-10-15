@@ -2,13 +2,13 @@
 	/*
 		Fichier de gestion pour la navigation des sites conçu ou gérer par l'association collectif 11880 
 
-	 	Date de création: 18/02/2012  / version 4.20.0 au 23/09/2023.
+	 	Date de création: 18/02/2012  / version 4.20.1 du 08/10/2023.
 
-	 	Ce fichier est libre d'utilisation en sitant l'association: www.collectif11880.org.
+	 	Ce fichier est libre d'utilisation en citant l'association: www.collectif11880.org.
 
 	 	DERNIERE MODIFS 
 
-	 	Nouvelle version 4.20.0 du 23/09/2023: 
+	 	Nouvelle version 4.20.1 du 08/10/2023: 
 			La varaible $fich_blog  contennant le nom de la page active pour l'option blog auto *!
 			Elle ne doit pas etre modifiée  constante! 
 			
@@ -17,9 +17,11 @@
 		
 			Modif sur la variable $active: elle est egale à l'indice du lien dans le menu supression du tableau.
 	 	
-			Rajout d'une condition si un Get'act' est pesent pour consever l'active sur une page à affichage automatique. remis en option dans les variables get
+			Rajout d'une condition si un Get'act' est présent pour consever l'active sur une page à affichage automatique. remis en option dans les variables get
 
 	 		La variable $tempo_cle pour la durée du cookie (elle est déplacée dans le fichier tabbord_deb.php
+
+			Nouvelle variable Get'sm' crée pour le site orgueauxerre.net. Indexe un sous-lien dans un menu aside.
 
 	 	Si vous vouyez un bug ou une amélioration contactez le collectif, on sitera votre nom, merci!
 	*/
@@ -44,7 +46,7 @@
 
 	/* variables par défaut pour afficher la page en index */
 	$affpg =  $dirlien.$liens["index"].$lp; 
-	$activ = "1";
+	$activ = "1"; //à modifier, faire une variable json
 	if ($liens["aside"]){
 		$affasi =  $dirlien.$liens["fich_aside"].$lp; 
 		$aside = true;
@@ -55,6 +57,12 @@
 		$affpg =  $dirlien.$liens["indic".$pgmain]["lrm"].$lp;
 		if(isset($_GET['act'])) $activ = $_GET['act'];
 		else  $activ = $_GET['pg']; 
+		/* modification du 08/10/2023 pour les orgues d'auxerre */
+		if (isset($_GET['sm'])) {
+			$sous_menu = $_GET['sm'];
+			$affpg = $dirlien.$liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu].$lp;
+			// echo $liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu];
+		}
 		if (isset($_GET['asi'])) {
 			$affasi =  $dirlien.$liens["indic".$_GET['pg']]["arm"].$lp;
 			$aside = true;
@@ -64,7 +72,7 @@
 			$autopg = $_GET['aupg'];
 		}
 	}
-        /*  en option fichier list-elements.json. contient tous les nons des éléments à afficher sur la site 	 */
+        /*  en option fichier list-elements.json. contient tous les nons des éléments à afficher sur le site 	 */
 	if($liens["list"]){
 		$lstelemt = file_get_contents($chem_princ."/donnees/list-elements.json");
 		$affichtxt = json_decode($lstelemt, true);
