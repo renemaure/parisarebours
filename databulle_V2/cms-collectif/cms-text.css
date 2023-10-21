@@ -1,0 +1,149 @@
+/*module de getion cms de texte 
+pour les sites gérer par le collectif
+gestion par pixselibur fablab de Sens
+modification le 13 decembre 2017
+*/	
+
+p { margin: 0;}/* met a zero les paragraphes avant les class*/
+
+/* gestion des fontes */
+ 
+.f8 {font-size: 8pt;}   
+
+.font9 , .f9   {font-size: 9pt;}  
+
+.font10 , .f10 {font-size: 10pt;} 
+
+.f11 {font-size: 11pt;}  
+								 
+.font12 , .f12 {font-size:12pt;} 
+
+.f13 {font-size: 13pt;} 
+
+.font14 , .f14 {font-size:14pt; } 
+
+.f15 {font-size: 15pt;} 
+
+.font16 , .f16 {font-size:16pt;}  	
+
+.f18 {font-size:18pt;} 
+
+.f20 {font-size:20pt;} 
+
+.times { font-family: Times New Roman;}
+
+.arial-black, .arialb {font-family: arial black;}   
+
+.arial {font-family: arial;} 
+
+.verdana {font-family:verdana;}
+
+
+/* fonte écriture à la main (recuperer la fonte sur mon bus amoi)*/
+@font-face {
+    font-family: "fonte_main";
+	src: url('main.ttf');
+}
+.main {font: 14pt fonte_main;}
+
+/* gestion des couleurs */
+ 
+.blanc {color:#FFFFFF;}
+
+.noir {color:#000000;}
+
+.mauve {color:#6D3489;}
+
+.sable {color:#FFCC66;}  /*site chris*/	  
+
+.rouge {color:#FF0000;}
+
+.fushia {color: #AE206C;}
+
+.vert {color: #006600;}
+
+.gris {color: #797979;}
+
+
+/* gestions des effets sur le texte */
+
+.italique, .ita {font-style: italic;}	
+
+.gras {font-weight:bold;}
+
+
+/* gestions sur les paragraphes */
+
+.centrer {text-align: center;}
+
+.justifier, .just {text-align: justify;} /* nouv raccourci */
+
+.gauche {text-align:left;}
+
+.droit {text-align:right;}
+
+.fdroit , .fd {float: right;}
+
+.fgauche , .fg {float: left;}
+
+
+
+.souris { cursor: pointer;}
+
+.colonne1 {position:absolute; top:90px; left:5px; width:45%;}
+
+.colonne2 {position:absolute; top:90px; left:55%;  width:45%;}	
+
+/*gestions des couleurs de fond*/
+
+.bc_noir , .fnoir {background: none repeat scroll 0 0 #000000;}
+
+.bc_mauve , .fmauve {background: none repeat scroll 0 0 #AE206C;}
+
+.fblanc  {background: background: none repeat scroll 0 0 #FFFFFF;}
+
+
+/* gestions des placement des modules */
+
+.absolu, .ab {position: absolute;} 
+
+.relatif , .re {position:relative;}
+ 
+.invisible , .inv {display:none;}
+
+.visible , .vis {display:inline;}
+
+
+.z1 {z-index:1;}
+
+.z2 {z-index:2;}
+	
+.z3 {z-index:3;}
+
+.titre , .titre12 , .titre24, .titre14 {position:relative; font-weight:bold; text-align: center;}
+
+.titre , .titre12 {font-size: 12pt;}
+
+.titre14 {font-size: 14pt;}
+
+.titre24 {font-size: 24pt;}
+
+.credit {position:relative; font-style: italic; font-size: 8pt; font-weight:bold;}
+
+.carre {position: relative; width: 20px; height: 20px; cursor: pointer;}
+
+.code
+	{
+	text-align:left;
+	background-color:#eee;
+	color:black;
+	font-size:16px;
+}
+.apropos
+	{
+	background-color:#ffe;
+	border:solid 1px #CCCCCC;
+}
+.info {position:absolute; font-weight: bold; text-align:center; top:5px; left: 50px; width:150px;}
+
+.bordure {text-decoration:none; padding:10px 20px; -moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px; }

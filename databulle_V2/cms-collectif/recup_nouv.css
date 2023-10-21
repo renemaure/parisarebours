@@ -1,0 +1,25 @@
+
+
+/*position negative à gauche en pixel*/
+
+.l-17 {left: -17px;}
+
+/*fin*/
+
+
+.ul_def{
+	list-style-type: none;  
+	margin: 0 auto;  
+	padding: 0;      
+	border: 0; 
+}
+
+
+/*fin*/
+
+
+
+.ouvreform {position: relative; top:150px; left:150px; font-weight:bold; cursor:pointer;}
+
+
+
