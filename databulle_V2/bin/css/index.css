@@ -1,0 +1,156 @@
+.footer {height:20px;}
+
+.txt_footer {
+  font-style: italic;
+  font-size: 0.7em;
+  margin-top: 3px;
+  text-align: center;
+}
+.box_border{
+  border: 1px solid #422060;
+}
+.box_fond{
+  background: #c5eef2 none repeat scroll 0 0;
+}
+.coins_rond{
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+}
+.logger,
+.presentation {
+  position: absolute;
+  padding:5px;
+  left: 10%;
+  width: 80%;
+}
+.logger {
+  top: 50%;
+  text-align: center;
+}
+.nouv_databulle {
+  position: relative;
+  padding:3px;
+  left: 3%;
+  width: 300px;
+  top: 130px;
+  height:200px;
+  font-size:0.75em;
+}
+.presentation {
+  top: 15%;
+  padding-bottom:15px;
+  text-align:justify;
+}
+.aff_otisbulles ,
+.aff_combulles , 
+.aff_nouv_databulles,
+.aff_infos,
+.aff_list_databulles{
+  /* width: 300px; */
+  left: 10px;
+  padding:5px;
+  font-size:0.75em;
+  text-decoration:none; 
+}
+.aff_infos,
+.aff_list_databulles{
+ position: relative; 
+ top: 5%;
+}
+.aff_infos{
+ height: 210px;
+ text-align: justify;
+}
+.aff_list_databulles{
+  height: 350px;
+	
+}
+.aff_nouv_databulles{
+  position: relative;
+  top: 90px;
+  height: 310px;
+  text-align: justify;
+}
+
+.aff_otisbulles{
+  position: absolute;
+  border-top: 1px solid #061a60;
+ /*  border-left: 1px solid #061a60;
+  border-right: 1px solid #061a60; */
+  -moz-border-radius:10px 10px 0 0;
+  -webkit-border-radius:10px 10px 0 0;
+  border-radius:10px 10px 0 0;
+}
+.aff_combulles{
+  position: absolute;
+  -moz-border-radius:0 0 10px 10px;
+  -webkit-border-radius:0 0 10px 10px;
+  border-radius:0 0 10px 10px;
+}
+.debordement{
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  height:97%;
+  width:97%;
+}
+
+.bloc_otis{
+  position: relative;
+}
+.comm_otis{
+  padding:3px;
+  font-size:0.75em;
+  
+}
+.titre_otis{
+text-align:center;
+font-weight:bold;
+font-size:1.3em;
+color: #061a60;
+}
+.texte_otis{
+/* font-style:italic; */
+/* font-size:0.75em; */
+}
+.corps{
+  height: 77%;
+  position: absolute;
+  top: 10%;
+}
+.corps_index {
+  width: 300px;
+  height: 450px;
+  position: absolute;
+}
+.ui-content {
+  overflow-x: visible;
+}
+hr{
+color:#061a60;
+}
+.text_erreur{
+  position:relative;
+  top:5px;
+  font-size:0.80em;
+  color:red;
+  font-style:italic;
+  text-align:center;
+}
+#zon_bout .ui-input-text{
+   top: 15px;
+}
+#zon_bout .ui-btn{
+  left: 33px;
+  top: 25px;
+  background-image: url("../../images/fond_bulle_bleue.jpg");
+}
+.centr_bout {
+  left: 120px;
+  position: relative;
+}
+
+
+/* @media all and (min-width: 320px){
+	.corps { width:100%;}
+} */
