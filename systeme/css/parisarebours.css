@@ -8,6 +8,7 @@ syle de récupe de boonstap */
   --noir :#000;
   --jaune : #FBB62F;
   --jaune_clair : #FFE0A3;
+  --orage_clair : #FFCCA3;
 }
 *, ::after, ::before {
   box-sizing: border-box;
@@ -337,20 +338,36 @@ transition: color .2s ease-in-out;
   color: #555;
 }
 /* popup_folder */
-#popup_container {
-  position:absolute;
-  left: 50%;
-  top: 50%;
-  display: none;
+#popup_moyen {
+  position: absolute;
+  margin: auto 0;
+  left: 59%;
+  top: 59%;
+  height: 70%;
+  width: 70%;
+  display: block;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
-  padding:40px;
+  flex-direction: column;
+  padding: 40px;
   transform: translate(-50%, -50%);
-  border:solid 1px #000;
-  background-color: white;
+  border: solid 2px var(--bleu);
+  background-color: var(--blanc);
   border-radius: 10px;
   z-index: 1000;
+  background-color: var(--orage_clair);
+}
+.exit_tooltip {
+  /* display: inline-flex; */
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* filter: invert(1); */
+  border-bottom: solid 2px var(--bleu);
+  border-left: solid 2px var(--bleu);
+  background-color: var(--blanc);
 }
 #folder_name{
   padding: 10px 20px;

@@ -9,3 +9,7 @@
         <!-- <img src="images/plans/test_plan-paris.png" id="plan1"> -->
 <!-- </section> -->
 <?php include $liens["dirlien"]."/".$liens["fich_aside"].".php" ; ?>
+
+<article id="popup_moyen">
+<img class="exit_tooltip" src="systeme/img/icon/x.svg">
+</article>
