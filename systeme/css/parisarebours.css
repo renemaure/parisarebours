@@ -1,9 +1,13 @@
 /* création le 20/08/2023 par l'association collectif 11880
 syle de récupe de boonstap */
 :root{
-  --btn-bg: #fff;
-
+  --btn-bg: rgb(237, 237, 237);
+  --bleu : #153C8E;
   --blanc: #fff;
+  --bleu_ciel: #1D9994;
+  --noir :#000;
+  --jaune : #FBB62F;
+  --jaune_clair : #FFE0A3;
 }
 *, ::after, ::before {
   box-sizing: border-box;
@@ -24,7 +28,7 @@ header {
   color: var(--blanc);
   padding: 0;
   /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); */
-  background-color: #153C8E;
+  background-color: var(--bleu);
   height: 50px;
 }
 #logo-nav {
@@ -68,6 +72,10 @@ margin-top: 10px;
   padding-right: 10px;
   color: var(--blanc);
 }
+#menu li a:hover{
+
+color: var(--jaune)
+}
 /* fin déclaration pour le header */
 
 .bd-placeholder-img {
@@ -101,27 +109,26 @@ margin-top: 10px;
   top: 72px;
   right: 25px;
 }
-#btn_zoom button{
+#btn_zoom button {
   cursor: pointer;
   display: inline-block;
-  padding:  0.25rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--btn-color);
+  color: var(--noir);
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   user-select: none;
-  border:2px solid #000;
+  border: 2px solid var(--bleu);
   border-radius: 0.25rem;
-  background-color: var(--btn-bg);
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  background-color: var(--jaune_clair);
 }
 #btn_zoom button:hover {
-  color: var(--bs-btn-hover-color);
-  background-color: var(--btn-hover-bg);
-  border-color: var(--btn-hover-border-color);
+  color: var(--blanc);
+  background-color: var(--jaune);
+  border-color: var(--bleu);
 }
 /* recup dasbord */
 .feather {
@@ -135,12 +142,10 @@ margin-top: 10px;
   top: 60px;
   height: 90vh;
   color: var(--blanc);
-  /* bottom: 0; */
   left: 10px;
   z-index: 100;
   padding: 48px 0 0;
-  /* box-shadow: 4px -3px 5px 0px rgb(108 154 152 / 39%); */
-  background-color: #1D9994;
+  background-color: var(--bleu_ciel);
 }
 #aside ul {
   display: flex;
