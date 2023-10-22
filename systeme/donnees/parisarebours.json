@@ -22,7 +22,7 @@
 	"mod_blog" : false,
 	"panier" : false,
 	"img_panier" :"",
-	"recherche" : true,
+	"recherche" : false,
 	"trt_rech" : "Search",
 	
 	"_commentaire 5": "module principal header",

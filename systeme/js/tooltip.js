@@ -150,8 +150,8 @@ function tooltipManager() {
     tooltips.forEach((tooltip) => {
       const tooltipText = tooltip.getElementsByClassName("tooltiptext")[0];
       const tooltipImg = tooltip.getElementsByClassName("exit_tooltip")[0];
-      // Afficher le tooltip lorsque l'utilisateur la survole
-      tooltip.addEventListener("mouseenter", () => {
+/*       Afficher le tooltip lorsque l'utilisateur la survole  */
+      tooltip.addEventListener("mouseenter",  () => {
         tooltipText.style.visibility = "visible";
         tooltipText.style.opacity = "1";
       });
@@ -166,7 +166,7 @@ function tooltipManager() {
       tooltip.addEventListener("mouseover", (event) => {
         event.stopPropagation();
       });
-      tooltipImg.addEventListener("click", () => {
+      tooltipImg.addEventListener("click", () => { 
         tooltipText.style.visibility = "hidden";
         tooltipText.style.opacity = "0";
       });
