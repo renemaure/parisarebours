@@ -17,6 +17,7 @@
 	"list" : true,
 	"auto_menu" : true,
 	"aside" : false,
+	"liens_get" : false,
 
 	"_commentaire 4": "modules aditionels collectif ",
 	"mod_blog" : false,
