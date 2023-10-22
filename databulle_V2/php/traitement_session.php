@@ -1,10 +1,10 @@
-<?php /* Date de création: 08/11/2013 */
+<?php /* Date de crï¿½ation: 08/11/2013 */
 
 	include("php/base_donnees.php");
 	
 	include ("php/fonction_generique.php");
 	
-	$erreur = array("erreur"=>"");
+	$erreur = array("erreur"=>"", "test"=>"");
 	
 	$timestamp_expire = time() + (3600*24*365); // Le cookie expirera dans 1 an
 	
@@ -18,7 +18,7 @@
 		$pass = md5($_POST['pass_log']) ;  
 		while ($data = $result_compt->fetch(PDO::FETCH_ASSOC)){ 
         	if ($pass == $data['passe'] and  $_POST['nom_log'] == $data['nom'])	{
-				setcookie('nom',$_POST['nom_log'], $timestamp_expire, '/'); // On écrit un cookie en rajout '/ ' lisible par tout le site 
+				setcookie('nom',$_POST['nom_log'], $timestamp_expire, '/'); // On ï¿½crit un cookie en rajout '/ ' lisible par tout le site 
 				$erreur["erreur"]='ok';
 				break;
 			}
@@ -37,7 +37,7 @@
 		{
 			while ($data = $result_compt->fetch(PDO::FETCH_ASSOC)){ /*requette sur les noms pour eviter les doublons*/
 				if (trim($_POST['nom_erg']) == $data['nom'] ) {
-					$erreur["erreur"]= "speudo_err"; // pseudo déjà prit
+					$erreur["erreur"]= "speudo_err"; // pseudo dï¿½jï¿½ prit
 					break;
 				}
 			}	
@@ -49,7 +49,7 @@
 				$pass = md5($pass_erg); // codage md5
 				if(preg_match('#^(([a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+\.?)*[a-z0-9!\#$%&\\\'*+/=?^_`{|}~-]+)@(([a-z0-9-_]+\.?)*[a-z0-9-_]+)\.[a-z]{2,}$#i',str_replace('&amp;','&',$mail_erg))){
 					$ref_uti = indice_ref('uti','php/');
-					/* Exécution d'une requête préparée en liant des variables PHP */
+					/* Exï¿½cution d'une requï¿½te prï¿½parï¿½e en liant des variables PHP */
 					$sth = $laison->prepare("INSERT INTO mon_compte (nom, ref_utilisateur, mail, passe, date) VALUES(:nom , :refuti , :mail , :passe , :date)");
 					$sth->bindParam(':nom', $nom_erg, PDO::PARAM_STR, 20);
 					$sth->bindParam(':mail', $mail_erg, PDO::PARAM_STR, 12);
@@ -57,7 +57,7 @@
 					$sth->bindParam(':date', $date_creat, PDO::PARAM_STR, 12);
 					$sth->bindParam(':refuti', $ref_uti, PDO::PARAM_STR, 12);
 					$sth->execute();
-					setcookie('nom',trim($_POST['nom_erg']), $timestamp_expire, '/'); // On écrit un cookie en rajout '/ ' lisible par tout le site 
+					setcookie('nom',trim($_POST['nom_erg']), $timestamp_expire, '/'); // On ï¿½crit un cookie en rajout '/ ' lisible par tout le site 
 					$erreur["erreur"]= "ok";
 					
 				}else $erreur["erreur"]="mail_err" ; // mail invalide
@@ -81,7 +81,7 @@
 			}
 		}
 		if($erreur["erreur"]=='ok'){
-				for($i=0;$i < 10;$i++)    //10 est le nombre de caractères
+				for($i=0;$i < 10;$i++)    //10 est le nombre de caractï¿½res
 					{ 
 						$code_aleatoire .= $characts[rand()%strlen($characts)];  
 					}
@@ -91,11 +91,11 @@
 				
 				$contenu_mail = ""; // texte du mail
 				
-				$contenu_mail .= "Vous avez demand&eacute; &agrave; changer votre mot de passe. Cliquez sur le lien ou copier l&aposadresse suivante :\r\n\r\n";
+				$contenu_mail .= "Vous avez demand&eacute; &agrave; changer votre mot de passe. Cliquez sur le lien ou copier l&aposadresse suivanteï¿½:\r\n\r\n";
 				
 				$contenu_mail .= "<a href=\"".$adr_retour."\">".$adr_retour."</a>\r\n\r\n";
 
-				$contenu_mail .= "Ce lien est valable pendant 24 heures, &agrave; compter de l&apos;envoie de ce mail, au del&agrave;, il vous faudra redemander un nouveau mail !\r\n\r\n";
+				$contenu_mail .= "Ce lien est valable pendant 24 heures, &agrave; compter de l&apos;envoie de ce mail, au del&agrave;, il vous faudra redemander un nouveau mailï¿½!\r\n\r\n";
 				
 				$contenu_mail .= "Le webmaster.";
 				

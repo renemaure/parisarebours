@@ -142,14 +142,17 @@ function aff_session(){
 	html+= "<p class=\"t25 f9 italique\"><span class=\"re l20\"><a href=\"#enregistrer\">S'enregistrer</a></span><span class=\"re l100\"><a href=\"#perdu\">Identifiants perdus</a></span></p>";
 	
 	$("#zon_bout").append(html);
+	console.log("test console");
 	
 	$("#nom_log").bind("change", function(event){{
 		nomlog = $(this).val();
+		
 	}})
 	$("#pass_log").bind("change", function(event){{
 		passlog = $(this).val();
 	}})
-	$("#envoi").bind ("click",function(event){
+	$("#envoi").bind("click",function(event){
+		console.log("nom : " +nomlog + "mot de passe : "+passlog );
 		$.post("php/traitement_session.php",{nom_log:nomlog,pass_log:passlog}, function(result){
 			var aff_ereur = result.erreur;
 			if(result.erreur=="ok"){

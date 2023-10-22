@@ -16,7 +16,7 @@
 	"_commentaire 3": "modules principaux du moteur du collectif ",
 	"list" : true,
 	"auto_menu" : true,
-	"aside" : true,
+	"aside" : false,
 
 	"_commentaire 4": "modules aditionels collectif ",
 	"mod_blog" : false,

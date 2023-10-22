@@ -1,38 +1,8 @@
 /* création le 20/08/2023 par l'association collectif 11880
 syle de récupe de boonstap */
 :root{
-  --btn-hover-bg: #6c757d;
-  --btn-hover-border-color: #6c757d;
   --btn-bg: #fff;
-  --black-color :#000;
-  --bs-light-rgb: 248,249,250;
-  --bs-bg-opacity: 1;
-  --bs-nav-link-padding-x: 1rem;
-  --bs-nav-link-padding-y: 0.5rem;
-  --bs-nav-link-font-weight: ;
-  --bs-link-color: #353d49;
-  --bs-link-hover-color: #0a58ca;
-  --bs-secondary-color: rgba(33, 37, 41, 0.75);
-  --bs-nav-link-color: var(--bs-link-color);
-  --bs-nav-link-hover-color: var(--bs-link-hover-color);
-  --bs-nav-link-disabled-color: var(--bs-secondary-color);
-  --bs-navbar-brand-padding-y: 0.3125rem;
-  --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 1.25rem;
-  --bs-navbar-nav-link-padding-x: 0.5rem;
-  --bs-navbar-toggler-padding-y: 0.25rem;
-  --bs-navbar-toggler-padding-x: 0.75rem;
-  --bs-navbar-toggler-font-size: 1.25rem;
-  --bs-navbar-toggler-focus-width: 0.25rem;
-  --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
-  --bs-navbar-color: rgba(255, 255, 255, 0.55);
-  --bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
-  --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-  --bs-navbar-active-color: #fff;
-  --bs-navbar-brand-color: #fff;
-  --bs-navbar-brand-hover-color: #fff;
-  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-  --bs-dark-rgb: 33,37,41;
+
   --blanc: #fff;
 }
 *, ::after, ::before {
@@ -43,20 +13,19 @@ syle de récupe de boonstap */
 a {
 text-decoration: none;
 }
-/* début déclaration pour le header */
 header {
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 10;
-display: flex;
-justify-content: space-between;
-align-items: center;
-color: var(--blanc);
-padding: 0;
-box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
-background-color: var(--black-color);
-height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--blanc);
+  padding: 0;
+  /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); */
+  background-color: #153C8E;
+  height: 50px;
 }
 #logo-nav {
 margin-left: 10px;
@@ -89,17 +58,15 @@ border-color: rgba(255, 255, 255, .1);
   list-style-type: none;
   font-weight: bold;
   font-size: 1.1rem;
-  position: absolute;
 }
-#menu li {
+/* #menu li {
 margin-left: 10px;
 float: left;
 margin-top: 10px;
-}
+} */
 #menu li a {
-padding: 5px;
-color: var(--mauve);
-/* text-decoration:none; */
+  padding-right: 10px;
+  color: var(--blanc);
 }
 /* fin déclaration pour le header */
 
@@ -117,7 +84,7 @@ color: var(--mauve);
   margin-bottom: 1.5rem;
   width: 100%;
   height: 600px;
-  background-color: rgb(137 196 194 / 39%);
+  
   position: relative;
   overflow: hidden;
 }
@@ -163,15 +130,17 @@ color: var(--mauve);
   vertical-align: text-bottom;
 }
 #aside {
-    position: fixed;
-    width: 20%;
-    top: 70px;
-    bottom: 0;
-    left: 5px;
-    z-index: 100;
-    padding: 48px 0 0;
-    box-shadow: 4px -3px 5px 0px rgb(108 154 152 / 39%);
-    background-color: #89c4c263;
+  position: fixed;
+  width: 15vw;
+  top: 60px;
+  height: 90vh;
+  color: var(--blanc);
+  /* bottom: 0; */
+  left: 10px;
+  z-index: 100;
+  padding: 48px 0 0;
+  /* box-shadow: 4px -3px 5px 0px rgb(108 154 152 / 39%); */
+  background-color: #1D9994;
 }
 #aside ul {
   display: flex;
@@ -182,19 +151,22 @@ color: var(--mauve);
   flex-direction: column;
 }
 #aside a {
-display: block;
-padding: 0.5rem 1rem;
-font-size: 1rem;
-font-weight: bold;
-color: var(--bs-link-color);
-text-decoration: none;
-background: 0 0;
-border: 0;
-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--blanc);
+  text-decoration: none;
+  /* background: 0 0; */
+  border: 0;
+  /* transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out; */
 }
-#main{
+#main_total {
   position: relative;
-  top: 30px;
+  top: 27px;
+  width: 100vw;
+  height: 96vh;
+  background-color: #8fe0dd45;
 }
 .sidebar-sticky {
   position: relative;
