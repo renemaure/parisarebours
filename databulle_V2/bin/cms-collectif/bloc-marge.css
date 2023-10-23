@@ -1,0 +1,51 @@
+﻿/*module de getion cms des marges
+pour les sites gérer par le collectif
+gestion par pixselibur fablab de Sens
+création le 19 decembre 2017
+*/
+
+/* marges droites de 1 à 20 */
+
+.margd1 {margin-right: 1px;}
+.margd2 {margin-right: 2px;}
+.margd3 {margin-right: 3px;}
+.margd4 {margin-right: 4px;}
+.margd5 {margin-right: 5px;}
+.margd6 {margin-right: 6px;}
+.margd7 {margin-right: 7px;}
+.margd8 {margin-right: 8px;}
+.margd9 {margin-right: 9px;}
+.margd10 {margin-right: 10px;}
+.margd11 {margin-right: 11px;}
+.margd12 {margin-right: 12px;}
+.margd13 {margin-right: 13px;}
+.margd14 {margin-right: 14px;}
+.margd15 {margin-right: 15px;}
+.margd16 {margin-right: 16px;}
+.margd17 {margin-right: 17px;}
+.margd18 {margin-right: 18px;}
+.margd19 {margin-right: 19px;}
+.margd20 {margin-right: 20px;}
+
+/* marge gauche de 1 à 20*/
+
+.margg1 {margin-left: 1px;}
+.margg2 {margin-left: 2px;}
+.margg3 {margin-left: 3px;}
+.margg4 {margin-left: 4px;}
+.margg5 {margin-left: 5px;}
+.margg6 {margin-left: 6px;}
+.margg7 {margin-left: 7px;}
+.margg8 {margin-left: 8px;}
+.margg9 {margin-left: 9px;}
+.margg10 {margin-left: 10px;}
+.margg11 {margin-left: 11px;}
+.margg12 {margin-left: 12px;}
+.margg13 {margin-left: 13px;}
+.margg14 {margin-left: 14px;}
+.margg15 {margin-left: 15px;}
+.margg16 {margin-left: 16px;}
+.margg17 {margin-left: 17px;}
+.margg18 {margin-left: 18px;}
+.margg19 {margin-left: 19px;}
+.margg20 {margin-left: 20px;}

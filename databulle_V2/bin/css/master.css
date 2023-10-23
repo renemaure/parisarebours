@@ -1,0 +1,24 @@
+/*collectif 11880 fichier master.css permet de modifier les css sans toucher au fichier index.php */
+
+@import url("../jquery/themes/databulles3.css"); 
+
+@import url("../jquery/themes/jquery.mobile.icons.min.css"); 
+
+@import url("../jquery/jquery.mobile.structure-1.4.5.css"); 
+
+@import url("../cms-collectif/cms-collectif.css"); 
+
+@import url("index.css");
+
+
+
+
+
+
+
+
+
+
+
+
+				   

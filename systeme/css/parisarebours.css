@@ -1,39 +1,14 @@
 /* création le 20/08/2023 par l'association collectif 11880
 syle de récupe de boonstap */
 :root{
-  --btn-hover-bg: #6c757d;
-  --btn-hover-border-color: #6c757d;
-  --btn-bg: #fff;
-  --black-color :#000;
-  --bs-light-rgb: 248,249,250;
-  --bs-bg-opacity: 1;
-  --bs-nav-link-padding-x: 1rem;
-  --bs-nav-link-padding-y: 0.5rem;
-  --bs-nav-link-font-weight: ;
-  --bs-link-color: #353d49;
-  --bs-link-hover-color: #0a58ca;
-  --bs-secondary-color: rgba(33, 37, 41, 0.75);
-  --bs-nav-link-color: var(--bs-link-color);
-  --bs-nav-link-hover-color: var(--bs-link-hover-color);
-  --bs-nav-link-disabled-color: var(--bs-secondary-color);
-  --bs-navbar-brand-padding-y: 0.3125rem;
-  --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 1.25rem;
-  --bs-navbar-nav-link-padding-x: 0.5rem;
-  --bs-navbar-toggler-padding-y: 0.25rem;
-  --bs-navbar-toggler-padding-x: 0.75rem;
-  --bs-navbar-toggler-font-size: 1.25rem;
-  --bs-navbar-toggler-focus-width: 0.25rem;
-  --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
-  --bs-navbar-color: rgba(255, 255, 255, 0.55);
-  --bs-navbar-hover-color: rgba(255, 255, 255, 0.75);
-  --bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
-  --bs-navbar-active-color: #fff;
-  --bs-navbar-brand-color: #fff;
-  --bs-navbar-brand-hover-color: #fff;
-  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
-  --bs-dark-rgb: 33,37,41;
+  --btn-bg: rgb(237, 237, 237);
+  --bleu : #153C8E;
   --blanc: #fff;
+  --bleu_ciel: #1D9994;
+  --noir :#000;
+  --jaune : #FBB62F;
+  --jaune_clair : #FFE0A3;
+  --orage_clair : #FFCCA3;
 }
 *, ::after, ::before {
   box-sizing: border-box;
@@ -43,20 +18,19 @@ syle de récupe de boonstap */
 a {
 text-decoration: none;
 }
-/* début déclaration pour le header */
 header {
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 10;
-display: flex;
-justify-content: space-between;
-align-items: center;
-color: var(--blanc);
-padding: 0;
-box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
-background-color: var(--black-color);
-height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--blanc);
+  padding: 0;
+  /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); */
+  background-color: var(--bleu);
+  height: 50px;
 }
 #logo-nav {
 margin-left: 10px;
@@ -89,17 +63,19 @@ border-color: rgba(255, 255, 255, .1);
   list-style-type: none;
   font-weight: bold;
   font-size: 1.1rem;
-  position: absolute;
 }
-#menu li {
+/* #menu li {
 margin-left: 10px;
 float: left;
 margin-top: 10px;
-}
+} */
 #menu li a {
-padding: 5px;
-color: var(--mauve);
-/* text-decoration:none; */
+  padding-right: 10px;
+  color: var(--blanc);
+}
+#menu li a:hover{
+
+color: var(--jaune)
 }
 /* fin déclaration pour le header */
 
@@ -112,7 +88,7 @@ color: var(--mauve);
 }
 
 /* css map paris */
-#map_paris{
+#map_paris {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   width: 100%;
@@ -134,27 +110,26 @@ color: var(--mauve);
   top: 72px;
   right: 25px;
 }
-#btn_zoom button{
+#btn_zoom button {
   cursor: pointer;
   display: inline-block;
-  padding:  0.25rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--btn-color);
+  color: var(--noir);
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   user-select: none;
-  border:2px solid #000;
+  border: 2px solid var(--bleu);
   border-radius: 0.25rem;
-  background-color: var(--btn-bg);
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  background-color: var(--jaune_clair);
 }
 #btn_zoom button:hover {
-  color: var(--bs-btn-hover-color);
-  background-color: var(--btn-hover-bg);
-  border-color: var(--btn-hover-border-color);
+  color: var(--blanc);
+  background-color: var(--jaune);
+  border-color: var(--bleu);
 }
 /* recup dasbord */
 .feather {
@@ -164,14 +139,14 @@ color: var(--mauve);
 }
 #aside {
   position: fixed;
-  width: 20%;
-  top: 70px;
-  bottom: 0;
-  left: 5px;
+  width: 15vw;
+  top: 60px;
+  height: 90vh;
+  color: var(--blanc);
+  left: 10px;
   z-index: 100;
   padding: 48px 0 0;
-  box-shadow: 4px -3px 5px 0px rgb(108 154 152 / 39%);
-  background-color: #89c4c263;
+  background-color: var(--bleu_ciel);
 }
 #aside ul {
   display: flex;
@@ -182,19 +157,22 @@ color: var(--mauve);
   flex-direction: column;
 }
 #aside a {
-display: block;
-padding: 0.5rem 1rem;
-font-size: 1rem;
-font-weight: bold;
-color: var(--bs-link-color);
-text-decoration: none;
-background: 0 0;
-border: 0;
-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--blanc);
+  text-decoration: none;
+  /* background: 0 0; */
+  border: 0;
+  /* transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out; */
 }
-#main{
+#main_total {
   position: relative;
-  top: 30px;
+  top: 27px;
+  width: 100vw;
+  height: 96vh;
+  background-color: #8fe0dd45;
 }
 .sidebar-sticky {
   position: relative;
@@ -360,20 +338,36 @@ transition: color .2s ease-in-out;
   color: #555;
 }
 /* popup_folder */
-#popup_container {
-  position:absolute;
-  left: 50%;
-  top: 50%;
-  display: none;
+#popup_moyen {
+  position: absolute;
+  margin: auto 0;
+  left: 59%;
+  top: 59%;
+  height: 70%;
+  width: 70%;
+  display: block;
   align-items: center;
   justify-content: center;
-  flex-direction: column; 
-  padding:40px;
+  flex-direction: column;
+  padding: 40px;
   transform: translate(-50%, -50%);
-  border:solid 1px #000;
-  background-color: white;
+  border: solid 2px var(--bleu);
+  background-color: var(--blanc);
   border-radius: 10px;
   z-index: 1000;
+  background-color: var(--orage_clair);
+}
+.exit_tooltip {
+  /* display: inline-flex; */
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* filter: invert(1); */
+  border-bottom: solid 2px var(--bleu);
+  border-left: solid 2px var(--bleu);
+  background-color: var(--blanc);
 }
 #folder_name{
   padding: 10px 20px;

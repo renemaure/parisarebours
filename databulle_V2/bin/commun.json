@@ -1,0 +1,14 @@
+{
+	"titre":"Application smartphonne Databulle",
+	"etape_ver":"Alpha",
+	"num_ver":"1.3.0.1",
+	"date_ver":"19\/12\/2017",
+	"logger_err":"Mot de passe ou pseudo invalide!",
+	"speudo_err":"D&eacute;sol&eacute;, mais ce speudo est d&eacute;j&agrave; prit!",
+	"mail_err":"Votre mail est invalide",
+	"nom_err":"Votre speudo doit avoir entre 4 et 20 caract&egrave;res",
+	"pass_err":"Votre mot de passe doit avoir entre 6 et 12 caract&egrave;res",
+	"envoi_err":"Une erreur s&aposest produite pendant l&apos;envoi du mail",
+	"perdu_err":"Ce mail est inconnu dans notre base de donn&eacute;e!",
+	"code_post_dtb":"le code postal"
+}

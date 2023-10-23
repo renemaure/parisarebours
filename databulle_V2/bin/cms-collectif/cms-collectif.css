@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+/*-- collectif 11880 fichier cms-collectif.css
+regroupe les diferents fichiers gérant les css sur les
+sites suivi par pixelibuer fablab de Sens
+mise à jour le 19decembre 2017 -- */	
+
+@import url("cms-text.css");
+
+@import url("position-txt.css");
+
+@import url("block-largeur.css");
+
+@import url("block-largeur-pourcent.css");
+
+@import url("position-vertical.css");
+
+@import url("bloc-hauteur.css"); 
+
+@import url("position-horizontal-gauche.css");
+
+@import url("position-horizontal-gauche-pourcent.css");
+
+@import url("position-horizontal-droite.css");
+
+@import url("bloc-bas.css");
+
+@import url("padding.css");
+
+@import url("bloc-marge.css");

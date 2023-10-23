@@ -16,13 +16,14 @@
 	"_commentaire 3": "modules principaux du moteur du collectif ",
 	"list" : true,
 	"auto_menu" : true,
-	"aside" : true,
+	"aside" : false,
+	"liens_get" : false,
 
 	"_commentaire 4": "modules aditionels collectif ",
 	"mod_blog" : false,
 	"panier" : false,
 	"img_panier" :"",
-	"recherche" : true,
+	"recherche" : false,
 	"trt_rech" : "Search",
 	
 	"_commentaire 5": "module principal header",
@@ -32,7 +33,7 @@
 	"sous_trt" : false,
 	"nbr_menu" :1,
 	"activ_li"	: false,
-	"css_a_menu" : "false",
+	"css_a_menu" : "",
 	"img_nav" : "",
 	"txt_alt" : "",
 
@@ -50,6 +51,7 @@
 		"trt_menu" : "Apropos",
 		"lien_pg" : "#",
 		"lrm" : "",
-		"arm" : "vide"
+		"arm" : "vide",
+		"id" : "about"
 	}
 }
