@@ -80,7 +80,7 @@ if (isset($_GET['file'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>maintenance</title>
     <link rel="stylesheet" href="../systeme/css/parisarebours.css">
-    <link rel="stylesheet" href="../systeme/css/tooltip.css">
+    <link rel="stylesheet" href="../modules/tooltip/tooltip.css">
 </head>
 <body>
     <!-- popup cree dossier -->
@@ -148,8 +148,9 @@ if (isset($_GET['file'])) {
     
 </div>
     <button id="popup_button">cree une dossier</button>
+    <script src="../systeme/js/jquery3_7_1_min.js"></script>
     <script src="../systeme/js/drag-drop.js"></script>
-    <script src="../systeme/js/tooltip.js"></script>
+    <script src="../modules/tooltip/tooltip.js"></script>
     <script src="../systeme/js/maintenance.js"></script>
 </body>
 </html>

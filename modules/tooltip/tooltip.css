@@ -7,14 +7,14 @@
   text-underline-offset: 3px;
 }
 
-.tooltiptext {
+.tooltip .tooltiptext {
   visibility: hidden;
   width: 200px;
   background-color: #007BFF;
   color: #fff;
   text-align: center;
   border-radius: 4px;
-  padding: 20px 10px;
+  padding-bottom: 20px;
   position: absolute;
   z-index: 1;
   bottom: 125%;
@@ -24,9 +24,9 @@
   transition: opacity 0.3s;
   font-style: normal;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  flex-direction: column-reverse;
 }
 
 .tooltiptext::after{
@@ -42,22 +42,17 @@
 	margin-left: -20px;
 	margin-bottom: -10px;
 }
-.exit_tooltip{
+
+.learn_more {
   display: inline-flex;
-  height: 26px;
-  width: 26px;  
-  position:absolute;
+  height: 20px;
+  width: 20px;  
   top:0%;
   right:0%;
   /* inverser la couleur fill ne fonctionne pas  :(  */ 
   filter: invert(1);
-}
-.learn_more{
-  display:inline-flex;
-  height:20px;
-  width:20px;
-  filter:invert(1);
-  padding:0;
+  margin-right:4px;
+  margin-top: 2px;
 }
 .tooltip:hover .tooltiptext {
   visibility: visible;  

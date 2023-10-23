@@ -1,0 +1,6 @@
+{
+	"_commentaire 8" : "moudle tooltip",
+    "variable": "tooltip",
+    "element" : "p",
+    "path": "../modules/tooltip/tooltip.json"
+}

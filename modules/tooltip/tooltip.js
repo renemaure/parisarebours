@@ -1,254 +1,117 @@
 /* 
-  module tooltip version 1.0.5 crée le  01/10/2023 par Fateh [manque nom]
+  module tooltip version 1.0.5 crée le  01/10/2023 par Fateh kabbani
   pour l'association collectif 1180 
   affiche une bulle d'eplication sur un mot technique et renvoi sur une popup lexique
   pour plus d'information sur ce mot
- en phase alpha (le code suivant riste de me pas toujur fonctionner)
+  en phase alpha (le code suivant riste de me pas toujour fonctionner)
+  ## Historique des modifications
+   -Le 23/10/2023, Fateh Kabbani quelques modifications au module Tooltip. Ces modifications
+   ont été mises en œuvre pour améliorer les fonctionnalités du module, 
+   car celui-ci n'était pas entièrement optimisé.
 */
-// class TooltipManager {
-//   constructor() {
-//     tooltipData = null;
-//     tooltips = document.querySelectorAll(".tooltip");
-//     paragraphs = document.querySelectorAll("p");
-//   }
-
-//  async loadData() {
-//     try {
-//       const response = await fetch('../systeme/donnees/tooltip.json');
-//       tooltipData = await response.json();
-//       setupTooltipEvents();
-//     } catch (error) {
-//       console.error("Error loading tooltip data:", error);
-//     }
-//   }
-
-//   initializeTooltipsAutomatically() {
-//     if (tooltipData) {
-//       const wordsSet = new Set(Object.keys(tooltipData));
-
-//       const tooltipsMap = new Map();
-//       for (const word of Object.keys(tooltipData)) {
-//         tooltipsMap.set(
-//           word,
-//           `<span class="tooltip">${word}
-//           <span class="tooltiptext">${tooltipData[word][1]} <img class="exit_tooltip" src="../systeme/img/icon/x.svg">
-//           <img class="learn_more" src="../systeme/img/icon/book.svg"></span></span>`
-//         );
-//       }
-
-//       for (const paragraph of paragraphs) {
-//         const words = paragraph.textContent.split(" ");
-//         const newContent = [];
-
-//         for (const word of words) {
-//           if (wordsSet.has(word)) {
-//             newContent.push(tooltipsMap.get(word));
-//           } else {
-//             newContent.push(word);
-//           }
-//         }
-
-//         paragraph.innerHTML = newContent.join(" ");
-//       }
-
-//       setupTooltipEvents();
-//     }
-//   }
-
-//   initializeTooltipsManually() {
-//     // Add manual initialization logic here, similar to the `showTooltip` function
-//     if (tooltipData) {
-//       const AutoParagrahs = document.querySelectorAll('.tooltip');
-//       const wordsSet = new Set(Object.keys(tooltipData));
-//       const tooltipsMap = new Map();
-//       for (const word of Object.keys(tooltipData)) {
-//         tooltipsMap.set(
-//           word,
-//           `${word}
-//           <span class="tooltiptext">${tooltipData[word][1]}<img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img>
-//           <img class="learn_more" src="../systeme/img/icon/book.svg"></img></span>`
-//         );
-//       }
-//       for (const paragraph of AutoParagrahs) {
-//         const words = paragraph.textContent.split(" ");
-//         const newContent = [];
-//         for (const word of words) {
-//           if (wordsSet.has(word)) {
-//             newContent.push(tooltipsMap.get(word));
-//           } else {
-//             newContent.push(word);
-//           }
-//         }
-//         paragraph.innerHTML = newContent.join(" ");
-//       }
-//       setupTooltipEvents();
-//     }
-//   }
-
-//   showTooltip(tooltip) {
-//     const tooltipText = tooltip.getElementsByClassName("tooltiptext")[0];
-//     tooltipText.style.visibility = "visible";
-//     tooltipText.style.opacity = "1";
-//   }
-
-//   hideTooltip(tooltip) {
-//     const tooltipText = tooltip.getElementsByClassName("tooltiptext")[0];
-//     tooltipText.style.visibility = "hidden";
-//     tooltipText.style.opacity = "0";
-//   }
-
-//   setupTooltipEvents() {
-//     tooltips.forEach((tooltip) => {
-//       tooltip.addEventListener("mouseenter", () => {
-//         console.log("Mouse entered tooltip");
-//         showTooltip(tooltip);
-//       });
-
-//       tooltip.addEventListener("mouseleave", () => {
-//         console.log("Mouse left tooltip");
-//         hideTooltip(tooltip);
-//       });
-
-//       tooltip.addEventListener("mouseover", (event) => {
-//         console.log("Mouse over tooltip");
-//       });
-//       // Add a click event listener to the image elements
-//       const exitButton = tooltip.querySelector(".exit_tooltip");
-//       const learnMoreButton = tooltip.querySelector(".learn_more");
-
-//       if (exitButton) {
-//         exitButton.addEventListener("click", (event) => {
-//           event.stopPropagation(); // Stop event propagation
-//           hideTooltip(tooltip);
-//         });
-//       }
-//       console.log(tooltip.addEventListener)
-//       console.log(tooltip);
-//     });
-//   }
-// }
-
-// const tooltipManager = new TooltipManager();
-
-// // Load tooltip data
-// tooltipManager.loadData().then(() => {
-//   // Initialize tooltips automatically
-//   tooltipManager.initializeTooltipsAutomatically();
-
-//   // OR
-
-//   // tooltipManager.initializeTooltipsManually();
-// });
-
+const elm = "tooltip";
 const paragraphs = document.querySelectorAll("p");
+const defaultElements = document.querySelectorAll(`.${elm}`);
+let tooltipData;
 
-async function loadData() {
-  try {
-    const response = await fetch("../systeme/donnees/tooltip.json");
-    tooltipData = await response.json();
-    return tooltipData;
-  } catch (error) {
-    console.error("Error loading tooltip data:", error);
-  }
+// Fetch tooltip data from a JSON file.
+function getData() {
+  return $.get("../modules/tooltip/tooltip.json", (data) => data).fail(() =>
+    console.error("Error loading tooltip data:", error)
+  );
 }
-function tooltipManager() {
-  // handle click event on tooltip
-  function setupTooltipEvents() {
-    const tooltips = document.querySelectorAll(".tooltip");
-    tooltips.forEach((tooltip) => {
-      const tooltipText = tooltip.getElementsByClassName("tooltiptext")[0];
-      const tooltipImg = tooltip.getElementsByClassName("exit_tooltip")[0];
-      // Afficher le tooltip lorsque l'utilisateur la survole
-      tooltip.addEventListener("mouseenter", () => {
-        tooltipText.style.visibility = "visible";
-        tooltipText.style.opacity = "1";
-      });
 
-      // Masquer le tooltip lorsque l'utilisateur éloigne sa souris
-      tooltip.addEventListener("mouseleave", () => {
-        tooltipText.style.visibility = "hidden";
-        tooltipText.style.opacity = "0";
-      });
+function applyTooltip(data, element) {
+  element.addEventListener("mouseenter", () => {
+    installContent(data, element);
+    // console.log(data , element)
+  });
 
-      // Empêche le tooltip de se masquer lorsque l'utilisateur survole le tooltip elle-même
-      tooltip.addEventListener("mouseover", (event) => {
-        event.stopPropagation();
-      });
-      tooltipImg.addEventListener("click", () => {
-        tooltipText.style.visibility = "hidden";
-        tooltipText.style.opacity = "0";
-      });
+  return element;
+}
+
+function manualTooltip(data, elements) {
+  /*
+   la boucle renvoie des éléments (tooltip dans ce cas)
+  */
+  elements.forEach((e) => {
+    applyTooltip(data, e);
+  });
+
+  return elements;
+}
+
+function autoTooltip(data, elements) {
+  elements.forEach((e) => {
+    const words = e.innerText.split(" ");
+    /*
+      clear the element's content (tooltipText)
+      Effacer le elements content (tooltipText)
+     */
+    e.innerHTML = "";
+    words.forEach((word, index) => {
+      if (data[word]) {
+        const span = document.createElement("span");
+        span.classList.add("tooltip");
+        span.textContent = word;
+
+        e.appendChild(applyTooltip(data, span));
+
+        /* Ajoutez un espace après l'info-bulle si ce n'est pas le dernier mot */
+        if (index < words.length - 1) {
+          e.appendChild(document.createTextNode(" "));
+        }
+      } else {
+        /* 
+          If the word doesn't have a tooltip, just add it as plain text
+          Si le mot n'a pas d'info-bulle, ajoutez-le simplement sous forme de texte brut
+        */
+        e.appendChild(document.createTextNode(word));
+
+        /* 
+         Add a space after the word if it's not the last word
+         Ajoutez un espace après le mot si ce n'est pas le dernier mot
+        */
+        if (index < words.length - 1) {
+          e.appendChild(document.createTextNode(" "));
+        }
+      }
     });
-  }
-
-  // display tooltip auto when element have a word that in side tooltipData aka tooltip.json
-  function autoTooltip(data, elements) {
-    const wordSet = new Set(Object.keys(data));
-    const tooltipMap = new Map();
-    for (const word of Object.keys(data)) {
-      tooltipMap.set(
-        word,
-        `<span class="tooltip">${word}
-        <span class="tooltiptext">${data[word][1]}<img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img>
-        <img class="learn_more" src="../systeme/img/icon/book.svg"></img></span></span>`
-      );
-    }
-    for (const element of elements) {
-      const words = element.textContent.split(" ");
-      const newContent = [];
-      for (const word of words) {
-        if (wordSet.has(word)) {
-          newContent.push(tooltipMap.get(word));
-        } else {
-          newContent.push(word);
-        }
-      }
-      element.innerHTML = newContent.join(" ");
-    }
-    setupTooltipEvents();
-  }
-  // display tooltip manual when element have a word that in side tooltipData aka tooltip.json
-  function manualTooltip(data) {
-   const wordSet = new Set(Object.keys(data));
-    const tooltipMap = new Map();
-    for (const word of Object.keys(data)) {
-      tooltipMap.set(
-        word,
-        `<span class="tooltip">${word}
-        <span class="tooltiptext">${data[word][1]}<img class="exit_tooltip" src="../systeme/img/icon/x.svg"></img>
-        <img class="learn_more" src="../systeme/img/icon/book.svg"></img></span></span>`
-      );
-    }
-    const elements = document.querySelectorAll(".tooltip");
-    for(const element of elements){
-      const words = element.textContent.split(" ");
-      const newContent = [];
-      for(const word of words){
-        if(wordSet.has(word)){
-          newContent.push(tooltipMap.get(word));
-        }else{
-          newContent.push(word);
-        }
-      }
-      element.innerHTML = newContent.join(" ");
-      
-    }
-    setupTooltipEvents();
-
-  }
-  
-  return {
-    autoTooltip: autoTooltip,
-    manualTooltip: manualTooltip,
-  };
+  });
 }
-async function initialize(mode) {
-  const tooltipData = await loadData();
-  const manualTooltipManager = tooltipManager();
+
+/* 
+call function to install tooltip content inside the element 
+appeler la fonction pour installer le contenu de installTooltip à l'intérieur de l'élément
+*/
+function installContent(data, element) {
+  const content = element.textContent;
+
+  if (data[content]) {
+    const icon = document.createElement("img");
+    icon.src = "../modules/tooltip/icon/book.svg";
+    icon.classList.add("learn_more");
+    const p = document.createElement("p");
+    p.classList.add("tooltiptext");
+    p.textContent = data[content].short_explanation;
+    p.append(icon);
+    console.log(p , icon )
+    element.append(p);
+  }else{
+    console.log('hello')
+  }
+}
+
+async function initiate(mode) {
+  const data = await getData();
   if (mode === "auto") {
-    manualTooltipManager.autoTooltip(tooltipData, paragraphs);
-  }else if(mode === "manual"){
-    manualTooltipManager.manualTooltip(tooltipData);
+    console.log("Initiating automatic tooltip");
+    autoTooltip(data, paragraphs);
+  } else if (mode == "manual") {
+    console.log("Initiating manual tooltip");
+    console.log(manualTooltip(data, defaultElements)); /* default element == tooltip */
   }
 }
-initialize("manual");
+
+
+initiate("manual");
