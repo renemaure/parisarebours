@@ -407,3 +407,19 @@ transition: color .2s ease-in-out;
   flex-wrap: wrap; 
   }
 }
+/* popup create folder container */
+#popup_container{
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; 
+  padding:40px;
+  transform: translate(-50%, -50%);
+  border:solid 1px #000;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 1000;
+}
