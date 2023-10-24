@@ -2,9 +2,12 @@
 	/*
 		Fichier de gestion pour la navigation des sites conçu ou gérer par l'association collectif 11880 
 
-	 	Date de création: 18/02/2012  / version 5.0.1 beta au 15/10/2023.
+	 	Date de création: 18/02/2012  / version 5.0.2 beta au 24/10/2023.
 
 	 	Ce fichier est libre d'utilisation en citant l'association: www.collectif11880.org.
+
+		modif au 24/10/2023 par pascal:
+			ajout d'une variable $pg_court contenant le nom de la page courante pour faire fonctionner les modules
 
 	 	Nouvelle version 5: 
 			la nouvelle version permet d'intégrer le mode front-end et back-end avec la gestion des liens du menu par le javascript.
@@ -25,8 +28,7 @@
 	/* condition pour lancer le module tab_bord  et lancer soit le fichier json tabbord ou celui du site [ok_v5]*/
 	if ($demar["tabbord"]) 	include ($demar["fich_instal"]); 
 	else  $jsonsite = $demar["f_json"];
-	/* récupération du fichier json de personalisation du site [ok_v5] 
-	modification v5: rajout d'une variable dirdonne pour contenir le nom du repertoire des données [ok_v5] */
+	/* récupération du fichier json de personalisation du site [ok_v5] */
 	$json = file_get_contents($chem_princ."/".$demar["dirdonne"]."/".$jsonsite.$jsn);
 	$liens = json_decode($json, true);
 
@@ -34,6 +36,7 @@
 	$dirlien = $liens["dirlien"]."/";
 	/* variables par défaut pour afficher la page en index [ok_v5] */
 	$affpg =  $dirlien.$liens["index"].$lp; 
+	$pg_court = $dirlien.$liens["index"];
 	/* modifier par une variable json possibilité de bug l'ancienne variable était en string!! [ok_v5] */
 	$activ = $liens["defactiv"]; 
 	/* récuperation du nom du fichier à affiché en aside par défaut */
@@ -46,12 +49,14 @@
 		if(isset($_GET['pg'])) {
 			$pgmain = $_GET['pg'];
 			$affpg =  $dirlien.$liens["indic".$pgmain]["lrm"].$lp;
+			$pg_court =  $dirlien.$liens["indic".$pgmain]["lrm"];
 			if(isset($_GET['act'])) $activ = $_GET['act'];
 			else  $activ = $_GET['pg']; 
 			/* modification du 08/10/2023 pour les orgues d'auxerre  condition géstion des liens de menu inside*/
 			if (isset($_GET['sm'])) {
 				$sous_menu = $_GET['sm'];
 				$affpg = $dirlien.$liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu].$lp;
+				$pg_court = $dirlien.$liens["indic".$pgmain]["sous_menu"]["lrm_".$sous_menu];
 			}
 			if (isset($_GET['asi'])) {
 				$affasi =  $dirlien.$liens["indic".$_GET['pg']]["arm"].$lp;
