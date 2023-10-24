@@ -1,20 +1,20 @@
 /* 
-  module tooltip version 1.0.5 crée le  01/10/2023 par Fateh kabbani
+  module tooltip version 1.0.5 alpha
+  crée le  01/10/2023 par Fateh kabbani
   pour l'association collectif 1180 
-  affiche une bulle d'eplication sur un mot technique et renvoi sur une popup lexique
-  pour plus d'information sur ce mot
-  en phase alpha (le code suivant riste de me pas toujour fonctionner)
+  affiche une bulle d'explication sur un mot technique et ouvre une popup lexique pour affichée plus d'information sur ce mot.
+  en phase alpha le code suivant risque de me pas toujour fonctionner!
   ## Historique des modifications
    -Le 23/10/2023, Fateh Kabbani quelques modifications au module Tooltip. Ces modifications
    ont été mises en œuvre pour améliorer les fonctionnalités du module, 
    car celui-ci n'était pas entièrement optimisé.
 */
-const elm = "tooltip";
+const elm = "tooltip"; // a recuperer depuis le json
 const paragraphs = document.querySelectorAll("p");
 const defaultElements = document.querySelectorAll(`.${elm}`);
 let tooltipData;
 
-// Fetch tooltip data from a JSON file.
+ /* Récupérer les données du lexique à partir d'un fichier lexique.JSON. note l'adresse doit etre dans le fichier install json et le fichier contenant le lexique s'apeller 'lexique.json'*/
 function getData() {
   return $.get("../modules/tooltip/tooltip.json", (data) => data).fail(() =>
     console.error("Error loading tooltip data:", error)
@@ -44,46 +44,28 @@ function manualTooltip(data, elements) {
 function autoTooltip(data, elements) {
   elements.forEach((e) => {
     const words = e.innerText.split(" ");
-    /*
-      clear the element's content (tooltipText)
-      Effacer le elements content (tooltipText)
-     */
+    /* Effacer le elements content (tooltipText)  */
     e.innerHTML = "";
     words.forEach((word, index) => {
       if (data[word]) {
         const span = document.createElement("span");
         span.classList.add("tooltip");
         span.textContent = word;
-
         e.appendChild(applyTooltip(data, span));
-
         /* Ajoutez un espace après l'info-bulle si ce n'est pas le dernier mot */
-        if (index < words.length - 1) {
-          e.appendChild(document.createTextNode(" "));
-        }
+        if (index < words.length - 1)  e.appendChild(document.createTextNode(" "));
       } else {
-        /* 
-          If the word doesn't have a tooltip, just add it as plain text
-          Si le mot n'a pas d'info-bulle, ajoutez-le simplement sous forme de texte brut
-        */
+        /*  Si le mot n'a pas d'info-bulle, ajoutez-le simplement sous forme de texte brut */
         e.appendChild(document.createTextNode(word));
-
-        /* 
-         Add a space after the word if it's not the last word
-         Ajoutez un espace après le mot si ce n'est pas le dernier mot
-        */
-        if (index < words.length - 1) {
-          e.appendChild(document.createTextNode(" "));
-        }
+        /* Ajoutez un espace après le mot si ce n'est pas le dernier mot */
+        if (index < words.length - 1) e.appendChild(document.createTextNode(" "));
       }
     });
   });
 }
 
-/* 
-call function to install tooltip content inside the element 
-appeler la fonction pour installer le contenu de installTooltip à l'intérieur de l'élément
-*/
+/* appeler la fonction pour installer le contenu de installTooltip à l'intérieur de l'élément  note:
+toutes les données doivent etre dans le fichier install json*/
 function installContent(data, element) {
   const content = element.textContent;
 
@@ -112,6 +94,5 @@ async function initiate(mode) {
     console.log(manualTooltip(data, defaultElements)); /* default element == tooltip */
   }
 }
-
 
 initiate("manual");
