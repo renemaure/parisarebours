@@ -1,14 +1,13 @@
 <?php
 /*
 	fichier d'affichage du menu pour les sites conçu ou gérer par l'association collectif 11880.
-	version 1.3.0 au 22/10/2023.
+	actuellement à la version 1.3.0 au 22/10/2023.
 	fichier libre d'utilisation en sitant l'association collectif11880.org.
 	Nouvelle version 1.3:
 	ajout d'une condition avec variable json "liens_get" permettant la naviqation avec javascript
 	identifie chaque lien par un id définit dans le fichier json du site.
 
-	Ajout d'un module "menu_aside" avec une nouvelle fonction menu_aside(), permettant l'affichage d'un ou plusieurs menus dans la <main> de la page courante.
-	Module développé par Pascal et Jean-Marie pour le site www.orguesauxerre.net
+	Ajout d'un module "menu_aside" avec une nouvelle fonction menu_aside(), permettant l'affichage d'un ou plusieurs menus dans la <main> de la page courante. Module développé par Pascal et Jean-Marie pour le site www.orguesauxerre.net
 
 	Fichier libre d'utilisation en citant l'association collectif11880.org.
 */

@@ -1,18 +1,20 @@
 <?php
 	/*
-	création fichier tabbord_deb.php le 15/10/2023 version 2.1.2
-
-	par l'association collectif 11880
-
+	création fichier tabbord_deb.php pour l'association collectif 11880
+	ne peut fonctionner sans son moteur "index_deb.php"
 	permet l'acces serurisé d'un site avec mot de passe code en MD5
 
-	modifications importantes!
-	le 20/04/2023 par Fateh: rajout d'un test si la variable quit existe et est égale à 1 
-	permet de quiter le mode tabbord et suprimer le cookie
+	actuellement à la version version 2.1.2 au 28/10/2023
+
+	modifications importante par Fateh!
+
+	ajout d'un test si la variable quit existe et est égale à 1 permet de quiter le mode tabbord et suprimer le cookie
+
+	ajout d'une variable $v_tbrd permettant de d'eactiver des modules en mode tab_bord
 	*/
 	$jsonsite = $demar["fich_tabbord"];// modif varible dans json donnees site
 
-	$v_tbrd = true; // expliquer son fonctionnement! aucun code associé
+	$v_tbrd = true; //variable déplacée d'index_deb version 5
 
 	$tempo_cle = 86400; /* modif de la valeur: nouvelle valeur= 24h */
 
