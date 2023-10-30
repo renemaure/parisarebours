@@ -1,13 +1,12 @@
 /* 
-  module tooltip version 1.0.5 alpha
-  crée le  01/10/2023 par Fateh kabbani
-  pour l'association collectif 1180 
-  affiche une bulle d'explication sur un mot technique et ouvre une popup lexique pour affichée plus d'information sur ce mot.
-  en phase alpha le code suivant risque de me pas toujour fonctionner!
+  module tooltip  crée le  01/10/2023 par Fateh kabbani pour l'association collectif 1180 
+  actuellement à la version 1.0.5 alpha au 23/10/2023
+
+ 
+  Ce module affiche une bulle d'explication sur un mot technique en ouvrant une popup lexique pour affichée plus d'information sur ce mot.
+  ** !! en phase alpha le code suivant risque de me pas toujour fonctionner !! **
   ## Historique des modifications
-   -Le 23/10/2023, Fateh Kabbani quelques modifications au module Tooltip. Ces modifications
-   ont été mises en œuvre pour améliorer les fonctionnalités du module, 
-   car celui-ci n'était pas entièrement optimisé.
+   -Le 23/10/2023, Fateh Kabbani quelques modifications au module Tooltip. Ces modifications ont été mises en œuvre pour améliorer les fonctionnalités du module, car celui-ci n'était pas entièrement optimisé.
 */
 const elm = "tooltip"; // a recuperer depuis le json
 const paragraphs = document.querySelectorAll("p");
@@ -29,15 +28,11 @@ function applyTooltip(data, element) {
 
   return element;
 }
-
+ /*  la boucle renvoie des éléments (tooltip dans ce cas)  */
 function manualTooltip(data, elements) {
-  /*
-   la boucle renvoie des éléments (tooltip dans ce cas)
-  */
   elements.forEach((e) => {
     applyTooltip(data, e);
   });
-
   return elements;
 }
 
@@ -68,7 +63,6 @@ function autoTooltip(data, elements) {
 toutes les données doivent etre dans le fichier install json*/
 function installContent(data, element) {
   const content = element.textContent;
-
   if (data[content]) {
     const icon = document.createElement("img");
     icon.src = "../modules/tooltip/icon/book.svg";
@@ -83,7 +77,6 @@ function installContent(data, element) {
     console.log('hello')
   }
 }
-
 async function initiate(mode) {
   const data = await getData();
   if (mode === "auto") {
@@ -91,8 +84,7 @@ async function initiate(mode) {
     autoTooltip(data, paragraphs);
   } else if (mode == "manual") {
     console.log("Initiating manual tooltip");
-    console.log(manualTooltip(data, defaultElements)); /* default element == tooltip */
+    console.log(manualTooltip(data, defaultElements)); 
   }
 }
-
 initiate("manual");
