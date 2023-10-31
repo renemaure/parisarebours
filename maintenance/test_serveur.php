@@ -141,12 +141,17 @@ if (isset($_GET['file'])) {
     This is a test of another with apple,
 </p> 
 <p>
-    This is a <span class="tooltip">test</span> of <span class="tooltip">another</span> with apple,
+    This is a <span class="tooltip">test</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur totam nostrum commodi sint quaerat sit iusto voluptates quasi <span class="tooltip">test</span> illo! Voluptates nostrum doloremque locale_get_region soluta accusamus magnam <span class="tooltip">test</span> praesentium labore nesciunt natus fugiat. of  with apple,
 </p>
+
+<!-- <p class="tooltiptext">
+    this is another test hope it works
+    <img src="../modules/tooltip/icon/book.svg" class="learn_more">
+</p> -->
 <!-- tooltip poupup -->
-<div id="tooltip-popup">
+<!-- <div id="tooltip-popup">
     
-</div>
+</div> -->
     <button id="popup_button">cree une dossier</button>
     <script src="../systeme/js/jquery3_7_1_min.js"></script>
     <script src="../systeme/js/drag-drop.js"></script>

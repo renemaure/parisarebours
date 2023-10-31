@@ -6,56 +6,48 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #007BFF;
-  color: #fff;
-  text-align: center;
+.tooltiptext {
+  display: none;
+  width: 238px;
+  background-color: #c2daf3;
   border-radius: 4px;
-  padding-bottom: 20px;
+  border: 1px solid black;
+  padding: 19px 10px 10px 10px;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
+  bottom: 32px;
+  left: 1px;
+  height: 60px;
   margin-left: -100px;
   opacity: 0;
   transition: opacity 0.3s;
   font-style: normal;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-end;
-  flex-direction: column-reverse;
 }
-
-.tooltiptext::after{
+.tooltiptext::after {
   content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 20px solid transparent;
-	border-top-color: #007BFF;
-	border-bottom: 0;
-	margin-left: -20px;
-	margin-bottom: -10px;
+  position: absolute;
+  bottom: 0;
+  top: 58px;
+  left: 108px;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: #222;
+  border-bottom: 0;
+  margin-left: -20px;
 }
-
 .learn_more {
   display: inline-flex;
   height: 20px;
   width: 20px;  
   top:0%;
   right:0%;
-  /* inverser la couleur fill ne fonctionne pas  :(  */ 
-  filter: invert(1);
+  /* filter: invert(1); */
   margin-right:4px;
   margin-top: 2px;
 }
 .tooltip:hover .tooltiptext {
-  visibility: visible;  
+  display:inline-flex;
   opacity: 1;
 }
 p{
